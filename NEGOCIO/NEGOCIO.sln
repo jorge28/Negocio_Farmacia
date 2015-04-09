@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NEGOCIO", "NEGOCIO\", "{3C436E0E-297F-4F94-A928-FF9E057DB5F4}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{9e857074-3142-4e88-bb1e-487d10e7c24c}|BusRS_ProyectoFarmacia.dll;{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE}|DatRS_ProyectoFarmacia.dll;{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5}|UtiRS_ProyectoFarmacia.dll;{7B751887-2E1D-42BB-92E5-C68DF7EC5F93}|EntRS_ProyectoFarmacia.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/NEGOCIO"
+		Debug.AspNetCompiler.PhysicalPath = "NEGOCIO\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\NEGOCIO\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/NEGOCIO"
+		Release.AspNetCompiler.PhysicalPath = "NEGOCIO\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\NEGOCIO\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1054"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 UI", "1 UI", "{0B399EA6-0A1A-4F41-8234-EB475BA7FC1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 BUSINESS", "2 BUSINESS", "{223B0290-EDB7-4583-9291-F9ED0A31DE6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 DATA", "3 DATA", "{C4DC5FD8-20E9-47CD-BD3D-A25CBA50CDFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatRS_ProyectoFarmacia", "DatRS_ProyectoFarmacia\DatRS_ProyectoFarmacia.csproj", "{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtiRS_ProyectoFarmacia", "UtiRS_ProyectoFarmacia\UtiRS_ProyectoFarmacia.csproj", "{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntRS_ProyectoFarmacia", "EntRS_ProyectoFarmacia\EntRS_ProyectoFarmacia.csproj", "{7B751887-2E1D-42BB-92E5-C68DF7EC5F93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusRS_ProyectoFarmacia", "BusRS_ProyectoFarmacia\BusRS_ProyectoFarmacia.csproj", "{9E857074-3142-4E88-BB1E-487D10E7C24C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C436E0E-297F-4F94-A928-FF9E057DB5F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C436E0E-297F-4F94-A928-FF9E057DB5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C436E0E-297F-4F94-A928-FF9E057DB5F4}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C436E0E-297F-4F94-A928-FF9E057DB5F4}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B751887-2E1D-42BB-92E5-C68DF7EC5F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B751887-2E1D-42BB-92E5-C68DF7EC5F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B751887-2E1D-42BB-92E5-C68DF7EC5F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B751887-2E1D-42BB-92E5-C68DF7EC5F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E857074-3142-4E88-BB1E-487D10E7C24C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E857074-3142-4E88-BB1E-487D10E7C24C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E857074-3142-4E88-BB1E-487D10E7C24C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E857074-3142-4E88-BB1E-487D10E7C24C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C436E0E-297F-4F94-A928-FF9E057DB5F4} = {0B399EA6-0A1A-4F41-8234-EB475BA7FC1D}
+		{8F1B7BA2-9A6B-4B01-8383-F1600B31F7B5} = {223B0290-EDB7-4583-9291-F9ED0A31DE6D}
+		{7B751887-2E1D-42BB-92E5-C68DF7EC5F93} = {223B0290-EDB7-4583-9291-F9ED0A31DE6D}
+		{9E857074-3142-4E88-BB1E-487D10E7C24C} = {223B0290-EDB7-4583-9291-F9ED0A31DE6D}
+		{3CE95E15-CFBC-4BEF-AAAD-77FD195EF8AE} = {C4DC5FD8-20E9-47CD-BD3D-A25CBA50CDFE}
+	EndGlobalSection
+EndGlobal
