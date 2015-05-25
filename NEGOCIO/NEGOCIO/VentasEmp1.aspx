@@ -45,16 +45,18 @@
                              </asp:UpdatePanel>    
                 </div>  
                 <div class="12u">
-                 <asp:TextBox ID="TextBox1" runat="server" ForeColor="Black" Height="35px" placeholder="Producto:" BackColor="Beige" AutoPostBack="True" />
+                    <div>
+                 <asp:TextBox ID="TextBox1" runat="server" ForeColor="Black" Height="35px" placeholder="Producto:" BackColor="Beige" AutoPostBack="True"  />
+                    <asp:Button ID="Button1" runat="server" Text="AGREGAR" ></asp:Button> 
+                    </div>
                     <div></div>   
                     <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" 
                          MinimumPrefixLength="2" UseContextKey="True"
-    TargetControlID="TextBox1" ServiceMethod="GetCompletionList"></asp:AutoCompleteExtender>                      
-       <%-- <cc1:autocompleteextender ID="AutoCompleteExtender1" runat="server"  MinimumPrefixLength="2"
-    UseContextKey="True"
-    TargetControlID="TextBox1" ServiceMethod="GetCompletionList">
-        </cc1:autocompleteextender>--%>
+    TargetControlID="TextBox1" ServiceMethod="GetCompletionList"></asp:AutoCompleteExtender>  
+                                                   
+    
         <br />
+                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <asp:GridView ID="gvResBus" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
             <Columns>
                 <asp:BoundField DataField="Nombre_Producto" HeaderText="Producto" />
@@ -97,31 +99,7 @@
                                 </div>                    
                         </div>
                     </div>
-                    <%--<div class="row row-special">
-                        <div class="12u">
-                            <h3>Find me on ...</h3>
-                            <ul class="social">
-                                <li class="twitter"><a href="http://twitter.com/n33co" class="icon icon-twitter"><span>Twitter</span></a></li>
-                                <li class="facebook"><a href="#" class="icon icon-facebook"><span>Facebook</span></a></li>
-                                <li class="dribbble"><a href="http://dribbble.com/n33" class="icon icon-dribbble"><span>Dribbble</span></a></li>
-                                <li class="linkedin"><a href="#" class="icon icon-linkedin"><span>LinkedIn</span></a></li>
-                                <li class="tumblr"><a href="#" class="icon icon-tumblr"><span>Tumblr</span></a></li>
-                                <li class="googleplus"><a href="#" class="icon icon-google-plus"><span>Google+</span></a></li>
-                                <li class="github"><a href="http://github.com/n33" class="icon icon-github"><span>Github</span></a></li>
-                                <!--
-									<li class="rss"><a href="#" class="icon icon-rss"><span>RSS</span></a></li>
-									<li class="instagram"><a href="#" class="icon icon-instagram"><span>Instagram</span></a></li>
-									<li class="foursquare"><a href="#" class="icon icon-foursquare"><span>Foursquare</span></a></li>
-									<li class="skype"><a href="#" class="icon icon-skype"><span>Skype</span></a></li>
-									<li class="soundcloud"><a href="#" class="icon icon-soundcloud"><span>Soundcloud</span></a></li>
-									<li class="youtube"><a href="#" class="icon icon-youtube"><span>YouTube</span></a></li>
-									<li class="blogger"><a href="#" class="icon icon-blogger"><span>Blogger</span></a></li>
-									<li class="flickr"><a href="#" class="icon icon-flickr"><span>Flickr</span></a></li>
-									<li class="vimeo"><a href="#" class="icon icon-vimeo"><span>Vimeo</span></a></li>
-									-->
-                            </ul>
-                        </div>
-                    </div>--%>
+                    
                 </div>
                 <footer>
                    <div class="12u" style="text-align:right">

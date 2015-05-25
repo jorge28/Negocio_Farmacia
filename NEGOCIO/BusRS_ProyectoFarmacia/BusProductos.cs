@@ -35,29 +35,27 @@ namespace RS_ProyectoFarmacia.Business
 
             return lista;
         }
-        public List<EntProductos> ObtenerProd(string prod)
+        public EntProductos ObtenerProd(string prod)
         {
             DatProductos obj = new DatProductos();
-            DataTable dt = obj.Obtenerprod(prod);
-            List<EntProductos> lista = new List<EntProductos>();
+            DataRow dr = obj.Obtenerprod(prod);
+            EntProductos lista = new EntProductos();
 
-            foreach (DataRow r in dt.Rows)
-            {
+           
                 EntProductos per = new EntProductos();
-                per.Nombre_Producto = r["Nombre_Producto"].ToString();
-                per.Sustancia = r["Sustancia"].ToString();
+                per.Nombre_Producto = dr["Nombre_Producto"].ToString();
+                per.Sustancia = dr["Sustancia"].ToString();
                 //per.IdCategoria = Convert.ToInt32(r["Id_Categoria"]);
                 //per.IdTipo = Convert.ToInt32(r["Id_Tipo"]);
-                per.Categoria = r["Nombre_Categoria"].ToString();
-                per.Tipo = r["Nombre_Tipo"].ToString();
-                per.Cantidad = r["Cantidad"].ToString();
-                per.Existencia = Convert.ToInt32(r["Existencia"]);
-                per.Costo = Convert.ToInt32(r["Costo"]);
+                per.Categoria = dr["Nombre_Categoria"].ToString();
+                per.Tipo = dr["Nombre_Tipo"].ToString();
+                per.Cantidad = dr["Cantidad"].ToString();
+                per.Existencia = Convert.ToInt32(dr["Existencia"]);
+                per.Costo = Convert.ToInt32(dr["Costo"]);               
 
-                lista.Add(per);
-            }
-
-            return lista;
+            return per;
         }
+
+
     }
 }

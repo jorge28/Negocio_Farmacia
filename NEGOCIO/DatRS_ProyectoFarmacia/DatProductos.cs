@@ -22,16 +22,16 @@ namespace RS_ProyectoFarmacia.Data
 
             return ds.Tables[0];      
         }
-        public DataTable Obtenerprod(string prod)
+        public DataRow Obtenerprod(string prod)
         {
             SqlCommand comando = new SqlCommand("sp_SelectProductos1", con);
             comando.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(comando);
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = prod, ParameterName = "@producto" });
-            DataSet ds = new DataSet();
-            da.Fill(ds);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
 
-            return ds.Tables[0];
+            return dt.Rows[0];
         }
     }
 }
