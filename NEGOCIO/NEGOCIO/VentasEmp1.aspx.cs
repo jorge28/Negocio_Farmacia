@@ -13,12 +13,10 @@ public partial class Ventas : System.Web.UI.Page
     {
       
     if(!IsPostBack )
-
        
             Session["Productos"] = new List<EntProductos>();
    
     }
-
    
 
     public void CargarGvProd(string prod)
@@ -56,24 +54,15 @@ public partial class Ventas : System.Web.UI.Page
     {
         lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm:ss");
     }
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-        // string prod = TextBox1.Text;
-        Label1.Text = TextBox1.Text;
-        Label1.Visible = false;
-        Session["Prod"] = Label1.Text;
-        //  prod = TextBox1.Text;
 
-        //CargarGvProd(Session["Prod"].ToString());
-        //TextBox1.Text = "";      
-
-    }
-    protected void Button1_Click(object sender, EventArgs e)
+      protected void Button1_Click1(object sender, EventArgs e)
     {
         CargarGvProd(Session["Prod"].ToString());
-
     }
-
-
-
+    protected void TextBox1_TextChanged1(object sender, EventArgs e)
+    {       
+        Label1.Text = TextBox1.Text;       
+        Session["Prod"] = Label1.Text;
+      
+    }
 }

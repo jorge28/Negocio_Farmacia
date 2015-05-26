@@ -45,18 +45,18 @@
                              </asp:UpdatePanel>    
                 </div>  
                 <div class="12u">
-                    <div>
-                 <asp:TextBox ID="TextBox1" runat="server" ForeColor="Black" Height="35px" placeholder="Producto:" BackColor="Beige" AutoPostBack="True"  />
-                    <asp:Button ID="Button1" runat="server" Text="AGREGAR" ></asp:Button> 
+                    <div style="height:35px">
+                 <asp:TextBox ID="TextBox1" runat="server" ForeColor="Black" Height="35px" Width="75%" placeholder="Producto:" BackColor="Beige" AutoPostBack="True" OnTextChanged="TextBox1_TextChanged1"  />
+                        &nbsp;&nbsp;
+                    <asp:Button ID="Button1" runat="server" ForeColor="Black" Height="35px" Text="AGREGAR" OnClick="Button1_Click1" ></asp:Button> 
+                    <asp:Label ID="Label1" runat="server" Text="Label" Visible="false" ></asp:Label>
                     </div>
                     <div></div>   
+                    <br />
                     <asp:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" 
                          MinimumPrefixLength="2" UseContextKey="True"
     TargetControlID="TextBox1" ServiceMethod="GetCompletionList"></asp:AutoCompleteExtender>  
-                                                   
-    
-        <br />
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+   
         <asp:GridView ID="gvResBus" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
             <Columns>
                 <asp:BoundField DataField="Nombre_Producto" HeaderText="Producto" />
@@ -78,6 +78,7 @@
             <SortedDescendingCellStyle BackColor="#D6DFDF" />
             <SortedDescendingHeaderStyle BackColor="#002876" />
         </asp:GridView>
+          
                 </div>
                 <div class="row half">
                 </div>                         
