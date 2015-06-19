@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using RS_ProyectoFarmacia.Business;
 using RS_ProyectoFarmacia.Business.Entity;
+using System.Data;
+using RS_ProyectoFarmacia.Data;
 
 public partial class Index : System.Web.UI.Page
 {
@@ -38,12 +40,32 @@ public partial class Index : System.Web.UI.Page
             EntUsuarios usua = new EntUsuarios();
             usua.Usuario = txtUsuarioVenta.Text.Trim();
             usua.Contraseña = txtContraseñaVenta.Text.Trim();
-            EntUsuarios log = new BusUsuarios().SelectEmpleado(usua.Usuario, usua.Contraseña);
+            EntUsuarios log = new BusUsuarios().SelectUsuario(usua.Usuario, usua.Contraseña);
             if (log == null)
                 throw new ApplicationException("Usuario y/o Contraseña incorrecta :(");
-            Session["LoginEmpleado"] = log;
-            Response.Redirect("VentasEmp1.aspx");
 
+            int Nivel;
+            DataTable dt = new DatUsuarios().SelectUsuario(usua.Usuario, usua.Contraseña);
+            DataRow dr = dt.Rows[0];
+            EntUsuarios nivel = new EntUsuarios();
+            nivel.Nivel_Usuario = dr["Nivel_Usuario"].ToString();
+            Nivel = Convert.ToInt32(nivel.Nivel_Usuario);
+
+            if (Nivel == 3)
+            {
+                Session["Login"] = log;
+                Response.Redirect("VentasEmp1.aspx");
+            }
+            else if (Nivel == 2)
+            {
+                Session["Login"] = log;
+                Response.Redirect("VentasEmp1.aspx");
+            }
+            else if (Nivel == 1)
+            {
+                Session["Login"] = log;
+                Response.Redirect("VentasEmp1.aspx");
+            }
         }
         catch (Exception ex)
         {
@@ -64,11 +86,30 @@ public partial class Index : System.Web.UI.Page
             EntUsuarios usua = new EntUsuarios();
             usua.Usuario = txtUsuarioAdmon.Text.Trim();
             usua.Contraseña = txtContraseñaAdmon.Text.Trim();
-            EntUsuarios log = new BusUsuarios().SelectAdmon (usua.Usuario, usua.Contraseña);
+            EntUsuarios log = new BusUsuarios().SelectUsuario(usua.Usuario, usua.Contraseña);
             if (log == null)
                 throw new ApplicationException("Usuario y/o Contraseña incorrecta :(");
-            Session["LoginAdmon"] = log;
-            Response.Redirect("Inventarios.aspx");
+
+            int Nivel;
+            DataTable dt = new DatUsuarios().SelectUsuario(usua.Usuario, usua.Contraseña);
+            DataRow dr = dt.Rows[0];
+            EntUsuarios nivel = new EntUsuarios();
+            nivel.Nivel_Usuario = dr["Nivel_Usuario"].ToString();
+            Nivel = Convert.ToInt32(nivel.Nivel_Usuario);
+
+            if (Nivel == 2)
+            {
+                Session["Login"] = log;
+                Response.Redirect("Inventarios.aspx");
+            }
+            else if (Nivel == 1)
+            {
+                Session["Login"] = log;
+                Response.Redirect("Inventarios.aspx");
+            }
+            else
+                throw new ApplicationException("Usuario Sin Permisos para Administrar :(");
+            
 
         }
         catch (Exception ex)

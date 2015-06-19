@@ -12,31 +12,17 @@ namespace RS_ProyectoFarmacia.Data
     {
         public DatUsuarios() { }
 
-        public DataTable SelectEmpleado(string usuario, string contraseña)
+        public DataTable SelectUsuario(string usuario, string contraseña)
         {
             SqlCommand comando = new SqlCommand("sp_SelectUsuario", con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@Usuario", usuario);
-            comando.Parameters.AddWithValue("@Contraseña", contraseña);
-            comando.Parameters.AddWithValue("@Nivel_Usua", 3);
+            comando.Parameters.AddWithValue("@Contraseña", contraseña);           
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
-        }
-
-        public DataTable SelectAdmon(string usuario, string contraseña)
-        {
-            SqlCommand comando = new SqlCommand("sp_SelectUsuario", con);
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@Usuario", usuario );
-            comando.Parameters.AddWithValue("@Contraseña", contraseña );
-            comando.Parameters.AddWithValue("@Nivel_Usua", 2);
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            return dt;
-        }
+        }      
 
     }
 }
