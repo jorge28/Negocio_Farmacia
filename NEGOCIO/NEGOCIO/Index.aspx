@@ -18,10 +18,11 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/style-desktop.css" />
     </noscript>
- 
+    
+
 </head>
-<body bgcolor="#58D3F7" >
-   
+<body bgcolor="#58D3F7">
+
     <form id="form1" runat="server">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
@@ -44,82 +45,60 @@
 		            	</div>             
 						<div class="8u">
 							<header>
-								<h1>Bienvenido a<br /><br /><strong>Estrella de la Mañana</strong>.</h1>
+								<h1>¡ Hola ! Bienvenido a<br /><br /><strong>Estrella de la Mañana</strong>.</h1>
 							</header>
-							<p style="color: #000000">Controlar tu negocio es muy sencillo, si deseas ir a la pagina donde tus empleados registren sus ventas solo da clic en "Ventas", o si deseas hacer modificaciones entra en "Administración".</p>
+							<p style="color: #000000">Si eres empleado y deseas inciar el registro de tus ventas solo entra en "Empleados". Si eres nuestro administrador y deseas hacer modificaciones entra en "Administración". Excelente Día</p>
 							
-                            <asp:linkbutton ID="lnkVentas" runat="server" class="button button-big">Ventas</asp:linkbutton>&nbsp&nbsp&nbsp&nbsp&nbsp
-                            
-                              <asp:Panel ID="Panel1" runat="server" Style="display: none" CssClass="modalPopup">
-                                <asp:Panel ID="Panel3" runat="server" >
-                                  <div style="text-align:center; background-color:Gray; color:Yellow; font-size:xx-large;">
-                                    Seleccione el Empleado                                 
-                                  </div>                                     
-                                </asp:Panel>                                
-                                  <div style="background-color:White">               
-                                     <p style="text-align: center;"><br />
-                                      <a href="VentasEmp1.aspx" style="color:Blue" >Empleado 1</a><br />
-                                      <a href="VentasEmp2.aspx" style="color:Blue" >Empleado 2</a>                                                                       
-                                     </p>
-                                      <div style="background-color:Yellow">
-                                    <p style="text-align: center;">
-                                   <asp:LinkButton ID="lnkCancelar" runat="server" style="color:Blue" >Cancelar</asp:LinkButton>
-                                   </p>
-                                   </div>            
-                                   </div>     
-                                                                  
-                              </asp:Panel>
-                     <asp:ModalPopupExtender ID="ModalPopupExtender" runat="server" TargetControlID="lnkVentas"
-                       PopupControlID="Panel1" BackgroundCssClass="modalBackground" CancelControlID="lnkCancelar" DropShadow="true" PopupDragHandleControlID="Panel3" />
+                            <asp:linkbutton ID="lnkVentas" runat="server" class="button button-big">Empleados</asp:linkbutton>&nbsp&nbsp&nbsp&nbsp&nbsp                             
+                            <asp:Panel ID="pnlLoginVentas" runat="server"  Style="display: none" CssClass="modalPopup">                                
+                                <asp:Panel ID="pnlDatosLoginVentas" runat="server" >
+                                    <div style="text-align:center; background-color:Gray; color:Yellow; font-size:medium;">
+                                     Login "Empleado"
+                                        <asp:TextBox ID="txtUsuarioVenta" runat="server" PlaceHolder="Usuario:" BackColor="White"></asp:TextBox><br />
+                                        <asp:TextBox ID="txtContraseñaVenta" runat="server" TextMode="Password" PlaceHolder="Contraseña:" BackColor="White"></asp:TextBox>    
+                                     </div>                                     
+                                </asp:Panel>                                                        
+                                <div style="background-color:blue; text-align:center;">                                      
+                                     <asp:LinkButton ID="lnkCancelarVentas" runat="server" style="color:yellow">Cancelar</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     <asp:Panel ID="Panel1" runat="server"  BackColor ="Blue"   Height="30px" HorizontalAlign="Center" >
+                                           <asp:UpdatePanel ID="UpdatePanel2" runat="server"  >
+                                                 <ContentTemplate>    
+                                                     <asp:LinkButton ID="lnkEntrarVentas" runat="server" style="color:yellow" OnClick="lnkEntrarVentas_Click">Entrar</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                 </ContentTemplate>
+                                            </asp:UpdatePanel>   
+                                     </asp:Panel> 
+                                 </div>
+                        </asp:Panel>
+                        <asp:ModalPopupExtender ID="ModalPopupExtender" runat="server" TargetControlID="lnkVentas"
+                       PopupControlID="pnlLoginVentas" BackgroundCssClass="modalBackground" CancelControlID="lnkCancelarVentas" DropShadow="true" PopupDragHandleControlID="pnlDatosLoginVentas" />
 
-                            <asp:LinkButton ID="lnkAdmon" runat="server" class="button button-big">Administración</asp:LinkButton>  
-                            
-                            <asp:Panel ID="Panel2" runat="server" Style="display: none" CssClass="modalPopup">
-                                <asp:Panel ID="Panel4" runat="server" >
+                            <asp:LinkButton ID="lnkAdmon" runat="server" class="button button-big">Administración</asp:LinkButton>                             
+                            <asp:Panel ID="pnlLoginAdmon" runat="server" Style="display: none" CssClass="modalPopup">
+                                <asp:Panel ID="pnlDatosLoginAdmon" runat="server" >
                                   <div style="text-align:center; background-color:Gray; color:Yellow; font-size:medium;">
-                                  Ingresar Datos
-                                    <asp:TextBox ID="txtUsuario" runat="server" PlaceHolder="Usuario:" BackColor="White"></asp:TextBox><br />
-                                    <asp:TextBox ID="txtContraseña" runat="server" TextMode="Password" PlaceHolder="Contraseña:" BackColor="White"></asp:TextBox>    
+                                   Login "Administrador"
+                                      <asp:TextBox ID="txtUsuarioAdmon" runat="server" PlaceHolder="Usuario:" BackColor="White"></asp:TextBox><br />
+                                      <asp:TextBox ID="txtContraseñaAdmon" runat="server" TextMode="Password" PlaceHolder="Contraseña:" BackColor="White"></asp:TextBox>    
                                   </div>                                     
-                                </asp:Panel>                                
-                                  <div style="background-color:Yellow">               
-                                     <p style="text-align: center;">
-                                      <asp:LinkButton ID="lnkEntrar" runat="server" style="color:Blue">Entrar</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                      <asp:LinkButton ID="lnkCancelar2" runat="server" style="color:Blue">Cancelar</asp:LinkButton><br />
-                                      <asp:LinkButton ID="lnkCambCont" runat="server" Font-Size="Medium" style="color:Blue">Cambiar Contraseña</asp:LinkButton>
-                                           
-                                             
-                                     </p>
-                                      <asp:Panel ID="Panel5" runat="server" Style="display: none" CssClass="modalPopup">
-                                                 <asp:Panel ID="Panel6" runat="server" >
-                                                   <div style="text-align:center; background-color:Gray; color:Yellow; font-size:medium;">
-                                                       Cambiar Contraseña
-                                                       <asp:TextBox ID="txtContAnte" runat="server" TextMode="Password" PlaceHolder="Contraseña Anterior:" BackColor="White"></asp:TextBox><br />
-                                                       <asp:TextBox ID="txtContNuev" runat="server" TextMode="Password" PlaceHolder="Contraseña Nueva:" BackColor="White"></asp:TextBox> 
-                                                       <asp:TextBox ID="txtConfNuev" runat="server" TextMode="Password" PlaceHolder="Confirmar Contraeña:" BackColor="White"></asp:TextBox>    
-                                                   </div>                                     
-                                                 </asp:Panel>                                
-                                                   <div style="background-color:Yellow">               
-                                                     <p style="text-align: center;">
-                                                       <asp:LinkButton ID="lnkGuar" runat="server" style="color:Blue">Guardar</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                       <asp:LinkButton ID="lnkCanc3" runat="server" style="color:Blue">Cancelar</asp:LinkButton><br />                                                     
-                                                     </p>
-                                                   </div>                                                                 
-                                             </asp:Panel>
-                                                  <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" TargetControlID="lnkCambCont"
-                                                   PopupControlID="Panel5" BackgroundCssClass="modalBackground" CancelControlID="lnkCanc3" DropShadow="true" PopupDragHandleControlID="Panel6" />
-                                   </div>                                                                 
-                              </asp:Panel>
-                     <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="lnkAdmon"
-                       PopupControlID="Panel2" BackgroundCssClass="modalBackground" CancelControlID="lnkCancelar2" DropShadow="true" PopupDragHandleControlID="Panel4" />
-                                                
-						</div>
-                        
-					</div>                    
-				</article>
+                                 </asp:Panel>                                
+                                  <div style="background-color:blue; text-align:center;">     
+                                      <asp:LinkButton ID="lnkCancelarAdmon" runat="server" style="color:yellow">Cancelar</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <asp:Panel ID="Panel2" runat="server"  BackColor ="Blue" Height="30px" HorizontalAlign="Center" >
+                                           <asp:UpdatePanel ID="UpdatePanel3" runat="server"  >
+                                                 <ContentTemplate>   
+                                      <asp:LinkButton ID="lnkEntrarAdmon" runat="server" style="color:yellow" OnClick="lnkEntrarAdmon_Click">Entrar</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                  </ContentTemplate>
+                                            </asp:UpdatePanel>   
+                                     </asp:Panel>                                 
+                                  </div>                                                                                                        
+                          </asp:Panel>
+                          <asp:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="lnkAdmon"
+                           PopupControlID="pnlLoginAdmon" BackgroundCssClass="modalBackground" CancelControlID="lnkCancelarAdmon" DropShadow="true" PopupDragHandleControlID="pnlDatosLoginAdmon" />
+                      </div>
+                   </div>                    
+		    </article>
         </div>
     </form>
-
     <footer>
 						<p id="copyright" style="text-align:center">
 							&copy; 2015 BusinessControl. Todos los derechos reservados. <a href="Index.aspx">Estrella de la Mañana</a> by <a href="#">ROMA-SYSTEMS</a>
