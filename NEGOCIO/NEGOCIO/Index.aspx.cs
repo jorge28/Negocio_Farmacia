@@ -13,7 +13,8 @@ public partial class Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Session["Login"] = null;
+        
     }
 
     public void mostrarMensaje(string mensaje)
@@ -33,7 +34,9 @@ public partial class Index : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(txtUsuarioVenta.Text) || string.IsNullOrEmpty(txtContraseñaVenta.Text))
             {
+                txtUsuarioVenta.Focus();
                 throw new ApplicationException("Debe ingresar Usuario y Contraseña :(");
+                
             }
 
 
@@ -80,6 +83,7 @@ public partial class Index : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(txtUsuarioAdmon.Text) || string.IsNullOrEmpty(txtContraseñaAdmon.Text))
             {
+                txtUsuarioAdmon.Focus();
                 throw new ApplicationException("Debe ingresar Usuario y Contraseña :(");
             }
 
@@ -109,7 +113,7 @@ public partial class Index : System.Web.UI.Page
             }
             else
                 throw new ApplicationException("Usuario Sin Permisos para Administrar :(");
-            
+
 
         }
         catch (Exception ex)
