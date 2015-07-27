@@ -145,6 +145,7 @@ public partial class Ventas : System.Web.UI.Page
             TextBox txtPiezas = sender as TextBox;
             if (txtPiezas != null)
             {
+
                 GridViewRow row = txtPiezas.NamingContainer as GridViewRow;
                 int fila = Convert.ToInt32(gvResBus.DataKeys[row.RowIndex].Value);
                 Label CostoMedi = (gvResBus.Rows[fila].FindControl("lblCosto")) as Label;

@@ -19,9 +19,11 @@
     </noscript>
     <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-    <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->   
+
 </head>
-<body bgcolor="#58D3F7">
+<body background="img/wall5.jpg">    
+
     <form id="form1" method="post" action="#" runat="server">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ToolkitScriptManager>
@@ -30,19 +32,19 @@
                 <article class="container" id="ventas">
                    <header>
                        <div class="4u">
-                           <asp:Label ID="lblEmpleado" runat="server" style="text-align:left; font-size:x-large;" Text="Empleado 1"></asp:Label>
+                           <asp:Label ID="lblEmpleado" runat="server" style="text-align:left; font-size:x-large;" ForeColor="Yellow"  Text="Empleado 1"></asp:Label>
                             <%--<h2 style="text-align:left; font-size:medium">Empleado 1</h2>--%>
                        </div>
                        <div class="4u" style="text-align:center">
-                            <asp:Label ID="lblCliente" runat="server" Font-Size="x-Large" Text="Cliente #" ForeColor="Blue"></asp:Label>&nbsp;
-                            <asp:Label ID="lnlNumCliente" runat="server" Font-Size="x-Large" Text="0" ForeColor="Blue"></asp:Label> 
+                            <asp:Label ID="lblCliente" runat="server" Font-Size="x-Large" Text="Cliente #" ForeColor="Yellow"></asp:Label>&nbsp;
+                            <asp:Label ID="lnlNumCliente" runat="server" Font-Size="x-Large" Text="0" ForeColor="Yellow"></asp:Label> 
                        </div>
                        <div class="4u" style="text-align:right">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                <ContentTemplate>
                                  <asp:Timer ID="Timer1" runat="server" Interval="1000" ontick="Timer1_Tick">
                                  </asp:Timer>
-                                 <asp:Label ID="lblFecha" runat="server" Font-Size="X-Large" ForeColor="Black"></asp:Label>
+                                 <asp:Label ID="lblFecha" runat="server" Font-Size="X-Large" ForeColor="Yellow"></asp:Label>
                                </ContentTemplate>
                             </asp:UpdatePanel>    
                        </div>  
@@ -62,7 +64,7 @@
 
                                 </asp:AutoCompleteExtender>  
                            <div class="12u" style="text-align:left">
-                               <asp:Panel ID="Panel1" runat="server" Height="250px" >
+                               <asp:Panel ID="Panel1" runat="server" Height="175px" >
                                      <asp:GridView ID="gvResBus" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" DataKeyNames="Nombre_Producto,Sustancia">
                                             <AlternatingRowStyle BackColor="#DCDCDC" />
                                             <Columns>                                           
@@ -131,7 +133,7 @@
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Total" ItemStyle-HorizontalAlign="Center">
+                                                <%--<asp:TemplateField HeaderText="Total" ItemStyle-HorizontalAlign="Center">
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="TextBox7" runat="server" Text=""></asp:TextBox>
                                                     </EditItemTemplate>
@@ -139,7 +141,7 @@
                                                         <asp:Label ID="lblTotalXProd" runat="server"  Text="$0.00"></asp:Label>
                                                     </ItemTemplate>
                                                     <ItemStyle HorizontalAlign="Center" />
-                                                </asp:TemplateField>
+                                                </asp:TemplateField>--%>
                                                 <asp:TemplateField ShowHeader="False">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnkEliminar" runat="server" CausesValidation="false" CommandArgument='<%# Container.DataItemIndex %>' Text="Eliminar" OnClick="lnkEliminar_Click"></asp:LinkButton>
@@ -172,16 +174,20 @@
                    <span style="color:Black">Subtotal Otros: $</span>
                     <asp:TextBox ID="txtSubtOtro" runat="server" Text="0000.00" Enabled="false" Width="100px" Height="35px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige"></asp:TextBox><br />                
                    <span style="color:Black">------------------------------</span><br />
-                   <span style="color:Black; font-size:x-large">Total: $</span>
+                   <span style="color:Black; font-size:x-large;">Total: $</span>
                     <asp:TextBox ID="txtTotal" runat="server" Text="0000.00" Enabled="false" Width="100px" Height="50px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige" Font-Size="Large"></asp:TextBox><br />     
+                    <span style="color:Black">Ingreso: $</span>
+                    <asp:TextBox ID="txtIngreso" runat="server" Text="0000.00" Enabled="false" Width="100px" Height="35px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige"></asp:TextBox><br />                 
+                    <span style="color:Black; font-size:x-large">Cambio: $</span>
+                    <asp:TextBox ID="TextBox8" runat="server" Text="0000.00" Enabled="false" Width="100px" Height="50px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige"></asp:TextBox><br />   
                    </div>                   
                    <div class="6u" style="text-align:left"><br />
-                    <asp:LinkButton ID="lnkTota" runat="server" style="color:Blue; font-size:x-large">Totales</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <asp:LinkButton ID="lnkReve" runat="server" style="color:Blue; font-size:x-large">Reverso</asp:LinkButton>
+                    <asp:LinkButton ID="lnkTota" runat="server" style="color:yellow; font-size:x-large">Totales</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <asp:LinkButton ID="lnkReve" runat="server" style="color:yellow; font-size:x-large">Reverso</asp:LinkButton>
                    </div>
                    <div class="6u" style="text-align:right"><br />
-                    <asp:LinkButton ID="lnkLimp" runat="server" style="color:Blue; font-size:x-large" href="#" class="form-button-reset">Cancelar</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <asp:LinkButton ID="lnkGuar" runat="server" style="color:Blue; font-size:x-large">Guardar</asp:LinkButton>
+                    <asp:LinkButton ID="lnkLimp" runat="server" style="color:yellow; font-size:x-large" href="#" class="form-button-reset">Cancelar</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <asp:LinkButton ID="lnkGuar" runat="server" style="color:yellow; font-size:x-large">Guardar</asp:LinkButton>
                    </div>
                 </footer>
             </article>

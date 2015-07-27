@@ -21,7 +21,7 @@
     
 
 </head>
-<body bgcolor="#58D3F7">
+<body background="img/wall5.jpg">
 
     <form id="form1" runat="server">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
