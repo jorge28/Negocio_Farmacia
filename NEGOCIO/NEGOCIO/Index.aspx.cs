@@ -104,12 +104,12 @@ public partial class Index : System.Web.UI.Page
             if (Nivel == 2)
             {
                 Session["Login"] = log;
-                Response.Redirect("Inventarios.aspx");
+                Response.Redirect("ModuloAdmin.aspx");
             }
             else if (Nivel == 1)
             {
                 Session["Login"] = log;
-                Response.Redirect("Inventarios.aspx");
+                Response.Redirect("ModuloAdmin.aspx");
             }
             else
                 throw new ApplicationException("Usuario Sin Permisos para Administrar :(");
