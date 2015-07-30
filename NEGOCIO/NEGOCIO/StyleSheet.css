@@ -1,86 +1,41 @@
-﻿body {
-    background: darkgrey;    
-}
+﻿body{
+			margin-top: 100px;
+			font-family: 'Trebuchet MS', serif;
+			line-height: 1.6
+		}
+		.container{
+			width: 800px;
+			margin: 0 auto;
+		}
 
-.contenedor{
-    width: 1080px;
-    margin: auto;
-    background: black;
-    color: bisque;
-    padding: 20px 15px 50px 50px;
-    border-radius: 10px;
-    box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.8);
-}
 
-.contenedor .titulo{
-    font-size: 3.5ex;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
 
-#pestanas {
-    float: top;
-    font-size: 3ex;
-    font-weight: bold;
-}
+		ul.tabs{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		ul.tabs li{
+			background: none;
+			color: #222;
+			display: inline-block;
+			padding: 10px 15px;
+			cursor: pointer;
+		}
 
-#pestanas ul{
-    margin-left: -40px;    
-}
+		ul.tabs li.current{
+			background: #0885F3;
+			color: #222;
+            border-top-left-radius:8px;
+            border-top-right-radius:8px;
+		}
 
-#pestanas li{
-    list-style-type: none;
-    float: left;
-    text-align: center;
-    margin: 0px 2px -2px -0px;
-    background: darkgrey;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border: 2px solid bisque;
-    border-bottom: dimgray;
-    padding: 0px 20px 0px 20px;
-}
+		.tab-content{
+			display: none;
+			background: #0885F3;
+			padding: 15px;
+		}
 
-#pestanas a:link{
-    text-decoration: none;
-    color: bisque;
-}
-
-#contenidopestanas{
-    clear: both;  
-    background: dimgray;
-    
-    border-radius: 5px;
-    border-top-left-radius: 0px;
-    border: 2px solid bisque;
-    width: 1025px;
-}
-
-#contenidopestanas div{
-  padding: 20px 0px 20px 20px;
-}
-
-#pestanas #pestana1, #cpestana1{
-  background: #047;
-}
-
-#pestanas #pestana2, #cpestana2{
-  background: #740;
-}
-
-#pestanas #pestana3, #cpestana3{
-  background: #470;
-}
-
-#pestanas #pestana4, #cpestana4{
-  background: #704;
-}
-
-#pestanas #pestana5, #cpestana5{
-  background: #074;
-}
-
-#pestanas #pestana6, #cpestana6{
-  background: #407;
-}
+		.tab-content.current{
+			display: inherit;
+		}

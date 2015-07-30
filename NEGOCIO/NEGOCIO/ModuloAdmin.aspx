@@ -13,6 +13,8 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/skel.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
     
      <noscript>
         <link rel="stylesheet" href="css/skel-noscript.css" />
@@ -21,90 +23,297 @@
     </noscript>
 
 </head>
-    <body>
- <body onload="javascript:cambiarPestanna(pestanas,pestana1);" />
-     <form id="form1" method="post" action="#" runat="server">
-      <%--<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>--%>
+    <body background="img/wall5.jpg">
+        <form runat="server">
+            <br />
+            <br />
+<div class="container">
 
-        <div class="contenedor">
-            <div class="titulo">Bienvenida!!</div>
-            <div id="pestanas">
-                <ul id=lista>
-                    <li id="pestana1"><a href='javascript:cambiarPestanna(pestanas,pestana1);'>Alta de Producto</a></li>
-                    <li id="pestana2"><a href='javascript:cambiarPestanna(pestanas,pestana2);'>Alta Usuario</a></li>
-                    <li id="pestana3"><a href='javascript:cambiarPestanna(pestanas,pestana3);'>Existencias</a></li>
-                    <li id="pestana4"><a href='javascript:cambiarPestanna(pestanas,pestana4);'>Reportes</a></li>
-                    
+	<ul class="tabs">
+		<li class="tab-link current" data-tab="tab-1" style="color:white;font-family:'Comic Sans MS';font-size:larger;font-weight:bold">Alta de Productos</li>
+		<li class="tab-link" data-tab="tab-2" style="color:white;font-family:'Comic Sans MS';font-size:larger;font-weight:bold">Alta de Usuario</li>
+		<li class="tab-link" data-tab="tab-3" style="color:white;font-family:'Comic Sans MS';font-size:larger;font-weight:bold">Existencias</li>
+		<li class="tab-link" data-tab="tab-4" style="color:white;font-family:'Comic Sans MS';font-size:larger;font-weight:bold">Reportes</li>
+	</ul>
+
+	<div id="tab-1" class="tab-content current">
+        <br />
+		<div class="row">
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Producto:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtProducto" placeholder="Nombre del Producto" class="btn btn-default btn-lg" style="width:110%" />
+                </div>  
             </div>
-            
-            
-       
-            <div id="contenidopestanas" >
-                
-                
-                <div id="cpestana1" class="six columns">
-                    
-                    
-          
-   
-      <label for="exampleEmailInput">Your email</label>
-      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-    
-                    
-                        
-                 
-
-                    </div>
-                <div id="cpestana2">
-                    El nombre hojas de estilo en cascada viene del inglés Cascading Style Sheets, del que toma sus siglas. CSS es un lenguaje usado para definir la presentación de un documento estructurado escrito en HTML o XML2 (y por extensión en XHTML). El W3C (World Wide Web Consortium) es el encargado de formular la especificación de las hojas de estilo que servirán de estándar para los agentes de usuario o navegadores.
-                </div>
-                <div id="cpestana3">
-                    JavaScript es un lenguaje de programación interpretado, dialecto del estándar ECMAScript. Se define como orientado a objetos,3 basado en prototipos, imperativo, débilmente tipado y dinámico.
-                </div>
-                <div id="cpestana4">
-                    PHP es un lenguaje de programación de uso general de script del lado del servidor originalmente diseñado para el desarrollo web de contenido dinámico. Fue uno de los primeros lenguajes de programación del lado del servidor que se podían incorporar directamente en el documento HTML en lugar de llamar a un archivo externo que procese los datos. El código es interpretado por un servidor web con un módulo de procesador de PHP que genera la página Web resultante. PHP ha evolucionado por lo que ahora incluye también una interfaz de línea de comandos que puede ser usada en aplicaciones gráficas independientes. PHP puede ser usado en la mayoría de los servidores web al igual que en casi todos los sistemas operativos y plataformas sin ningún costo.
-                </div>
-               
-            
         </div>
+       </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Sustancia:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:TextBox runat="server" ID="txtSustancia" placeholder="Nombre de la Sustancia" class="btn btn-default btn-lg" style="width:125%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
+</div>
+        <br />
+        <div class="row">
+            <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Categoria:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:DropDownList runat="server" ID="ddlCategoria" class="btn btn-default btn-lg" style="width:200px">
+                           
+                        </asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Tipo:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:DropDownList runat="server" ID="ddlTipo" class="btn btn-default btn-lg" style="width:200px">
+                           
+                        </asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+        <br />
+        <div class="row">
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Existencia:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtExistencia" placeholder="No.existente" class="btn btn-default btn-lg" style="width:50%" />
+                </div>  
+            </div>
+        </div>
+       </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Precio:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:TextBox runat="server" ID="txtCosto" placeholder="Precio" class="btn btn-default btn-lg" style="width:50%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+        <br />
+        <br />
+        <div class="row">
+    <div class="col-xs-6" style="text-align:right;">
+        <asp:Button Text="G U A R D A R" runat="server" ID="btnGuardar" class="btn btn-success btn-lg"/>
+    </div>
+    <div class="col-xs-6" style="text-align:center;">
+        <asp:Button Text="C A N C E L A R" runat="server" ID="btnExportar" class="btn btn-warning btn-lg"/>
+    </div>
+</div>
+	</div>
+	<div id="tab-2" class="tab-content">
+        <br />
+		<div class="row">
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Nombre:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtNomUsua" placeholder="Nombre de Usuario" class="btn btn-default btn-lg" style="width:110%" />
+                </div>  
+            </div>
+        </div>
+       </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Apellido Paterno:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:TextBox runat="server" ID="txtApaterno" placeholder="Paterno" class="btn btn-default btn-lg" style="width:125%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Apellido Materno:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtAmaterno" placeholder="Materno" class="btn btn-default btn-lg" style="width:110%" />
+                </div>  
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
+        <br />
+        <div class="row">
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Usuario:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtUsuario" placeholder="Usuario" class="btn btn-default btn-lg" style="width:110%" />
+                </div>  
+            </div>
+        </div>
+       </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Contraseña:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:TextBox runat="server" ID="txtContraseña" placeholder="Contraseña" class="btn btn-default btn-lg" style="width:125%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+        <br />
+        <div class="row">
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Direccion:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtDireccion" placeholder="Direccion" class="btn btn-default btn-lg" style="width:400%" />
+                </div>  
+            </div>
+        </div>
+       </div>
+    </div>
+    
+    
+</div>
+        <br />
+        <div class="row">
+    <div class="col-sm-4 col-xs-12" style="text-align:center;">
+      <div class="form-inline" style="padding:4px">
+        <div class="form-group" >
+            <div class="input-group">
+                <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                 Telefono:
+                </div>
+                <div class="btn-group" style="width:100%">
+                    <asp:TextBox runat="server" ID="txtTel" placeholder="No.Telefonico" class="btn btn-default btn-lg" style="width:110%" />
+                </div>  
+            </div>
+        </div>
+       </div>
+    </div>
+    <div class="col-sm-4 col-xs-12" style="text-align: center;">
+        <div class="form-inline" style="padding:4px">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon" style="color:White;background-color:#ff6a00">
+                    Celular:
+                    </div>
+                    <div class="btn-group" style="width:100%">
+                        <asp:TextBox runat="server" ID="txtCelular" placeholder="No.Celular" class="btn btn-default btn-lg" style="width:125%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+        <br />
+        <br />
+        <div class="row">
+    <div class="col-xs-6" style="text-align:right;">
+        <asp:Button Text="G U A R D A R" runat="server" ID="Button1" class="btn btn-success btn-lg"/>
+    </div>
+    <div class="col-xs-6" style="text-align:center;">
+        <asp:Button Text="C A N C E L A R" runat="server" ID="Button2" class="btn btn-warning btn-lg"/>
+    </div>
+</div>
+	</div>
+	<div id="tab-3" class="tab-content">
+        hoola que tal
+		    </div>
+                
+	<div id="tab-4" class="tab-content">
+		Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</div>
 
-    <script type="text/javascript">
-        // Dadas la division que contiene todas las pestañas y la de la pestaña que se 
-        // quiere mostrar, la funcion oculta todas las pestañas a excepcion de esa.
-        function cambiarPestanna(pestannas, pestanna) {
-
-            // Obtiene los elementos con los identificadores pasados.
-            pestanna = document.getElementById(pestanna.id);
-            listaPestannas = document.getElementById(pestannas.id);
-
-            // Obtiene las divisiones que tienen el contenido de las pestañas.
-            cpestanna = document.getElementById('c' + pestanna.id);
-            listacPestannas = document.getElementById('contenido' + pestannas.id);
-
-            i = 0;
-            // Recorre la lista ocultando todas las pestañas y restaurando el
-            // padding de las pestañas.
-            while (typeof listacPestannas.getElementsByTagName('div')[i] != 'undefined') {
-                $(document).ready(function () {
-                    $(listacPestannas.getElementsByTagName('div')[i]).css('display', 'none');
-                    $(listaPestannas.getElementsByTagName('li')[i]).css('padding-bottom', '');
-                });
-                i += 1;
-            }
-
+</div><!-- container -->
+        </form>
+        <script type="text/javascript">
             $(document).ready(function () {
-                // Muestra el contenido de la pestaña pasada como parametro a la funcion,
-                // cambia el color de la pestaña y aumenta el padding para que tape el  
-                // borde superior del contenido que esta juesto debajo y se vea de este 
-                // modo que esta seleccionada.
-                $(cpestanna).css('display', '');
-                $(pestanna).css('padding-bottom', '2px');
-            });
 
-        }
-    </script>
-            </form>
+                $('ul.tabs li').click(function () {
+                    var tab_id = $(this).attr('data-tab');
+
+                    $('ul.tabs li').removeClass('current');
+                    $('.tab-content').removeClass('current');
+
+                    $(this).addClass('current');
+                    $("#" + tab_id).addClass('current');
+                })
+
+            })
+        </script>
+        
     </body>
+    
 </html>
 
