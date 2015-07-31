@@ -35,14 +35,14 @@ namespace RS_ProyectoFarmacia.Business
 
             return lista;
         }
-        public EntProductos ObtenerProd(string prod)
+        public EntProductos ObtenerProd(string prod, string piezas = "")
         {
             DatProductos obj = new DatProductos();
             DataRow dr = obj.Obtenerprod(prod);
-            EntProductos lista = new EntProductos();
+            //EntProductos lista = new EntProductos();
 
-           
-                EntProductos per = new EntProductos();
+
+            EntProductos per = new EntProductos();
                 per.Nombre_Producto = dr["Nombre_Producto"].ToString();
                 per.Sustancia = dr["Sustancia"].ToString();
                 //per.IdCategoria = Convert.ToInt32(r["Id_Categoria"]);
@@ -51,7 +51,9 @@ namespace RS_ProyectoFarmacia.Business
                 per.Tipo = dr["Nombre_Tipo"].ToString();
                 per.Cantidad = dr["Cantidad"].ToString();
                 per.Existencia = Convert.ToInt32(dr["Existencia"]);
-                per.Costo = Convert.ToInt32(dr["Costo"]);               
+                per.Costo = Convert.ToDouble(dr["Costo"]);
+                per.Piezas = piezas == "" ? "0" : piezas;
+                per.TotalVentaProd = Convert.ToDouble(per.Piezas) * per.Costo;      
 
             return per;
         }

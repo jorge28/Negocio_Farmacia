@@ -14,7 +14,8 @@ public partial class Index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["Login"] = null;
-        
+
+               
     }
 
     public void mostrarMensaje(string mensaje)
@@ -112,7 +113,7 @@ public partial class Index : System.Web.UI.Page
                 Response.Redirect("ModuloAdmin.aspx");
             }
             else
-                throw new ApplicationException("Usuario Sin Permisos para Administrar :(");
+                throw new ApplicationException("Usuario Sin Permisos de Administrador :(");
 
 
         }

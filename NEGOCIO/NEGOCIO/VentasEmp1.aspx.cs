@@ -9,8 +9,6 @@ using RS_ProyectoFarmacia.Business.Entity;
 
 public partial class Ventas : System.Web.UI.Page
 {
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Login"] == null)
@@ -21,7 +19,6 @@ public partial class Ventas : System.Web.UI.Page
         usua = (EntUsuarios)Session["Login"];
 
         lblEmpleado.Text = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno;
-
 
         if (!IsPostBack)
 
@@ -39,19 +36,43 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
+
             BusProductos obj = new BusProductos();
             List<EntProductos> productos = (List<EntProductos>)Session["Productos"];
 
-            productos.Add(obj.ObtenerProd(prod));
+
+            productos.Add(obj.ObtenerProd(prod, txtPiezasV.Text));
+            EntProductos producto = obj.ObtenerProd(prod, txtPiezasV.Text);
             gvResBus.DataSource = productos;
             gvResBus.DataBind();
             Session["Productos"] = productos;
+
+            if (producto.Categoria == "Medicamento")
+            {
+                hfMedi.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + producto.TotalVentaProd);
+                txtSubtMedi.Text = Convert.ToDouble(hfMedi.Value).ToString("C");
+
+            }
+            else if (producto.Categoria == "Perfumeria")
+            {
+                hfPerf.Value = Convert.ToString((hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + producto.TotalVentaProd);
+                txtSubtFarm.Text = Convert.ToDouble(hfPerf.Value).ToString("C");
+            }
+            else if (producto.Categoria == "Otros")
+            {
+                hfOtro.Value = Convert.ToString((hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)) + producto.TotalVentaProd);
+                txtSubtOtro.Text = Convert.ToDouble(hfOtro.Value).ToString("C");
+            }
+
+            hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)));
+            txtTotal.Text = Convert.ToDouble(hfTotal.Value).ToString("C");
+
         }
         catch (Exception ex)
         {
-            mostrarMensaje(ex.Message );
+            mostrarMensaje(ex.Message);
         }
-        
+
     }
 
     protected void Button1_Click1(object sender, EventArgs e)
@@ -63,24 +84,66 @@ public partial class Ventas : System.Web.UI.Page
                 TextBox1.Focus();
                 throw new ApplicationException("Ingrese un Producto en el Buscador.");
             }
+            else if (string.IsNullOrEmpty(txtPiezasV.Text))
+            {
+                txtPiezasV.Focus();
+                throw new ApplicationException("Engrese las piezas a Vender.");
+            }
             else
             {
                 CargarGvProd(Session["Prod"].ToString());
                 TextBox1.Text = "";
                 Session["Prod"] = "";
+                txtSustancia.Text = "";
+                txtTipo.Text = "";
+                txtCantidad.Text = "";
+                txtExistencia.Text = "";
+                txtCosto.Text = "";
+                txtPiezasV.Text = "";
+                txtIngreso.Text = "";
+                txtCambio.Text = "";
             }
         }
         catch (Exception ex)
         {
             mostrarMensaje(ex.Message);
         }
-      
+
     }
 
     protected void TextBox1_TextChanged1(object sender, EventArgs e)
     {
-        Label1.Text = TextBox1.Text;
-        Session["Prod"] = Label1.Text;
+        try
+        {
+            Label1.Text = TextBox1.Text;
+            Session["Prod"] = Label1.Text;
+
+            BusProductos obj = new BusProductos();
+            EntProductos prod = new EntProductos();
+
+            prod = (obj.ObtenerProd(Session["Prod"].ToString()));
+
+            if (Session["Prod"].ToString() == prod.Sustancia)
+            {
+                txtSustancia.Text = prod.Nombre_Producto;
+            }
+            else
+            {
+                txtSustancia.Text = prod.Sustancia;
+            }
+
+            txtTipo.Text = prod.Tipo;
+            txtCantidad.Text = prod.Cantidad;
+            txtExistencia.Text = "Existencia:" + prod.Existencia.ToString();
+            txtCosto.Text = prod.Costo.ToString("C");
+
+        }
+        catch (Exception ex)
+        {
+
+            mostrarMensaje(ex.Message);
+        }
+
 
     }
 
@@ -115,18 +178,18 @@ public partial class Ventas : System.Web.UI.Page
         {
             int fila = Convert.ToInt32(((LinkButton)sender).CommandArgument);
             string Producto = gvResBus.DataKeys[fila].Values["Nombre_Producto"].ToString();
-            string Sustancia = gvResBus.DataKeys[fila].Values["Sustancia"].ToString();            
+            string Sustancia = gvResBus.DataKeys[fila].Values["Sustancia"].ToString();
 
             foreach (EntProductos ent in (List<EntProductos>)Session["Productos"])
             {
-                if (ent.Nombre_Producto == Producto && ent.Sustancia == Sustancia )
+                if (ent.Nombre_Producto == Producto && ent.Sustancia == Sustancia)
                 {
                     ((List<EntProductos>)Session["Productos"]).Remove(ent);
                     gvResBus.DataSource = ((List<EntProductos>)Session["Productos"]);
                     gvResBus.DataBind();
                     break;
-                }       
-            }              
+                }
+            }
         }
         catch (Exception ex)
         {
@@ -138,31 +201,23 @@ public partial class Ventas : System.Web.UI.Page
     {
         Response.Redirect("Index.aspx");
     }
-    protected void txtPiezas_TextChanged(object sender, EventArgs e)
+
+    protected void txtIngreso_TextChanged(object sender, EventArgs e)
     {
         try
         {
-            TextBox txtPiezas = sender as TextBox;
-            if (txtPiezas != null)
-            {
-
-                GridViewRow row = txtPiezas.NamingContainer as GridViewRow;
-                int fila = Convert.ToInt32(gvResBus.DataKeys[row.RowIndex].Value);
-                Label CostoMedi = (gvResBus.Rows[fila].FindControl("lblCosto")) as Label;
-                Label Total = (gvResBus.Rows[fila].FindControl("lblTotalXProd")) as Label;
-                double txtNumPiezas = Convert.ToDouble(txtPiezas.Text);
-                double TotalGasto = Convert.ToDouble((CostoMedi.Text));
-                Total.Text = (TotalGasto * txtNumPiezas).ToString();   
-                
-            }
-            gvResBus.EditIndex = -1;
-                    
-              
+            double Cambio = 0;
+            Cambio = Convert.ToDouble(Convert.ToDouble(txtIngreso.Text) - Convert.ToDouble(txtTotal.Text.Replace("$", "")));
+            txtCambio.Text = Cambio.ToString("C");
+            if (Cambio >= 0.0)
+                txtCambio.ForeColor = System.Drawing.Color.Blue;
+            else
+                txtCambio.ForeColor = System.Drawing.Color.Red;
         }
         catch (Exception ex)
-        {            
+        {
+
             mostrarMensaje(ex.Message);
         }
-
     }
 }

@@ -24,14 +24,18 @@ namespace RS_ProyectoFarmacia.Data
         }
         public DataRow Obtenerprod(string prod)
         {
-            SqlCommand comando = new SqlCommand("sp_SelectProductos1", con);
-            comando.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(comando);
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = prod, ParameterName = "@producto" });
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+          
+                SqlCommand comando = new SqlCommand("sp_SelectProductos1", con);
+                comando.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = prod, ParameterName = "@producto" });
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-            return dt.Rows[0];
+                return dt.Rows[0];
+
+          
+            
         }
     }
 }
