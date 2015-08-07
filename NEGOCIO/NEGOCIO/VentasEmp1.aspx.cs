@@ -6,9 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using RS_ProyectoFarmacia.Business;
 using RS_ProyectoFarmacia.Business.Entity;
+using System.Data;
 
 public partial class Ventas : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Login"] == null)
@@ -21,9 +23,22 @@ public partial class Ventas : System.Web.UI.Page
         lblEmpleado.Text = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno;
 
         if (!IsPostBack)
-
+        {
             Session["Productos"] = new List<EntProductos>();
 
+            BusProductos obj = new BusProductos();
+            EntUltimoCliente ultimo = new EntUltimoCliente();
+            ultimo = obj.SelectUltimoCliente(usua.Id_Usuario);
+            if (ultimo.Fecha.Day != DateTime.Now.Day)
+            {
+                lnlNumCliente.Text = "1";
+            }
+            else
+            {
+                int cliente = ultimo.Venta_Num_Cliente;
+                lnlNumCliente.Text = Convert.ToString(cliente + 1);
+            }
+        }
     }
 
     public void mostrarMensaje(string mensaje)
@@ -36,7 +51,6 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
-
             BusProductos obj = new BusProductos();
             List<EntProductos> productos = (List<EntProductos>)Session["Productos"];
 
@@ -51,7 +65,6 @@ public partial class Ventas : System.Web.UI.Page
             {
                 hfMedi.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + producto.TotalVentaProd);
                 txtSubtMedi.Text = Convert.ToDouble(hfMedi.Value).ToString("C");
-
             }
             else if (producto.Categoria == "Perfumeria")
             {
@@ -67,6 +80,9 @@ public partial class Ventas : System.Web.UI.Page
             hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)));
             txtTotal.Text = Convert.ToDouble(hfTotal.Value).ToString("C");
 
+
+            //txtTotal.Value = Convert.ToDouble(hfTotal.Value).ToString("C");
+
         }
         catch (Exception ex)
         {
@@ -79,6 +95,9 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
+            BusProductos obj = new BusProductos();
+            EntProductos prod = (obj.ObtenerProd(Session["Prod"].ToString()));
+
             if (string.IsNullOrEmpty(TextBox1.Text))
             {
                 TextBox1.Focus();
@@ -87,28 +106,35 @@ public partial class Ventas : System.Web.UI.Page
             else if (string.IsNullOrEmpty(txtPiezasV.Text))
             {
                 txtPiezasV.Focus();
-                throw new ApplicationException("Engrese las piezas a Vender.");
+                throw new ApplicationException("Ingrese las piezas a Vender.");
+            }
+            else if (Convert.ToInt32(txtPiezasV.Text) > prod.Existencia)
+            {
+                throw new ApplicationException("No hay Existencias Suficientes: 'Verifique'");
             }
             else
             {
                 CargarGvProd(Session["Prod"].ToString());
-                TextBox1.Text = "";
+                gvResBus.Visible = true;
                 Session["Prod"] = "";
+                TextBox1.Text = "";
                 txtSustancia.Text = "";
                 txtTipo.Text = "";
                 txtCantidad.Text = "";
                 txtExistencia.Text = "";
                 txtCosto.Text = "";
                 txtPiezasV.Text = "";
+                txtCate.Text = "";
                 txtIngreso.Text = "";
                 txtCambio.Text = "";
+                txtPiezasV.BackColor = System.Drawing.Color.Beige;
+                btnCancelar.Enabled = true;
             }
         }
         catch (Exception ex)
         {
             mostrarMensaje(ex.Message);
         }
-
     }
 
     protected void TextBox1_TextChanged1(object sender, EventArgs e)
@@ -132,10 +158,28 @@ public partial class Ventas : System.Web.UI.Page
                 txtSustancia.Text = prod.Sustancia;
             }
 
-            txtTipo.Text = prod.Tipo;
-            txtCantidad.Text = prod.Cantidad;
-            txtExistencia.Text = "Existencia:" + prod.Existencia.ToString();
-            txtCosto.Text = prod.Costo.ToString("C");
+            if (prod.Existencia == 0)
+            {
+                txtTipo.Text = prod.Tipo;
+                txtCantidad.Text = prod.Cantidad;
+                txtExistencia.Text = "Existencia:" + prod.Existencia.ToString();
+                txtCosto.Text = prod.Costo.ToString("C");
+                txtCate.Text = prod.Categoria.ToString();
+                txtPiezasV.BackColor = System.Drawing.Color.White;
+                txtPiezasV.Text = "";
+                txtExistencia.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                txtTipo.Text = prod.Tipo;
+                txtCantidad.Text = prod.Cantidad;
+                txtExistencia.Text = "Existencia:" + prod.Existencia.ToString();
+                txtCosto.Text = prod.Costo.ToString("C");
+                txtCate.Text = prod.Categoria.ToString();
+                txtPiezasV.BackColor = System.Drawing.Color.White;
+                txtPiezasV.Text = "";
+                txtExistencia.ForeColor = System.Drawing.Color.Black;
+            }
 
         }
         catch (Exception ex)
@@ -167,9 +211,10 @@ public partial class Ventas : System.Web.UI.Page
         return (from m in pates where m.StartsWith(prefixText, StringComparison.CurrentCultureIgnoreCase) select m).Take(count).ToArray();
 
     }
+
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm:ss");
+        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
     }
 
     protected void lnkEliminar_Click(object sender, EventArgs e)
@@ -179,6 +224,30 @@ public partial class Ventas : System.Web.UI.Page
             int fila = Convert.ToInt32(((LinkButton)sender).CommandArgument);
             string Producto = gvResBus.DataKeys[fila].Values["Nombre_Producto"].ToString();
             string Sustancia = gvResBus.DataKeys[fila].Values["Sustancia"].ToString();
+            string totalventaProd = gvResBus.DataKeys[fila].Values["TotalVentaProd"].ToString();
+            string Categoria = gvResBus.DataKeys[fila].Values["Categoria"].ToString();
+
+            if (Categoria == "Medicamento")
+            {
+                hfMedi.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) - (totalventaProd == "" ? 0 : Convert.ToDouble(totalventaProd)));
+                txtSubtMedi.Text = Convert.ToDouble(hfMedi.Value).ToString("C");
+            }
+            else if (Categoria == "Perfumeria")
+            {
+                hfPerf.Value = Convert.ToString((hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) - (totalventaProd == "" ? 0 : Convert.ToDouble(totalventaProd)));
+                txtSubtFarm.Text = Convert.ToDouble(hfPerf.Value).ToString("C");
+            }
+            else if (Categoria == "Otros")
+            {
+                hfOtro.Value = Convert.ToString((hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)) - (totalventaProd == "" ? 0 : Convert.ToDouble(totalventaProd)));
+                txtSubtOtro.Text = Convert.ToDouble(hfOtro.Value).ToString("C");
+            }
+
+            hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)));
+            txtTotal.Text = Convert.ToDouble(hfTotal.Value).ToString("C");
+
+            txtIngreso.Text = "";
+            txtCambio.Text = "";
 
             foreach (EntProductos ent in (List<EntProductos>)Session["Productos"])
             {
@@ -207,7 +276,7 @@ public partial class Ventas : System.Web.UI.Page
         try
         {
             double Cambio = 0;
-            Cambio = Convert.ToDouble(Convert.ToDouble(txtIngreso.Text) - Convert.ToDouble(txtTotal.Text.Replace("$", "")));
+            Cambio = Convert.ToDouble(Convert.ToDouble(txtIngreso.Text == "" ? "0" : txtIngreso.Text) - Convert.ToDouble(txtTotal.Text == "" ? "0" : txtTotal.Text.Replace("$", "")));
             txtCambio.Text = Cambio.ToString("C");
             if (Cambio >= 0.0)
                 txtCambio.ForeColor = System.Drawing.Color.Blue;
@@ -219,5 +288,147 @@ public partial class Ventas : System.Web.UI.Page
 
             mostrarMensaje(ex.Message);
         }
+    }
+
+    protected void btnCancelar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (txtTotal.Text == "$0.00" || txtTotal.Text.Replace("$", "") == "")
+                throw new SystemException("No hay operación a Cancelar.");
+            else
+            {
+                List<EntProductosVentas> listaProdCancelacion = new List<EntProductosVentas>();
+                EntUsuarios usua = new EntUsuarios();
+                usua = (EntUsuarios)Session["Login"];
+                int cont = 0;
+
+                foreach (GridViewRow row in gvResBus.Rows)
+                {
+                    Label lblIdProducto = (Label)gvResBus.Rows[cont].FindControl("lblIDProducto");
+                    Label lblProducto = (Label)gvResBus.Rows[cont].FindControl("lblProducto");
+                    Label lblPiezas = (Label)gvResBus.Rows[cont].FindControl("lblPiezas");
+                    Label lblCosto = (Label)gvResBus.Rows[cont].FindControl("lblCosto");
+                    Label lblTotalVentaProd = (Label)gvResBus.Rows[cont].FindControl("lblTotalVentaProd");
+
+                    listaProdCancelacion.Add(new EntProductosVentas { UsuarioId = usua.Id_Usuario, NombreUsuario = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, FechaAlta = DateTime.Now, NumCliente = Convert.ToInt32(lnlNumCliente.Text), ProductoId = Convert.ToInt32(lblIdProducto.Text), NombreProducto = lblProducto.Text, PiezasVendidas = Convert.ToInt32(lblPiezas.Text), CostoUnitario = Convert.ToDouble(lblCosto.Text.Replace("$", "")), CostoTotal = Convert.ToDouble(lblTotalVentaProd.Text.Replace("$", "")) });
+
+                    cont = cont + 1;
+                }
+
+                BusProductos obj = new BusProductos();
+                obj.InsertCancelaciones(listaProdCancelacion);
+
+                BusBitacora obj2 = new BusBitacora();
+                obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 3, "Cancelacion", "CANCELACIONES FARMACIA : " + DateTime.Now + " Cancelacion por un Costo Total de: " + txtTotal.Text + " Ingresando: " + "$" + txtIngreso.Text + " Cambio: " + txtCambio.Text + " Cliente: " + lnlNumCliente.Text);
+
+
+                Session["Productos"] = new List<EntProductos>();
+                Session["Prod"] = "";
+                hfMedi.Value = "";
+                hfOtro.Value = "";
+                hfPerf.Value = "";
+                hfTotal.Value = "";
+                TextBox1.Text = "";
+                txtSustancia.Text = "";
+                txtTipo.Text = "";
+                txtCantidad.Text = "";
+                txtExistencia.Text = "";
+                txtCosto.Text = "";
+                txtPiezasV.Text = "";
+                txtCate.Text = "";
+                gvResBus.Visible = false;
+                txtSubtFarm.Text = "";
+                txtSubtMedi.Text = "";
+                txtSubtOtro.Text = "";
+                txtTotal.Text = "";
+                txtIngreso.Text = "";
+                txtCambio.Text = "";
+                btnCancelar.Enabled = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            mostrarMensaje(ex.Message);
+        }
+
+    }
+
+    protected void btnGuardar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (txtTotal.Text == "$0.00" || txtTotal.Text.Replace("$", "") == "")
+                throw new SystemException("No hay operación a Guardar.");
+            else if ((txtTotal.Text != "$0.00" || txtTotal.Text != "") && (txtIngreso.Text == "$0.00" || txtIngreso.Text == ""))
+            {
+                txtIngreso.Focus();
+                throw new SystemException("Debe ingresar Dinero para cobro.");
+            }
+            else
+            {
+                List<EntProductosVentas> listaProdVenta = new List<EntProductosVentas>();
+                EntUsuarios usua = new EntUsuarios();
+                usua = (EntUsuarios)Session["Login"];
+                int cont = 0;
+
+                foreach (GridViewRow row in gvResBus.Rows)
+                {
+                    Label lblIdProducto = (Label)gvResBus.Rows[cont].FindControl("lblIDProducto");
+                    Label lblProducto = (Label)gvResBus.Rows[cont].FindControl("lblProducto");
+                    Label lblPiezas = (Label)gvResBus.Rows[cont].FindControl("lblPiezas");
+                    Label lblCosto = (Label)gvResBus.Rows[cont].FindControl("lblCosto");
+                    Label lblTotalVentaProd = (Label)gvResBus.Rows[cont].FindControl("lblTotalVentaProd");
+
+                    listaProdVenta.Add(new EntProductosVentas { UsuarioId = usua.Id_Usuario, NombreUsuario = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno , FechaAlta = DateTime.Now, NumCliente = Convert.ToInt32(lnlNumCliente.Text), ProductoId = Convert.ToInt32(lblIdProducto.Text), NombreProducto = lblProducto.Text, PiezasVendidas = Convert.ToInt32(lblPiezas.Text), CostoUnitario = Convert.ToDouble(lblCosto.Text.Replace("$", "")), CostoTotal = Convert.ToDouble(lblTotalVentaProd.Text.Replace("$", "")) });
+
+                    cont = cont + 1;
+                }
+
+                BusProductos obj = new BusProductos();
+                obj.InsertVentas(listaProdVenta);
+
+                BusBitacora obj2 = new BusBitacora();
+                obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 1, "Ventas", "VENTAS FARMACIA : " + DateTime.Now + " Venta por un Costo Total de: " + txtTotal.Text + " Ingresando: " + "$" + txtIngreso.Text + " Cambio: " + txtCambio.Text + " Cliente: " + lnlNumCliente.Text);
+
+                Session["Productos"] = new List<EntProductos>();
+                Session["Prod"] = "";
+                hfMedi.Value = "";
+                hfOtro.Value = "";
+                hfPerf.Value = "";
+                hfTotal.Value = "";
+                TextBox1.Text = "";
+                txtSustancia.Text = "";
+                txtTipo.Text = "";
+                txtCantidad.Text = "";
+                txtExistencia.Text = "";
+                txtCosto.Text = "";
+                txtPiezasV.Text = "";
+                txtCate.Text = "";
+                gvResBus.Visible = false;
+                txtSubtFarm.Text = "";
+                txtSubtMedi.Text = "";
+                txtSubtOtro.Text = "";
+                txtTotal.Text = "";
+                txtIngreso.Text = "";
+                txtCambio.Text = "";
+                btnCancelar.Enabled = false;
+
+                int ProxNumCliente =
+                ProxNumCliente = Convert.ToInt32(lnlNumCliente.Text) + 1;
+                lnlNumCliente.Text = ProxNumCliente.ToString();
+            }
+        }
+        catch (Exception ex)
+        {
+
+            mostrarMensaje(ex.Message);
+        }
+
+
+
+
+
+
     }
 }

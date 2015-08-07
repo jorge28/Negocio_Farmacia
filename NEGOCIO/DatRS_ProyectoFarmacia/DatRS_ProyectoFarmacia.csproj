@@ -41,11 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatAbstract_Conexion.cs" />
+    <Compile Include="DatBitacora.cs" />
     <Compile Include="DatProductos.cs" />
     <Compile Include="DatUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EntRS_ProyectoFarmacia\EntRS_ProyectoFarmacia.csproj">
+      <Project>{7b751887-2e1d-42bb-92e5-c68df7ec5f93}</Project>
+      <Name>EntRS_ProyectoFarmacia</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UtiRS_ProyectoFarmacia\UtiRS_ProyectoFarmacia.csproj">
       <Project>{8f1b7ba2-9a6b-4b01-8383-f1600b31f7b5}</Project>
       <Name>UtiRS_ProyectoFarmacia</Name>

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusBitacora.cs" />
     <Compile Include="BusProductos.cs" />
     <Compile Include="BusUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

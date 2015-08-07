@@ -4,7 +4,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<%--<html>
 <head>
     <title>VentasEmp2</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -69,31 +69,7 @@
                                 </div>                    
                         </div>
                     </div>
-                    <%--<div class="row row-special">
-                        <div class="12u">
-                            <h3>Find me on ...</h3>
-                            <ul class="social">
-                                <li class="twitter"><a href="http://twitter.com/n33co" class="icon icon-twitter"><span>Twitter</span></a></li>
-                                <li class="facebook"><a href="#" class="icon icon-facebook"><span>Facebook</span></a></li>
-                                <li class="dribbble"><a href="http://dribbble.com/n33" class="icon icon-dribbble"><span>Dribbble</span></a></li>
-                                <li class="linkedin"><a href="#" class="icon icon-linkedin"><span>LinkedIn</span></a></li>
-                                <li class="tumblr"><a href="#" class="icon icon-tumblr"><span>Tumblr</span></a></li>
-                                <li class="googleplus"><a href="#" class="icon icon-google-plus"><span>Google+</span></a></li>
-                                <li class="github"><a href="http://github.com/n33" class="icon icon-github"><span>Github</span></a></li>
-                                <!--
-									<li class="rss"><a href="#" class="icon icon-rss"><span>RSS</span></a></li>
-									<li class="instagram"><a href="#" class="icon icon-instagram"><span>Instagram</span></a></li>
-									<li class="foursquare"><a href="#" class="icon icon-foursquare"><span>Foursquare</span></a></li>
-									<li class="skype"><a href="#" class="icon icon-skype"><span>Skype</span></a></li>
-									<li class="soundcloud"><a href="#" class="icon icon-soundcloud"><span>Soundcloud</span></a></li>
-									<li class="youtube"><a href="#" class="icon icon-youtube"><span>YouTube</span></a></li>
-									<li class="blogger"><a href="#" class="icon icon-blogger"><span>Blogger</span></a></li>
-									<li class="flickr"><a href="#" class="icon icon-flickr"><span>Flickr</span></a></li>
-									<li class="vimeo"><a href="#" class="icon icon-vimeo"><span>Vimeo</span></a></li>
-									-->
-                            </ul>
-                        </div>
-                    </div>--%>
+                    
                 </div>
                 <footer>
                     <div class="12u" style="text-align:right">
@@ -121,4 +97,45 @@
     </div>
     </form>
 </body>
-</html>
+</html>--%>
+
+<%--<html>
+<head> SUMA DE 2 NUMEROS</head>
+<body>
+<script>
+function fncSumar(){
+caja=document.forms["sumar"].elements;
+var numero1 = Number(caja["numero1"].value);
+var numero2 = Number(caja["numero2"].value);
+resultado=numero1+numero2;
+if(!isNaN(resultado)){
+caja["resultado"].value=numero1+numero2;
+}
+}
+</script>
+<form method="post" name="sumar">
+
+Primer numero: <input type="text" name="numero1" size="2" onKeyUp="fncSumar()"/>
+Segundo numero: <input type="text" name="numero2" size="2" onKeyUp="fncSumar()"/>
+Resultado: <input type="text" name="resultado"/>
+</form>
+</body>
+</html>--%>
+
+ <html>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body>
+
+<div data-ng-app="" data-ng-init="quantity=1;price=5">
+
+<h2>Cost Calculator</h2>
+
+Quantity: <input type="number" ng-model="quantity">
+Price: <input type="number" ng-model="price">
+ 
+<p><b>Total in dollar:</b> {{quantity * price}}</p>
+<input type="number" value="{{quantity * price}}">
+</div>
+
+</body>
+</html> 
