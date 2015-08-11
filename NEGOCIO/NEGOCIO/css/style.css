@@ -18,16 +18,21 @@ ul#tabs {
 
 ul#tab {
   list-style-type: none;
-  margin: 0;
-  padding: 0; }
+  margin:auto;
+  padding: 40px;
+  
+}
+  
   ul#tab li {
     display: none;
     padding: 30px;
-    border: solid 20px #d2f4e9; }
+    border: solid 20px #D4E9F6;
+    margin:auto;
+  }
     ul#tab li.active {
       display: block; }
     ul#tab li h2 {
       font-weight: 400;
       margin-bottom: 30px;
       padding-bottom: 5px;
-      border-bottom: solid 5px #32c896; }
+      border-bottom: solid 5px #34A3D7; }

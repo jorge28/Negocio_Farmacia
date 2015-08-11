@@ -55,7 +55,7 @@ namespace RS_ProyectoFarmacia.Business
             return per;
         }
 
-<<<<<<< HEAD
+
         public List<EntProductos> ObtenerCatB()
         {
             DatProductos obj = new DatProductos();
@@ -99,7 +99,7 @@ namespace RS_ProyectoFarmacia.Business
         }
         
  
-=======
+
         public void InsertVentas(List<EntProductosVentas> ListaProductos)
         {
             DatProductos obj = new DatProductos();
@@ -134,6 +134,6 @@ namespace RS_ProyectoFarmacia.Business
 
             return ultimo ;
         }
->>>>>>> origin/master
+
     }
 }

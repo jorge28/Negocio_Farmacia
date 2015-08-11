@@ -16,8 +16,8 @@
     <link href="css/bootstrap-datepicker3.css" rel="stylesheet" />
     <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 </head>
-<body>
-    <form id="form1" runat="server">
+<body style="background-image: url('http://localhost:1966/images/shutterstock_131795594.jpg')">
+    <form id="form1" runat="server" >
         <br />
         <br />
     <div>
@@ -28,7 +28,7 @@
     <li>Repotes</li>
     
 </ul>
-        <ul id="tab" style="width:900px;">
+        <ul id="tab"  style="width:900px;">
             <li class="active">
                 <h2>Alta de Producto</h2>
                 <div class="row">
@@ -88,7 +88,7 @@
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sPrecio">$</span>
-                        <asp:TextBox ID="txtPrecio" runat="server" class="form-control" placeholder="Precio del Producto" Width="200px" aria-describedby="sPrecio" OnTextChanged="txtPrecio_TextChanged" />
+                        <asp:TextBox ID="txtPrecio" runat="server" class="form-control" placeholder="Precio del Producto" Width="200px" aria-describedby="sPrecio" />
                     </div>
                 </div>
                 <br />
