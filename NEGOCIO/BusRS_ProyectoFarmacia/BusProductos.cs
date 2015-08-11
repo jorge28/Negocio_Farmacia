@@ -58,6 +58,48 @@ namespace RS_ProyectoFarmacia.Business
             return per;
         }
 
+        public List<EntProductos> ObtenerCatB()
+        {
+            DatProductos obj = new DatProductos();
+            DataTable dt = obj.ObtenerCategoria();
+            List<EntProductos> lista = new List<EntProductos>();
 
+            foreach (DataRow r in dt.Rows)
+            {
+                EntProductos objP = new EntProductos();
+                objP.IdCategoria = Convert.ToInt32(r["Id_Categoria"]);     
+                objP.Categoria = r["Nombre_Categoria"].ToString();       
+                lista.Add(objP);
+            }
+
+            return lista;
+        }
+        public List<EntProductos> ObtenerTipoB()
+        {
+            DatProductos obj = new DatProductos();
+            DataTable dt = obj.ObtenerCategoria();
+            List<EntProductos> lista = new List<EntProductos>();
+
+            foreach (DataRow r in dt.Rows)
+            {
+                EntProductos objP = new EntProductos();
+                objP.IdTipo = Convert.ToInt32(r["Id_Tipo"]);
+                objP.Tipo = r["Nombre_Tipo"].ToString();
+                lista.Add(objP);
+            }
+
+            return lista;
+        }
+
+        public void InsertaProducto(EntProductos ent) {
+
+            DatProductos dprod = new DatProductos();
+            int lintFilas =dprod.agregaProducto(ent.Nombre_Producto,ent.Sustancia,ent.IdCategoria,ent.IdTipo,ent.Cantidad,ent.Existencia,ent.Costo);
+            if(lintFilas != 1){
+                throw new System.Exception("error en la capa de negocio al insertar un producto");
+            }
+        }
+        
+ 
     }
 }

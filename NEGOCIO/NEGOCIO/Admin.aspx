@@ -88,13 +88,13 @@
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sPrecio">$</span>
-                        <asp:TextBox ID="txtPrecio" runat="server" class="form-control" placeholder="Precio del Producto" Width="200px" aria-describedby="sPrecio" />
+                        <asp:TextBox ID="txtPrecio" runat="server" class="form-control" placeholder="Precio del Producto" Width="200px" aria-describedby="sPrecio" OnTextChanged="txtPrecio_TextChanged" />
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="btn-group">
-                        <asp:Button ID="btnGuardar" Text="Guardar Producto" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false"/>
+                        <asp:Button ID="btnGuardar" Text="Guardar Producto" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false" OnClick="btnGuardar_Click"/>
                         <asp:Button ID="btnCancelar" Text="Cancelar"  runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false"/>
                 </div>
                     </div>
@@ -165,7 +165,7 @@
                 <br />
                  <div class="row">
                     <div class="btn-group">
-                        <asp:Button ID="btnGuardarU" Text="Guardar Usuario" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false"/>
+                        <asp:Button ID="btnGuardarU" Text="Guardar Usuario" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false" OnClick="btnGuardarU_Click"/>
                         <asp:Button ID="btnCancelaU" Text="Cancelar"  runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false"/>
                 </div>
                     </div>

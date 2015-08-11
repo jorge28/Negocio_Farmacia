@@ -36,6 +36,16 @@ namespace RS_ProyectoFarmacia.Business
 
             return usua;
         }
+        public void InsertaUsuario(EntUsuarios ent)
+        {
+
+            DatUsuarios dusua = new DatUsuarios();
+            int lintFilas = dusua.agregaUsuarioD(ent.NombreUsuario,ent.ApellidoPaterno,ent.ApellidoMaterno,ent.Direccion,ent.Telefono,ent.Celular,ent.Usuario,ent.Contraseña);
+            if (lintFilas != 1)
+            {
+                throw new System.Exception("error en la capa de negocio al insertar un usuario");
+            }
+        }
 
     }
 }
