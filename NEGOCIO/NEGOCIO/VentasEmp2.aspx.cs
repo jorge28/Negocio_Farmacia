@@ -14,6 +14,6 @@ public partial class VentasEmp2 : System.Web.UI.Page
 
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm:ss");
+        //lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm:ss");
     }
 }

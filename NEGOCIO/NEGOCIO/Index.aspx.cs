@@ -13,8 +13,7 @@ public partial class Index : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["Login"] = null;
-
+        Session["Login"] = null;       
                
     }
 
@@ -33,9 +32,12 @@ public partial class Index : System.Web.UI.Page
     {
         try
         {
+            
             if (string.IsNullOrEmpty(txtUsuarioVenta.Text) || string.IsNullOrEmpty(txtContraseñaVenta.Text))
             {
                 txtUsuarioVenta.Focus();
+                txtContraseñaVenta.Text = "";
+                txtUsuarioVenta.Text = "";
                 throw new ApplicationException("Debe ingresar Usuario y Contraseña :(");
                 
             }
@@ -52,11 +54,11 @@ public partial class Index : System.Web.UI.Page
             DataTable dt = new DatUsuarios().SelectUsuario(usua.Usuario, usua.Contraseña);
             DataRow dr = dt.Rows[0];
             EntUsuarios nivel = new EntUsuarios();
-            nivel.Nivel_Usuario = dr["Nivel_Usuario"].ToString();
+            nivel.Nivel_Usuario = dr["Nivel_Usuario"].ToString();            
             Nivel = Convert.ToInt32(nivel.Nivel_Usuario);
 
             if (Nivel == 3)
-            {
+            {               
                 Session["Login"] = log;
                 Response.Redirect("VentasEmp1.aspx");
             }
