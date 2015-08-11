@@ -193,7 +193,7 @@
                         </div>
                         <div class="6u" style="text-align: left">
                             <div style="height: 5px"></div>
-                            <asp:LinkButton ID="lnkTota" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" Style="color: black; font-size: large">Totales</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <asp:LinkButton ID="lnkTota" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" Style="color: black; font-size: large" OnClick="lnkTota_Click">Totales</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp
                         </div>
                         <div class="6u" style="text-align: right">
                             <div style="height: 5px"></div>

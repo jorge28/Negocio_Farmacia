@@ -358,6 +358,7 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
+
             if (txtTotal.Text == "$0.00" || txtTotal.Text.Replace("$", "") == "")
                 throw new SystemException("No hay operación a Guardar.");
             else if ((txtTotal.Text != "$0.00" || txtTotal.Text != "") && (txtIngreso.Text == "$0.00" || txtIngreso.Text == ""))
@@ -423,12 +424,15 @@ public partial class Ventas : System.Web.UI.Page
         {
 
             mostrarMensaje(ex.Message);
-        }
+        }        
+    }
 
+    protected void lnkTota_Click(object sender, EventArgs e)
+    {
+        EntUsuarios usua = new EntUsuarios();
+        usua = (EntUsuarios)Session["Login"];
 
-
-
-
-
+        Session["IdUsuario"] = usua.Id_Usuario;
+        Response.Redirect("ReporteTotalesEmpleados.aspx");
     }
 }

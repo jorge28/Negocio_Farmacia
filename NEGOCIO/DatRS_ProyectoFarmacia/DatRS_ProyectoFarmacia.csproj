@@ -43,6 +43,7 @@
     <Compile Include="DatAbstract_Conexion.cs" />
     <Compile Include="DatBitacora.cs" />
     <Compile Include="DatProductos.cs" />
+    <Compile Include="DatReportes.cs" />
     <Compile Include="DatUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
