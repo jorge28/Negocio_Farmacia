@@ -15,26 +15,29 @@ namespace RS_ProyectoFarmacia.Business
 
         public List<EntProductosVentas> SelectVentasEmpleados(int usuario)
         {
-            DataTable dt = new DatReportes().SelectVentasEmpleados(usuario);
-            List<EntProductosVentas> lista = new List<EntProductosVentas>();
-            if (dt.Rows.Count == 0)
-                throw new ApplicationException("No hay Ventas Registradas :(");
+          
+                DataTable dt = new DatReportes().SelectVentasEmpleados(usuario);
+                List<EntProductosVentas> lista = new List<EntProductosVentas>();
+                if (dt.Rows.Count == 0)
+                    throw new ApplicationException("No hay Ventas Registradas :(");
 
-            foreach (DataRow dr in dt.Rows)
-            {
-                EntProductosVentas venta = new EntProductosVentas();
-                venta.NombreUsuario = dr["Venta_Nombre_Usuario"].ToString();
-                venta.NumCliente = Convert.ToInt32(dr["Venta_Num_cliente"]);
-                venta.FechaAlta = Convert.ToDateTime(dr["Venta_Fecha_Alta"]);
-                venta.CategoriaProd = dr["Nombre_Categoria"].ToString();
-                venta.NombreProducto = dr["Venta_Nombre_Producto"].ToString();
-                venta.PiezasVendidas = Convert.ToInt32(dr["Venta_Piezas_Vendidas"]);
-                venta.CostoUnitario = Convert.ToDouble(dr["Venta_Costo_Unitario"]);
-                venta.CostoTotal = Convert.ToDouble(dr["Venta_Costo_Total"]);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    EntProductosVentas venta = new EntProductosVentas();
+                    venta.NombreUsuario = dr["Venta_Nombre_Usuario"].ToString();
+                    venta.NumCliente = Convert.ToInt32(dr["Venta_Num_cliente"]);
+                    venta.FechaAlta = Convert.ToDateTime(dr["Venta_Fecha_Alta"]);
+                    venta.CategoriaProd = dr["Nombre_Categoria"].ToString();
+                    venta.NombreProducto = dr["Venta_Nombre_Producto"].ToString();
+                    venta.PiezasVendidas = Convert.ToInt32(dr["Venta_Piezas_Vendidas"]);
+                    venta.CostoUnitario = Convert.ToDouble(dr["Venta_Costo_Unitario"]);
+                    venta.CostoTotal = Convert.ToDouble(dr["Venta_Costo_Total"]);
 
-                lista.Add(venta);
-            }
-            return lista;
+                    lista.Add(venta);
+                }
+                return lista;
+         
+           
         }
     }
 }

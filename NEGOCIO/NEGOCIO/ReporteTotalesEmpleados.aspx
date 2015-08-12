@@ -6,12 +6,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+        <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <CR:CrystalReportViewer ID="crTotalesEmpleados" runat="server" AutoDataBind="true" />
+        <%--<CR:CrystalReportViewer ID="crTotalesEmpleados" runat="server" AutoDataBind="true" />--%>
+        <CR:CrystalReportViewer ID = "crTotalesEmpleados" runat = "server" AutoDataBind = "True" GroupTreeImagesFolderUrl = "" height = "1202px" ToolbarImagesFolderUrl = "" ToolPanelWidth = "200px" width = "1104px" />
+       
     </div>
     </form>
 </body>
