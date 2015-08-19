@@ -1101,7 +1101,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color:coral;
   text-decoration: none;
 }
 a:hover,
@@ -2822,7 +2822,7 @@ select[multiple].form-group-lg .form-control {
 }
 .has-success .input-group-addon {
   color: #3c763d;
-  background-color: #8EC640;
+  background-color: #1A22FA;
   border-color: #3c763d;
 }
 .has-success .form-control-feedback {

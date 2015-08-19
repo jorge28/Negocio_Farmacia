@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <%--<script src="js/tabs.js"></script>--%>
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style%20(2).css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="StyleSheet2.css" rel="stylesheet" />
     <script src="js/jquery-1.9.1.min.js"></script>
