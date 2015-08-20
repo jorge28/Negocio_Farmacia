@@ -11,8 +11,19 @@ public partial class Admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+<<<<<<< HEAD
         cargaddlCat();
         cargaddlTipo();
+=======
+        if (Session["Login"] == null)
+        {
+            Response.Redirect("Index.aspx");
+        }
+        EntUsuarios usua = new EntUsuarios();
+        usua = (EntUsuarios)Session["Login"];
+
+        lblEmpleado.Text = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno;
+>>>>>>> origin/master
 
     }
     public void cargaddlCat() {
@@ -95,6 +106,7 @@ public partial class Admin : System.Web.UI.Page
         }
         
     }
+<<<<<<< HEAD
     public int ValidaDatos() 
     {
         int checa = 0;
@@ -128,4 +140,16 @@ public partial class Admin : System.Web.UI.Page
         return checa;
     }
 
+=======
+
+    protected void btnSalir_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Index.aspx");
+    }
+
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
+    }
+>>>>>>> origin/master
 }
