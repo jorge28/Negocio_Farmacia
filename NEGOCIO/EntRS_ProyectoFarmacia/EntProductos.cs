@@ -47,5 +47,14 @@ namespace RS_ProyectoFarmacia.Business.Entity
         public DateTime Fecha { get; set; }
         public int Venta_Num_Cliente { get; set; }
     }
+    public class EntDdlAlta 
+    {
+        public EntDdlAlta() { }
+
+        public int Id_Categoria { get; set; }
+        public int Id_Tipo { get; set; }
+        public string Nombre_Categoria { get; set; }
+        public string Nombre_Tipo { get; set; }
+    }
 
 }

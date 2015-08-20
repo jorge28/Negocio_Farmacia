@@ -34,14 +34,17 @@
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sProducto"></span>
-                        <asp:TextBox ID="txtProducto" runat="server" class="form-control" placeholder="Nombre del Producto" Width="300px" aria-describedby="sProducto" />
+                        <asp:TextBox ID="txtProducto" runat="server" class="form-control" placeholder="Nombre del Producto" Width="300px" aria-describedby="sProducto" ValidationGroup="new" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Display="Static" runat="server" ErrorMessage="*** Campo Requerido" Text="***"
+                                                ForeColor="Red" ControlToValidate="txtProducto" ValidationGroup="new"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sSustancia"></span>
-                        <asp:TextBox ID="txtSustancia" runat="server" class="form-control" placeholder="Sustancia del Producto" Width="300px" aria-describedby="sSustancia" />
+                        <asp:TextBox ID="txtSustancia" runat="server" class="form-control" placeholder="Sustancia del Producto" Width="300px" aria-describedby="sSustancia" ValidationGroup="new" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*** Campo Requerido" Text="***" Display="Static" ForeColor="Red" ControlToValidate="txtSustancia" ValidationGroup="new"></asp:RequiredFieldValidator>
                     </div>
 
                 </div>
@@ -50,20 +53,19 @@
                     <div class="input-group">
                         <span class="input-group-addon" id="sCategoria"></span>
                         <asp:DropDownList ID="ddlCategoria" runat="server" class="form-control" Width="200px" aria-describedby="sCategoria">
-                            <asp:ListItem Text="text1" />
-                            <asp:ListItem Text="text2" />
+
                         </asp:DropDownList>
                         
                     </div>
 
                 </div>
+               
                 <br />
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sTipo"></span>
                         <asp:DropDownList ID="ddlTipo" runat="server" class="form-control" Width="200px" aria-describedby="sTipo">
-                            <asp:ListItem Text="text1" />
-                            <asp:ListItem Text="text2" />
+                          
                         </asp:DropDownList>
                         
                     </div>
@@ -74,27 +76,37 @@
                     <div class="input-group">
                         <span class="input-group-addon" id="sCantidad" ></span>
                         
-                        <asp:TextBox ID="txtCantidad" runat="server" class="form-control" placeholder="Cantidad del Producto" Width="200px" aria-describedby="sCantidad" />
+                        <asp:TextBox ID="txtCantidad" runat="server" class="form-control" placeholder="Cantidad del Producto" Width="200px" aria-describedby="sCantidad" ValidationGroup="new" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*** Campo Requerido" Text="***" Display="Static" ForeColor="Red" ControlToValidate="txtCantidad" ValidationGroup="new"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sExistencia">#</span>
-                        <asp:TextBox ID="txtExistencia" runat="server" class="form-control" placeholder="No. de Existencias" Width="200px" aria-describedby="sExistencia" />
+                        <asp:TextBox ID="txtExistencia" runat="server" class="form-control" placeholder="No. de Existencias" Width="200px" aria-describedby="sExistencia" ValidationGroup="new" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*** Campo Requerido" Text="***" Display="Static" ForeColor="Red" ControlToValidate="txtExistencia" ValidationGroup="new"></asp:RequiredFieldValidator>
                     </div>
                 </div>
+                
+                
                 <br />
                 <div class="row">
                     <div class="input-group">
                         <span class="input-group-addon" id="sPrecio">$</span>
-                        <asp:TextBox ID="txtPrecio" runat="server" class="form-control" placeholder="Precio del Producto" Width="200px" aria-describedby="sPrecio" />
-                    </div>
+                        <asp:TextBox ID="txtPrecio" runat="server" class="form-control" placeholder="Precio del Producto" Width="200px" aria-describedby="sPrecio" ValidationGroup="new" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*** Campo Requerido" Text="***" Display="Static" ForeColor="Red" ControlToValidate="txtPrecio" ValidationGroup="new"></asp:RequiredFieldValidator>                  
+                         </div>
+                </div>
+               
+                <br />
+                <div class="row">
+                    <asp:ValidationSummary ID="ValidationSummary1" ValidationGroup="new" ForeColor="red" runat="server" />
                 </div>
                 <br />
                 <div class="row">
                     <div class="btn-group">
-                        <asp:Button ID="btnGuardar" Text="Guardar Producto" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false" OnClick="btnGuardar_Click"/>
+                        <asp:Button ID="btnGuardar" Text="Guardar Producto" runat="server" ValidationGroup="new" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false" OnClick="btnGuardar_Click"/>
                         <asp:Button ID="btnCancelar" Text="Cancelar"  runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false"/>
                 </div>
                     </div>

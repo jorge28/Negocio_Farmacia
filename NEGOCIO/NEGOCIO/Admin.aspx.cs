@@ -11,6 +11,8 @@ public partial class Admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        cargaddlCat();
+        cargaddlTipo();
 
     }
     public void cargaddlCat() {
@@ -91,5 +93,39 @@ public partial class Admin : System.Web.UI.Page
 
             mostrarMensaje(ex.Message);
         }
+        
     }
+    public int ValidaDatos() 
+    {
+        int checa = 0;
+        
+        if (ddlCategoria.SelectedValue == "0")
+        {
+            checa = 1;
+            throw new SystemException("Favor de elegir la Categoria del producto a Ingresar");
+           
+        }
+        if (ddlTipo.SelectedValue == "0")
+        {
+            checa = 1;
+            throw new SystemException("Favor de elegir el Tipo de producto a Ingresar");
+        }
+        double numero;
+        Boolean EsNumero= double.TryParse(txtExistencia.Text,out numero);
+        if(!EsNumero)
+        {
+            checa = 1;
+            throw new SystemException("Solo se permiten numeros en existencias");
+        }
+        double numero1;
+        Boolean EsNumero1 = double.TryParse(txtPrecio.Text, out numero1);
+        if (!EsNumero1)
+        {
+            checa = 1;
+            throw new SystemException("Solo se permiten numeros en existencias");
+        }
+
+        return checa;
+    }
+
 }

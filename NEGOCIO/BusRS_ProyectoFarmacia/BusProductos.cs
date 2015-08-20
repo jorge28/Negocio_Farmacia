@@ -56,34 +56,34 @@ namespace RS_ProyectoFarmacia.Business
         }
 
 
-        public List<EntProductos> ObtenerCatB()
+        public List<EntDdlAlta> ObtenerCatB()
         {
             DatProductos obj = new DatProductos();
             DataTable dt = obj.ObtenerCategoria();
-            List<EntProductos> lista = new List<EntProductos>();
+            List<EntDdlAlta> lista = new List<EntDdlAlta>();
 
             foreach (DataRow r in dt.Rows)
             {
-                EntProductos objP = new EntProductos();
-                objP.IdCategoria = Convert.ToInt32(r["Id_Categoria"]);     
-                objP.Categoria = r["Nombre_Categoria"].ToString();       
-                lista.Add(objP);
+                EntDdlAlta objC = new EntDdlAlta();
+                objC.Id_Categoria = Convert.ToInt32(r["Id_Categoria"]);     
+                objC.Nombre_Categoria = r["Nombre_Categoria"].ToString();       
+                lista.Add(objC);
             }
 
             return lista;
         }
-        public List<EntProductos> ObtenerTipoB()
+        public List<EntDdlAlta> ObtenerTipoB()
         {
             DatProductos obj = new DatProductos();
-            DataTable dt = obj.ObtenerCategoria();
-            List<EntProductos> lista = new List<EntProductos>();
+            DataTable dt = obj.ObtenerTipo();
+            List<EntDdlAlta> lista = new List<EntDdlAlta>();
 
             foreach (DataRow r in dt.Rows)
             {
-                EntProductos objP = new EntProductos();
-                objP.IdTipo = Convert.ToInt32(r["Id_Tipo"]);
-                objP.Tipo = r["Nombre_Tipo"].ToString();
-                lista.Add(objP);
+                EntDdlAlta objT = new EntDdlAlta();
+                objT.Id_Tipo = Convert.ToInt32(r["Id_Tipo"]);
+                objT.Nombre_Tipo = r["Nombre_Tipo"].ToString();
+                lista.Add(objT);
             }
 
             return lista;
