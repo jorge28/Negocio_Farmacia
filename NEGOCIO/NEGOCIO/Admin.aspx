@@ -4,8 +4,24 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Administración</title>
     <%--<script src="js/tabs.js"></script>--%>
+     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="css/skel-noscript.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style-desktop.css" />
+    </noscript>
+
     <link href="css/style%20(2).css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="StyleSheet2.css" rel="stylesheet" />
@@ -16,10 +32,31 @@
     <link href="css/bootstrap-datepicker3.css" rel="stylesheet" />
     <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 </head>
-<body style="background-image: url('http://localhost:1966/images/shutterstock_131795594.jpg')">
+<body background="img/wall9.png">
     <form id="form1" runat="server" >
-        <br />
-        <br />
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+          <div>
+            <div>
+                <div class="container" id="ventas">
+                    <div class="header">
+                        <div class="4u">
+                            <asp:Label ID="lblEmpleado" runat="server" Style="text-align: left; font-size: x-large;" ForeColor="DarkBlue" Text="Empleado 1"></asp:Label>
+                        </div>
+                        <div class="4u" style="text-align:center">    
+                            <asp:Label ID="Label1" text="Administrador" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>                      
+                        </div>
+                        <div class="4u" style="text-align: right">
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
+                                    <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick">
+                                    </asp:Timer>
+                                    <asp:Label ID="lblFecha" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>
+                                    <asp:Button ID="btnSalir" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="SALIR" OnClick="btnSalir_Click" OnClientClick="return confirm('¿Está Seguro de Salir del Sistema?')"></asp:Button>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                    </div>   
+                   <div style="height:20px"></div>
     <div>
         <ul id="tabs">
     <li class="active">Producto</li>
@@ -285,6 +322,9 @@
 
         </ul>
     </div>
+                      </div>
+            </div>
+        </div>
         <script>
           
             $(document).ready(function () {

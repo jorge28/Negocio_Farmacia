@@ -11,6 +11,14 @@ public partial class Admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Login"] == null)
+        {
+            Response.Redirect("Index.aspx");
+        }
+        EntUsuarios usua = new EntUsuarios();
+        usua = (EntUsuarios)Session["Login"];
+
+        lblEmpleado.Text = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno;
 
     }
     public void cargaddlCat() {
@@ -91,5 +99,15 @@ public partial class Admin : System.Web.UI.Page
 
             mostrarMensaje(ex.Message);
         }
+    }
+
+    protected void btnSalir_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Index.aspx");
+    }
+
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
     }
 }
