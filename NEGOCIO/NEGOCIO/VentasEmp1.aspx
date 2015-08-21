@@ -181,7 +181,7 @@
                             <%--<input id="txtTotal" runat="server" type="text" ng-model="total" style="width: 100px; height: 50px; color: black; background-color: beige;" /><br />--%>
                             <span style="color: Black">Ingreso:</span>
                             <%--<input type="text" ng-model="ingreso" style="width: 100px; height: 50px;" />--%>
-                            <asp:TextBox ID="txtIngreso" runat="server" placeholder="$0.00" Width="100px" Height="35px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige" AutoPostBack="True" OnTextChanged="txtIngreso_TextChanged" Font-Bold="true" EnableTheming="True" EnableViewState="True" ViewStateMode="Inherit"></asp:TextBox><br />
+                            <asp:TextBox ID="txtIngreso" AutoCompleteType="Disabled" runat="server" placeholder="$0.00" Width="100px" Height="35px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige" AutoPostBack="True" OnTextChanged="txtIngreso_TextChanged" Font-Bold="true" EnableTheming="True" EnableViewState="True" ViewStateMode="Inherit"></asp:TextBox><br />
                             <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                 <Triggers>
                                     <asp:AsyncPostBackTrigger ControlID="txtIngreso" EventName="TextChanged" />

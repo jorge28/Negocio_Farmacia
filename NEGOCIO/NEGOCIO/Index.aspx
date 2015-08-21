@@ -48,7 +48,7 @@
                                 <br />
                                 <strong>Estrella de la Mañana</strong>.</h1>
                         </div>
-                        <p style="color: #000000">Si eres empleado y deseas inciar el registro de tus ventas solo entra en "Empleados". Si eres nuestro administrador y deseas hacer modificaciones entra en "Administración". Excelente Día</p>
+                        <p style="color: #000000">Para inciar el registro de tus Ventas da Click en "Empleados". Si eres nuestro administrador da Click en "Administración". Excelente Día.</p>
                         <asp:LinkButton ID="lnkVentas" runat="server" class="button button-big">Empleados</asp:LinkButton>&nbsp&nbsp&nbsp&nbsp&nbsp                             
                             <asp:Panel ID="pnlLoginVentas" runat="server" Style="display: none" CssClass="modalPopup">
                                 <asp:Panel ID="pnlDatosLoginVentas" runat="server">

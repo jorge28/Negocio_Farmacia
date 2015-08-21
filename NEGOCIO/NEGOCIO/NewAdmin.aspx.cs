@@ -155,4 +155,78 @@ public partial class NewAdmin : System.Web.UI.Page
     {
         Response.Redirect("NewAdmin.aspx");
     }
+
+    protected void TextBox1_TextChanged1(object sender, EventArgs e)
+    {
+        try
+        {
+            Label2.Text = TextBox1.Text;
+            Session["Prod"] = Label2.Text;
+
+            BusProductos obj = new BusProductos();
+            EntProductos prod = new EntProductos();
+
+            prod = (obj.ObtenerProd(Session["Prod"].ToString()));
+
+            if (Session["Prod"].ToString() == prod.Sustancia)
+            {
+                TextBox2.Text = prod.Nombre_Producto;
+            }
+            else
+            {
+                TextBox2.Text = prod.Sustancia;
+            }
+
+            if (prod.Existencia == 0)
+            {
+                txtTipo.Text = prod.Tipo;
+                TextBox3.Text = prod.Cantidad;
+                TextBox4.Text = "Existencia:" + prod.Existencia.ToString();
+                txtCosto.Text = prod.Costo.ToString("C");
+                txtCate.Text = prod.Categoria.ToString();
+
+                TextBox4.ForeColor = System.Drawing.Color.Red;
+            }
+            else
+            {
+                txtTipo.Text = prod.Tipo;
+                TextBox3.Text = prod.Cantidad;
+                TextBox4.Text = "Existencia:" + prod.Existencia.ToString();
+                txtCosto.Text = prod.Costo.ToString("C");
+                txtCate.Text = prod.Categoria.ToString();
+
+                TextBox4.ForeColor = System.Drawing.Color.Black;
+            }
+
+        }
+        catch (Exception ex)
+        {
+
+            mostrarMensaje(ex.Message);
+        }
+
+
+    }
+
+    [System.Web.Services.WebMethodAttribute(), System.Web.Script.Services.ScriptMethodAttribute()]
+    public static string[] GetCompletionList(string prefixText, int count, string contextKey)
+    {
+        List<EntProductos> pers = new List<EntProductos>();
+        List<string> producto_Buscado = new List<string>();
+        pers = new BusProductos().Obtener();
+
+        foreach (EntProductos per in pers)
+        {
+            string prod = per.Nombre_Producto;
+            string sust = per.Sustancia;
+            producto_Buscado.Add(prod);
+            producto_Buscado.Add(sust);
+        }
+
+        string[] pates = producto_Buscado.ToArray();
+
+        return (from m in pates where m.StartsWith(prefixText, StringComparison.CurrentCultureIgnoreCase) select m).Take(count).ToArray();
+
+    }
+
 }
