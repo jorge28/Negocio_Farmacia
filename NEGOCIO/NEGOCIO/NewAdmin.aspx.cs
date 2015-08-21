@@ -1,19 +1,16 @@
-﻿using System;
+﻿using RS_ProyectoFarmacia.Business;
+using RS_ProyectoFarmacia.Business.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using RS_ProyectoFarmacia.Business;
-using RS_ProyectoFarmacia.Business.Entity;
 
-public partial class Admin : System.Web.UI.Page
+public partial class NewAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        cargaddlCat();
-        cargaddlTipo();
 
         if (Session["Login"] == null)
         {
@@ -23,18 +20,63 @@ public partial class Admin : System.Web.UI.Page
         usua = (EntUsuarios)Session["Login"];
 
         lblEmpleado.Text = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno;
+        if (!IsPostBack)
+        {
+            cargaddlCat();
+            cargaddlTipo();
+            PanelExis.Visible = false;
+            PanelProd.Visible = false;
+            PanelRepo.Visible = false;
+            PanelUsua.Visible = false;
+        }
 
 
+       
     }
-    public void cargaddlCat() {
+    public void mostrarMensaje(string mensaje)
+    {
+        string script = "alert('" + mensaje.Replace("'", "\"") + "');";
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ERROR", script, true);
+    }
+    protected void btnAltaProd_Click(object sender, EventArgs e)
+    {
+        PanelExis.Visible = false;
+        PanelProd.Visible = true;
+        PanelRepo.Visible = false;
+        PanelUsua.Visible = false;
+    }
+    protected void btnAltaUsua_Click(object sender, EventArgs e)
+    {
+        PanelExis.Visible = false;
+        PanelProd.Visible = false;
+        PanelRepo.Visible = false;
+        PanelUsua.Visible = true;
+    }
+    protected void btnExis_Click(object sender, EventArgs e)
+    {
+        PanelExis.Visible = true;
+        PanelProd.Visible = false;
+        PanelRepo.Visible = false;
+        PanelUsua.Visible = false;
+    }
+    protected void btnReportes_Click(object sender, EventArgs e)
+    {
+        PanelExis.Visible = false;
+        PanelProd.Visible = false;
+        PanelRepo.Visible = true;
+        PanelUsua.Visible = false;
+    }
+    public void cargaddlCat()
+    {
         BusProductos bprod = new BusProductos();
         ddlCategoria.DataTextField = "Nombre_Categoria";
         ddlCategoria.DataValueField = "Id_Categoria";
         ddlCategoria.DataSource = bprod.ObtenerCatB();
         ddlCategoria.DataBind();
-    
+
     }
-    public void cargaddlTipo() {
+    public void cargaddlTipo()
+    {
         BusProductos bprod = new BusProductos();
         ddlTipo.DataTextField = "Nombre_Tipo";
         ddlTipo.DataValueField = "Id_Tipo";
@@ -42,8 +84,14 @@ public partial class Admin : System.Web.UI.Page
         ddlTipo.DataBind();
 
     }
-
-
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
+    }
+    protected void btnSalir_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Index.aspx");
+    }
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         try
@@ -71,12 +119,10 @@ public partial class Admin : System.Web.UI.Page
 
             mostrarMensaje(ex.Message);
         }
-
     }
-    public void mostrarMensaje(string mensaje)
+    protected void btnCancelar_Click(object sender, EventArgs e)
     {
-        string script = "alert('" + mensaje.Replace("'", "\"") + "');";
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "ERROR", script, true);
+        Response.Redirect("NewAdmin.aspx");
     }
     protected void btnGuardarU_Click(object sender, EventArgs e)
     {
@@ -94,7 +140,7 @@ public partial class Admin : System.Web.UI.Page
             eusua.Contraseña = txtPass.Text;
 
             BusUsuarios busua = new BusUsuarios();
-            
+
 
 
 
@@ -104,52 +150,9 @@ public partial class Admin : System.Web.UI.Page
 
             mostrarMensaje(ex.Message);
         }
-        
     }
-
-    public int ValidaDatos() 
+    protected void btnCancelaU_Click(object sender, EventArgs e)
     {
-        int checa = 0;
-        
-        if (ddlCategoria.SelectedValue == "0")
-        {
-            checa = 1;
-            throw new SystemException("Favor de elegir la Categoria del producto a Ingresar");
-           
-        }
-        if (ddlTipo.SelectedValue == "0")
-        {
-            checa = 1;
-            throw new SystemException("Favor de elegir el Tipo de producto a Ingresar");
-        }
-        double numero;
-        Boolean EsNumero= double.TryParse(txtExistencia.Text,out numero);
-        if(!EsNumero)
-        {
-            checa = 1;
-            throw new SystemException("Solo se permiten numeros en existencias");
-        }
-        double numero1;
-        Boolean EsNumero1 = double.TryParse(txtPrecio.Text, out numero1);
-        if (!EsNumero1)
-        {
-            checa = 1;
-            throw new SystemException("Solo se permiten numeros en existencias");
-        }
-
-        return checa;
+        Response.Redirect("NewAdmin.aspx");
     }
-
-
-
-    protected void btnSalir_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Index.aspx");
-    }
-
-    protected void Timer1_Tick(object sender, EventArgs e)
-    {
-        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
-    }
-
 }
