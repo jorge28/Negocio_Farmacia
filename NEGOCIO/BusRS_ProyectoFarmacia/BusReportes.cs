@@ -28,6 +28,7 @@ namespace RS_ProyectoFarmacia.Business
                     venta.NumCliente = Convert.ToInt32(dr["Venta_Num_cliente"]);
                     venta.FechaAlta = Convert.ToDateTime(dr["Venta_Fecha_Alta"]);
                     venta.CategoriaProd = dr["Nombre_Categoria"].ToString();
+                    venta.TipoProd = dr["Nombre_Tipo"].ToString();
                     venta.NombreProducto = dr["Venta_Nombre_Producto"].ToString();
                     venta.PiezasVendidas = Convert.ToInt32(dr["Venta_Piezas_Vendidas"]);
                     venta.CostoUnitario = Convert.ToDouble(dr["Venta_Costo_Unitario"]);

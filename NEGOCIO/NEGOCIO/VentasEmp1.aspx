@@ -75,7 +75,7 @@
                             <div style="height: 20px"></div>
                             <asp:GridView ID="gvResBus" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="5px" CellPadding="4" DataKeyNames="Nombre_Producto,Sustancia,Costo,TotalVentaProd,Categoria">
                                 <Columns>
-                                    <asp:TemplateField HeaderText="ID_Producto" Visible="false"  HeaderStyle-HorizontalAlign="Center" HeaderStyle-BorderColor="Green" HeaderStyle-BorderWidth="1px" ItemStyle-BorderColor="Green" ItemStyle-BorderWidth="1px" ItemStyle-HorizontalAlign="Center">
+                                    <asp:TemplateField HeaderText="ID_Producto" Visible="false" HeaderStyle-HorizontalAlign="Center" HeaderStyle-BorderColor="Green" HeaderStyle-BorderWidth="1px" ItemStyle-BorderColor="Green" ItemStyle-BorderWidth="1px" ItemStyle-HorizontalAlign="Center">
                                         <ItemTemplate>
                                             <asp:Label ID="lblIDProducto" runat="server" Text='<%# Bind("Id_Producto") %>'></asp:Label>
                                         </ItemTemplate>
@@ -167,6 +167,8 @@
                     </div>
                     <div class="footer">
                         <div class="12u" style="text-align: right">
+                            <span style="color: Black">Médico:</span>
+                            <asp:TextBox ID="txtSubMedico" runat="server" placeholder="$0.00" Enabled="false" Width="100px" Height="35px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige"></asp:TextBox><br />
                             <span style="color: Black">Medicamento:</span>
                             <asp:TextBox ID="txtSubtMedi" runat="server" placeholder="$0.00" Enabled="false" Width="100px" Height="35px" ForeColor="Black" BorderWidth="1px" BorderColor="Black" BackColor="Beige"></asp:TextBox><br />
                             <span style="color: Black">Perfumería:</span>
@@ -204,6 +206,7 @@
                 </div>
             </div>
         </div>
+        <asp:HiddenField ID="hfMedico" runat="server" />
         <asp:HiddenField ID="hfMedi" runat="server" />
         <asp:HiddenField ID="hfPerf" runat="server" />
         <asp:HiddenField ID="hfOtro" runat="server" />

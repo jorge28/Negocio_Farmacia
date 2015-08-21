@@ -12,7 +12,7 @@
   <xs:element name="dsTotalesEmpleados" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsTotalesEmpleados" msprop:Generator_UserDSName="dsTotalesEmpleados">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TotalesEmpleados" msprop:Generator_TableClassName="TotalesEmpleadosDataTable" msprop:Generator_TableVarName="tableTotalesEmpleados" msprop:Generator_RowChangedName="TotalesEmpleadosRowChanged" msprop:Generator_TablePropName="TotalesEmpleados" msprop:Generator_RowDeletingName="TotalesEmpleadosRowDeleting" msprop:Generator_RowChangingName="TotalesEmpleadosRowChanging" msprop:Generator_RowEvHandlerName="TotalesEmpleadosRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalesEmpleadosRowDeleted" msprop:Generator_RowClassName="TotalesEmpleadosRow" msprop:Generator_UserTableName="TotalesEmpleados" msprop:Generator_RowEvArgName="TotalesEmpleadosRowChangeEvent">
+        <xs:element name="TotalesEmpleados" msprop:Generator_TableClassName="TotalesEmpleadosDataTable" msprop:Generator_TableVarName="tableTotalesEmpleados" msprop:Generator_TablePropName="TotalesEmpleados" msprop:Generator_RowDeletingName="TotalesEmpleadosRowDeleting" msprop:Generator_RowChangingName="TotalesEmpleadosRowChanging" msprop:Generator_RowEvHandlerName="TotalesEmpleadosRowChangeEventHandler" msprop:Generator_RowDeletedName="TotalesEmpleadosRowDeleted" msprop:Generator_UserTableName="TotalesEmpleados" msprop:Generator_RowChangedName="TotalesEmpleadosRowChanged" msprop:Generator_RowEvArgName="TotalesEmpleadosRowChangeEvent" msprop:Generator_RowClassName="TotalesEmpleadosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NombreUsuario" msprop:Generator_ColumnVarNameInTable="columnNombreUsuario" msprop:Generator_ColumnPropNameInRow="NombreUsuario" msprop:Generator_ColumnPropNameInTable="NombreUsuarioColumn" msprop:Generator_UserColumnName="NombreUsuario" type="xs:string" minOccurs="0" />
@@ -23,6 +23,7 @@
               <xs:element name="CostoUnitario" msprop:Generator_ColumnVarNameInTable="columnCostoUnitario" msprop:Generator_ColumnPropNameInRow="CostoUnitario" msprop:Generator_ColumnPropNameInTable="CostoUnitarioColumn" msprop:Generator_UserColumnName="CostoUnitario" type="xs:double" minOccurs="0" />
               <xs:element name="CostoTotal" msprop:Generator_ColumnVarNameInTable="columnCostoTotal" msprop:Generator_ColumnPropNameInRow="CostoTotal" msprop:Generator_ColumnPropNameInTable="CostoTotalColumn" msprop:Generator_UserColumnName="CostoTotal" type="xs:double" minOccurs="0" />
               <xs:element name="CategoriaProd" msprop:Generator_ColumnVarNameInTable="columnCategoriaProd" msprop:Generator_ColumnPropNameInRow="CategoriaProd" msprop:Generator_ColumnPropNameInTable="CategoriaProdColumn" msprop:Generator_UserColumnName="CategoriaProd" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoProd" msprop:Generator_ColumnVarNameInTable="columnTipoProd" msprop:Generator_ColumnPropNameInRow="TipoProd" msprop:Generator_ColumnPropNameInTable="TipoProdColumn" msprop:Generator_UserColumnName="TipoProd" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

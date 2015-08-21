@@ -77,7 +77,13 @@ public partial class Ventas : System.Web.UI.Page
                 txtSubtOtro.Text = Convert.ToDouble(hfOtro.Value).ToString("C");
             }
 
-            hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)));
+            else if (producto.Categoria == "Medico")
+            {
+                hfMedico.Value = Convert.ToString((hfMedico.Value == "" ? 0 : Convert.ToDouble(hfMedico.Value)) + producto.TotalVentaProd);
+                txtSubMedico.Text = Convert.ToDouble(hfMedico.Value).ToString("C");
+            }
+
+            hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)) + (hfMedico.Value == "" ? 0 : Convert.ToDouble(hfMedico.Value)));
             txtTotal.Text = Convert.ToDouble(hfTotal.Value).ToString("C");
 
 
@@ -242,8 +248,13 @@ public partial class Ventas : System.Web.UI.Page
                 hfOtro.Value = Convert.ToString((hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)) - (totalventaProd == "" ? 0 : Convert.ToDouble(totalventaProd)));
                 txtSubtOtro.Text = Convert.ToDouble(hfOtro.Value).ToString("C");
             }
+            else if (Categoria == "Medico")
+            {
+                hfMedico.Value = Convert.ToString((hfMedico.Value == "" ? 0 : Convert.ToDouble(hfMedico.Value)) - (totalventaProd == "" ? 0 : Convert.ToDouble(totalventaProd)));
+                txtSubMedico.Text = Convert.ToDouble(hfMedico.Value).ToString("C");
+            }
 
-            hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)));
+            hfTotal.Value = Convert.ToString((hfMedi.Value == "" ? 0 : Convert.ToDouble(hfMedi.Value)) + (hfPerf.Value == "" ? 0 : Convert.ToDouble(hfPerf.Value)) + (hfOtro.Value == "" ? 0 : Convert.ToDouble(hfOtro.Value)) + (hfMedico.Value == "" ? 0 : Convert.ToDouble(hfMedico.Value)));
             txtTotal.Text = Convert.ToDouble(hfTotal.Value).ToString("C");
 
             txtIngreso.Text = "";
@@ -325,6 +336,7 @@ public partial class Ventas : System.Web.UI.Page
 
                 Session["Productos"] = new List<EntProductos>();
                 Session["Prod"] = "";
+                hfMedico.Value = "";
                 hfMedi.Value = "";
                 hfOtro.Value = "";
                 hfPerf.Value = "";
@@ -339,6 +351,7 @@ public partial class Ventas : System.Web.UI.Page
                 txtCate.Text = "";
                 gvResBus.Visible = false;
                 txtSubtFarm.Text = "";
+                txtSubMedico.Text = "";
                 txtSubtMedi.Text = "";
                 txtSubtOtro.Text = "";
                 txtTotal.Text = "";
@@ -394,6 +407,7 @@ public partial class Ventas : System.Web.UI.Page
 
                 Session["Productos"] = new List<EntProductos>();
                 Session["Prod"] = "";
+                hfMedico.Value = "";
                 hfMedi.Value = "";
                 hfOtro.Value = "";
                 hfPerf.Value = "";
@@ -408,6 +422,7 @@ public partial class Ventas : System.Web.UI.Page
                 txtCate.Text = "";
                 gvResBus.Visible = false;
                 txtSubtFarm.Text = "";
+                txtSubMedico.Text = "";
                 txtSubtMedi.Text = "";
                 txtSubtOtro.Text = "";
                 txtTotal.Text = "";

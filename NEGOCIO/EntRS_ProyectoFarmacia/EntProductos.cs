@@ -33,6 +33,7 @@ namespace RS_ProyectoFarmacia.Business.Entity
         public DateTime  FechaAlta { get; set; }
         public int NumCliente { get; set; }
         public string CategoriaProd { get; set; }
+        public string TipoProd { get; set; }
         public int ProductoId { get; set; }
         public string NombreProducto { get; set; }
         public int PiezasVendidas { get; set; }
