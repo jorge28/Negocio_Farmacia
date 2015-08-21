@@ -234,10 +234,10 @@
                 </div>
                 <br />
                    <div class="row">  
-                    <div class="input-group">
-                        <span class="input-group-addon" id="sSus" ></span>
-                        <asp:TextBox ID="txtSustanciaE" runat="server" class="form-control" aria-describedby="sSus" ForeColor="Black" Height="35px" Width="22%" placeholder="Sustancia/Nombre:" BackColor="Beige" Enabled="false" />
-                       
+                 <div class="input-group">
+                        <span class="input-group-addon" id="Span1" ></span>
+                        <asp:TextBox ID="TextBox2" runat="server" ForeColor="Black" Height="35px" Width="75%" placeholder="Producto:" BackColor="Beige" AutoPostBack="True" class="form-control" aria-describedby="sAcomplete"/>
+                        
                     </div>
 
                 </div>
