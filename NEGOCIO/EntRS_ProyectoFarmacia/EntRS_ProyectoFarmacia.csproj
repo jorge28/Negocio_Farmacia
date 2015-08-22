@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntProductos.cs" />
+    <Compile Include="EntReportes.cs" />
     <Compile Include="EntUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

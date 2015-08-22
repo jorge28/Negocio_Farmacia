@@ -22,24 +22,7 @@ namespace RS_ProyectoFarmacia.Business.Entity
         public string Tipo { get; set; }
         public string Piezas { get; set; }
         public double TotalVentaProd { get; set; }
-    }
-
-    public class EntProductosVentas
-    {
-        public EntProductosVentas() { }
-
-        public int UsuarioId { get; set; }
-        public string NombreUsuario { get; set; }
-        public DateTime  FechaAlta { get; set; }
-        public int NumCliente { get; set; }
-        public string CategoriaProd { get; set; }
-        public string TipoProd { get; set; }
-        public int ProductoId { get; set; }
-        public string NombreProducto { get; set; }
-        public int PiezasVendidas { get; set; }
-        public double CostoUnitario { get; set; }
-        public double CostoTotal { get; set; }
-    }
+    }   
 
     public class EntUltimoCliente
     {

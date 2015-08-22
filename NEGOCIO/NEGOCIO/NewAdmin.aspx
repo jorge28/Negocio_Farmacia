@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NewAdmin.aspx.cs" Inherits="NewAdmin" %>
 
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
         <div>
             <div>
-                <div class="container" id="ventas">
+                <div class="container" id="Administracion">
                     <div class="header">
                         <div class="col-md-4">
                             <asp:Label ID="lblEmpleado" runat="server" Style="text-align: left; font-size: x-large;" ForeColor="DarkBlue" Text="Empleado 1"></asp:Label>
@@ -339,37 +341,66 @@
                                     <div class="panel-body" style="margin-left: 30px; margin-right: 30px; margin-top: 10px">
                                         <h4>*** Reporte de Existencias Agotadas. (Reporte para Pedido de Productos) ***</h4>
                                         <div class="row">
-                                            <div class="col-md-12" style="text-align:center;">
-                                                <asp:LinkButton ID="lnkReportePedido" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" Style="color: black; font-size: large" >Reporte Pedido</asp:LinkButton>
+                                            <div class="col-md-12" style="text-align: center;">
+                                                <asp:LinkButton ID="lnkReportePedido" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" Style="color: black; font-size: large" OnClick="lnkReportePedido_Click">Reporte Pedido</asp:LinkButton>
                                             </div>
                                         </div>
                                         <hr style="border: double" />
-                                        <h4>*** Reporte de Ventas. (Seleccione el Rango de Fechas) ***</h4>
+                                        <h4>*** Reporte de Ventas y/o Cancelaciones. (Seleccione el Rango de Fechas) ***</h4>
                                         <div class="row">
-                                            <div class="col-sm-4 col-xs-12" style="text-align: center;">
+                                            <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-inline" style="padding: 4px;">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <div class="input-group-addon" style="color: White;">
+                                                            <div class="input-group-addon" style="color: black; background-color: LightBlue;">
                                                                 Fecha Inicial:
                                                             </div>
-                                                            <div class="btn-group" style="width: 100%">
-                                                                <asp:TextBox runat="server" ID="datepicker" Style="width: 100%" class="btn btn-default btn-sm sandbox-container" />
+                                                            <div class="input-group" style="width: 100%">
+                                                                <telerik:RadDatePicker ID="RadDatePicker1" runat="server" Height="29px" EnableTyping="False">
+                                                                    <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" EnableWeekends="True"
+                                                                        Culture="es-ES" FastNavigationNextText="&amp;lt;&amp;lt;">
+                                                                    </Calendar>
+                                                                    <DateInput DisplayDateFormat="dd/MM/yyyy" DateFormat="dd/MM/yyyy" LabelWidth="40%"
+                                                                        ReadOnly="True">
+                                                                        <EmptyMessageStyle Resize="None"></EmptyMessageStyle>
+                                                                        <ReadOnlyStyle Resize="None"></ReadOnlyStyle>
+                                                                        <FocusedStyle Resize="None"></FocusedStyle>
+                                                                        <DisabledStyle Resize="None"></DisabledStyle>
+                                                                        <InvalidStyle Resize="None"></InvalidStyle>
+                                                                        <HoveredStyle Resize="None"></HoveredStyle>
+                                                                        <EnabledStyle Resize="None"></EnabledStyle>
+                                                                    </DateInput>
+                                                                    <DatePopupButton ImageUrl="" HoverImageUrl=""></DatePopupButton>
+                                                                </telerik:RadDatePicker>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4 col-xs-12" style="text-align: center;">
+                                            <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-inline" style="padding: 4px;">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <div class="input-group-addon" style="color: White;">
+                                                            <div class="input-group-addon" style="color: black; background-color: LightBlue;">
                                                                 Fecha Final:
                                                             </div>
-                                                            <div class="btn-group" style="width: 100%">
-                                                                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-                                                                <%--<asp:TextBox runat="server" ID="datepicker1" Style="width: 100%" class="btn btn-default btn-sm sandbox-container" />--%>
+                                                            <div class="input-group" style="width: 100%">
+                                                                <telerik:RadDatePicker ID="RadDatePicker2" runat="server" Height="29px" EnableTyping="False">
+                                                                    <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" EnableWeekends="True"
+                                                                        Culture="es-ES" FastNavigationNextText="&amp;lt;&amp;lt;">
+                                                                    </Calendar>
+                                                                    <DateInput DisplayDateFormat="dd/MM/yyyy" DateFormat="dd/MM/yyyy" LabelWidth="40%"
+                                                                        ReadOnly="True">
+                                                                        <EmptyMessageStyle Resize="None"></EmptyMessageStyle>
+                                                                        <ReadOnlyStyle Resize="None"></ReadOnlyStyle>
+                                                                        <FocusedStyle Resize="None"></FocusedStyle>
+                                                                        <DisabledStyle Resize="None"></DisabledStyle>
+                                                                        <InvalidStyle Resize="None"></InvalidStyle>
+                                                                        <HoveredStyle Resize="None"></HoveredStyle>
+                                                                        <EnabledStyle Resize="None"></EnabledStyle>
+                                                                    </DateInput>
+                                                                    <DatePopupButton ImageUrl="" HoverImageUrl=""></DatePopupButton>
+                                                                </telerik:RadDatePicker>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -377,18 +408,95 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <asp:RadioButtonList ID="rdoReportes" runat="server">
-                                                <asp:ListItem Text="Prueba1" />
-                                                <asp:ListItem Text="Prueba2" />
-                                                <asp:ListItem Text="Prueba3" />
-                                                <asp:ListItem Text="Prueba4" />
-                                            </asp:RadioButtonList>
+                                            <div class="col-md-5" style="text-align: center;">
+                                            </div>
+                                            <div class="col-md-3" style="text-align: left;">
+                                                <asp:RadioButton ID="rdbVentas" runat="server" Text="Ventas" GroupName="ReporVC" Font-Size="Small" />
+                                            </div>
+                                            <div class="col-md-4" style="text-align: center;">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5" style="text-align: center;">
+                                            </div>
+                                            <div class="col-md-3" style="text-align: left;">
+                                                <asp:RadioButton ID="rdvCancelaciones" runat="server" Text="Cancelaciones" GroupName="ReporVC" Font-Size="Small" />
+                                            </div>
+                                            <div class="col-md-4" style="text-align: center;">
+                                            </div>
                                         </div>
                                         <br />
                                         <div class="row">
-                                            <div class="btn-group">
-                                                <asp:Button ID="btnReporte" Text="Generar Reporte" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false" />
-                                                <asp:Button ID="btnCancelaReporte" Text="Cancelar" runat="server" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false" />
+                                            <div class="col-md-12" style="text-align: center;">
+                                                <asp:LinkButton ID="lnkReporteVenCan" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" Style="color: black; font-size: large">Reporte Ventas/Cancelaciones</asp:LinkButton>
+                                            </div>
+                                        </div>
+                                        <hr style="border: double" />
+                                        <h4>*** Reporte de Entrada de Articulos. (Seleccione el Rango de Fechas) ***</h4>
+                                        <div class="row">
+                                            <div class="col-md-6" style="text-align: center;">
+                                                <div class="form-inline" style="padding: 4px;">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon" style="color: black; background-color: LightBlue;">
+                                                                Fecha Inicial:
+                                                            </div>
+                                                            <div class="input-group" style="width: 100%">
+                                                                <telerik:RadDatePicker ID="RadDatePicker3" runat="server" Height="29px" EnableTyping="False">
+                                                                    <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" EnableWeekends="True"
+                                                                        Culture="es-ES" FastNavigationNextText="&amp;lt;&amp;lt;">
+                                                                    </Calendar>
+                                                                    <DateInput DisplayDateFormat="dd/MM/yyyy" DateFormat="dd/MM/yyyy" LabelWidth="40%"
+                                                                        ReadOnly="True">
+                                                                        <EmptyMessageStyle Resize="None"></EmptyMessageStyle>
+                                                                        <ReadOnlyStyle Resize="None"></ReadOnlyStyle>
+                                                                        <FocusedStyle Resize="None"></FocusedStyle>
+                                                                        <DisabledStyle Resize="None"></DisabledStyle>
+                                                                        <InvalidStyle Resize="None"></InvalidStyle>
+                                                                        <HoveredStyle Resize="None"></HoveredStyle>
+                                                                        <EnabledStyle Resize="None"></EnabledStyle>
+                                                                    </DateInput>
+                                                                    <DatePopupButton ImageUrl="" HoverImageUrl=""></DatePopupButton>
+                                                                </telerik:RadDatePicker>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style="text-align: center;">
+                                                <div class="form-inline" style="padding: 4px;">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon" style="color: black; background-color: LightBlue;">
+                                                                Fecha Final:
+                                                            </div>
+                                                            <div class="input-group" style="width: 100%">
+                                                                <telerik:RadDatePicker ID="RadDatePicker4" runat="server" Height="29px" EnableTyping="False">
+                                                                    <Calendar UseRowHeadersAsSelectors="False" UseColumnHeadersAsSelectors="False" EnableWeekends="True"
+                                                                        Culture="es-ES" FastNavigationNextText="&amp;lt;&amp;lt;">
+                                                                    </Calendar>
+                                                                    <DateInput DisplayDateFormat="dd/MM/yyyy" DateFormat="dd/MM/yyyy" LabelWidth="40%"
+                                                                        ReadOnly="True">
+                                                                        <EmptyMessageStyle Resize="None"></EmptyMessageStyle>
+                                                                        <ReadOnlyStyle Resize="None"></ReadOnlyStyle>
+                                                                        <FocusedStyle Resize="None"></FocusedStyle>
+                                                                        <DisabledStyle Resize="None"></DisabledStyle>
+                                                                        <InvalidStyle Resize="None"></InvalidStyle>
+                                                                        <HoveredStyle Resize="None"></HoveredStyle>
+                                                                        <EnabledStyle Resize="None"></EnabledStyle>
+                                                                    </DateInput>
+                                                                    <DatePopupButton ImageUrl="" HoverImageUrl=""></DatePopupButton>
+                                                                </telerik:RadDatePicker>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12" style="text-align: center;">
+                                                <asp:LinkButton ID="lnkReporteEntArt" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" Style="color: black; font-size: large">Reporte Entrada Articulos</asp:LinkButton>
                                             </div>
                                         </div>
                                     </div>

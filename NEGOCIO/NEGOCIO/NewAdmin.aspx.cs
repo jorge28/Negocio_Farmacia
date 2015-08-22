@@ -294,4 +294,8 @@ public partial class NewAdmin : System.Web.UI.Page
         }
 
     }
+    protected void lnkReportePedido_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ReportePedidoProductos.aspx");
+    }
 }

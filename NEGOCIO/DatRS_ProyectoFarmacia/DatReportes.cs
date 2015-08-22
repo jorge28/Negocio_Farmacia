@@ -21,6 +21,16 @@ namespace RS_ProyectoFarmacia.Data
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
+        }
+
+        public DataTable SelectPedidoProductos()
+        {
+            SqlCommand comando = new SqlCommand("sp_Select_Pedido_Productos", con);
+            comando.CommandType = CommandType.StoredProcedure;           
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
         }      
 
     }

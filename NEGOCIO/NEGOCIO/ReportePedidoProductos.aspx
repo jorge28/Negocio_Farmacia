@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ReporteTotalesEmpleados.aspx.cs" Inherits="ReporteTotalesEmpleados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ReportePedidoProductos.aspx.cs" Inherits="ReportePedidoProductos" %>
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 
@@ -19,7 +19,7 @@
                 <asp:Label ID="lblEmpleado" runat="server" Style="text-align: left; font-size: x-large;" ForeColor="DarkBlue" Text="Empleado 1"></asp:Label>
             </div>
             <div class="col-md-4" style="text-align: center">
-                <asp:Label ID="Label1" Text="Reporte de Ventas" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>
+                <asp:Label ID="Label1" Text="Pedido de Productos" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>
             </div>
             <div class="col-md-4" style="text-align: right">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -27,14 +27,13 @@
                         <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick">
                         </asp:Timer>
                         <asp:Label ID="lblFecha" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>
-                        <asp:Button ID="btnRegresar" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Regresar" OnClick="btnRegresar_Click" ></asp:Button>
+                        <asp:Button ID="btnRegresar" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Regresar" OnClick="btnRegresar_Click"></asp:Button>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
         </div>
         <div>
-            <CR:CrystalReportViewer ID="crTotalesEmpleados" runat="server" AutoDataBind="true" />
-            <%--        <CR:CrystalReportViewer ID = "crTotalesEmpleados" runat = "server" AutoDataBind = "True" GroupTreeImagesFolderUrl = "" height = "1202px" ToolbarImagesFolderUrl = "" ToolPanelWidth = "200px" width = "1104px" />--%>
+            <CR:CrystalReportViewer ID="crPedidoProductos" runat="server" AutoDataBind="true" />
         </div>
     </form>
 </body>
