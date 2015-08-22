@@ -47,6 +47,19 @@ public partial class Ventas : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "ERROR", script, true);
     }
 
+    private bool IsNumeric(string num)
+    {
+        try
+        {
+            double x = Convert.ToDouble(num);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
     public void CargarGvProd(string prod)
     {
         try
@@ -101,40 +114,50 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
-            BusProductos obj = new BusProductos();
-            EntProductos prod = (obj.ObtenerProd(Session["Prod"].ToString()));
+              bool piezas;
 
-            if (string.IsNullOrEmpty(TextBox1.Text))
+            piezas = IsNumeric(txtPiezasV.Text);
+            if (piezas == true)
             {
-                TextBox1.Focus();
-                throw new ApplicationException("Ingrese un Producto en el Buscador.");
-            }
-            else if (string.IsNullOrEmpty(txtPiezasV.Text))
-            {
-                txtPiezasV.Focus();
-                throw new ApplicationException("Ingrese las piezas a Vender.");
-            }
-            else if (Convert.ToInt32(txtPiezasV.Text) > prod.Existencia)
-            {
-                throw new ApplicationException("No hay Existencias Suficientes: 'Verifique'");
+                BusProductos obj = new BusProductos();
+                EntProductos prod = (obj.ObtenerProd(Session["Prod"].ToString()));
+
+                if (string.IsNullOrEmpty(TextBox1.Text))
+                {
+                    TextBox1.Focus();
+                    throw new ApplicationException("Ingrese un Producto en el Buscador.");
+                }
+                else if (string.IsNullOrEmpty(txtPiezasV.Text))
+                {
+                    txtPiezasV.Focus();
+                    throw new ApplicationException("Ingrese las piezas a Vender.");
+                }
+                else if (Convert.ToInt32(txtPiezasV.Text) > prod.Existencia)
+                {
+                    throw new ApplicationException("No hay Existencias Suficientes: 'Verifique'");
+                }
+                else
+                {
+                    CargarGvProd(Session["Prod"].ToString());
+                    gvResBus.Visible = true;
+                    Session["Prod"] = "";
+                    TextBox1.Text = "";
+                    txtSustancia.Text = "";
+                    txtTipo.Text = "";
+                    txtCantidad.Text = "";
+                    txtExistencia.Text = "";
+                    txtCosto.Text = "";
+                    txtPiezasV.Text = "";
+                    txtCate.Text = "";
+                    txtIngreso.Text = "";
+                    txtCambio.Text = "";
+                    txtPiezasV.BackColor = System.Drawing.Color.Beige;
+                    btnCancelar.Enabled = true;
+                }
             }
             else
             {
-                CargarGvProd(Session["Prod"].ToString());
-                gvResBus.Visible = true;
-                Session["Prod"] = "";
-                TextBox1.Text = "";
-                txtSustancia.Text = "";
-                txtTipo.Text = "";
-                txtCantidad.Text = "";
-                txtExistencia.Text = "";
-                txtCosto.Text = "";
-                txtPiezasV.Text = "";
-                txtCate.Text = "";
-                txtIngreso.Text = "";
-                txtCambio.Text = "";
-                txtPiezasV.BackColor = System.Drawing.Color.Beige;
-                btnCancelar.Enabled = true;
+                throw new SystemException("Debe ingresar valores numericos.");
             }
         }
         catch (Exception ex)
@@ -286,13 +309,24 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
-            double Cambio = 0;
-            Cambio = Convert.ToDouble(Convert.ToDouble(txtIngreso.Text == "" ? "0" : txtIngreso.Text) - Convert.ToDouble(txtTotal.Text == "" ? "0" : txtTotal.Text.Replace("$", "")));
-            txtCambio.Text = Cambio.ToString("C");
-            if (Cambio >= 0.0)
-                txtCambio.ForeColor = System.Drawing.Color.Blue;
+            bool ingreso;
+
+            ingreso = IsNumeric(txtIngreso.Text);
+            if (ingreso == true)
+            {
+
+                double Cambio = 0;
+                Cambio = Convert.ToDouble(Convert.ToDouble(txtIngreso.Text == "" ? "0" : txtIngreso.Text) - Convert.ToDouble(txtTotal.Text == "" ? "0" : txtTotal.Text.Replace("$", "")));
+                txtCambio.Text = Cambio.ToString("C");
+                if (Cambio >= 0.0)
+                    txtCambio.ForeColor = System.Drawing.Color.Blue;
+                else
+                    txtCambio.ForeColor = System.Drawing.Color.Red;
+            }
             else
-                txtCambio.ForeColor = System.Drawing.Color.Red;
+            {
+                throw new SystemException("Debe ingresar valores numericos.");
+            }
         }
         catch (Exception ex)
         {

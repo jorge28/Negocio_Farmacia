@@ -176,7 +176,7 @@ namespace RS_ProyectoFarmacia.Data
         public int agregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio)
         {
 
-            SqlCommand comando = new SqlCommand("", con);
+            SqlCommand comando = new SqlCommand("sp_InsertaProd", con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = prod, ParameterName = "@producto" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = sust, ParameterName = "@sustancia" });
@@ -184,7 +184,7 @@ namespace RS_ProyectoFarmacia.Data
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Int, Value = tipo, ParameterName = "@tipo" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = cant, ParameterName = "@cantidad" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Int, Value = exis, ParameterName = "@existencia" });
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Float, Value = precio, ParameterName = "@precio" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Float, Value = precio, ParameterName = "@costo" });
             try
             {
                 con.Open();

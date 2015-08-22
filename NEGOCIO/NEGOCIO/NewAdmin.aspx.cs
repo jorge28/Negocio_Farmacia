@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class NewAdmin : System.Web.UI.Page
 {
-   
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -32,7 +32,7 @@ public partial class NewAdmin : System.Web.UI.Page
         }
 
 
-       
+
     }
     public void mostrarMensaje(string mensaje)
     {
@@ -95,66 +95,167 @@ public partial class NewAdmin : System.Web.UI.Page
     }
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
+        bool lbExis;
+        bool lbCosto;
         try
         {
-            EntProductos eprod = new EntProductos();
-            //List<EntProductos> InsertaProd = new List<EntProductos>();
-            eprod.Nombre_Producto = txtProducto.Text;
-            eprod.Sustancia = txtSustancia.Text;
-            eprod.IdCategoria = Convert.ToInt32(ddlCategoria.SelectedValue);
-            eprod.IdTipo = Convert.ToInt32(ddlTipo.SelectedValue);
-            eprod.Cantidad = txtCantidad.Text;
-            eprod.Existencia = Convert.ToInt32(txtExistencia.Text);
-            eprod.Costo = Convert.ToDouble(txtPrecio.Text);
+            lbCosto = IsNumeric(txtPrecio.Text);
+            if (lbCosto == true)
+            {
+                lbExis = IsNumeric(txtExistencia.Text);
+                if (lbExis == true)
+                {
+                    if (ddlCategoria.SelectedValue != "0")
+                    {
+                        if (ddlTipo.SelectedValue != "0")
+                        {
+                            EntProductos eprod = new EntProductos();
+                            //List<EntProductos> InsertaProd = new List<EntProductos>();
+                            eprod.Nombre_Producto = txtProducto.Text;
+                            eprod.Sustancia = txtSustancia.Text;
+                            eprod.IdCategoria = Convert.ToInt32(ddlCategoria.SelectedValue);
+                            eprod.IdTipo = Convert.ToInt32(ddlTipo.SelectedValue);
+                            eprod.Cantidad = txtCantidad.Text;
+                            eprod.Existencia = Convert.ToInt32(txtExistencia.Text);
+                            eprod.Costo = Convert.ToDouble(txtPrecio.Text);
 
-            BusProductos bprod = new BusProductos();
-            bprod.InsertaProducto(eprod);
+                            BusProductos bprod = new BusProductos();
+                            bprod.InsertaProducto(eprod);
 
+                            BusBitacora obj2 = new BusBitacora();
+                            EntUsuarios usua = new EntUsuarios();
+                            obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 4, "AltaNuevoProducto", "ALTA DE PRODUCTO : " + DateTime.Now + "Producto: " + txtProducto.Text + " Existencia: " + txtExistencia.Text + " Costo: " + txtPrecio.Text);
 
+                            txtProducto.Text = "";
+                            txtSustancia.Text = "";
+                            ddlCategoria.SelectedValue = "1";
+                            ddlTipo.SelectedValue = "1";
+                            txtCantidad.Text = "";
+                            txtExistencia.Text = "";
+                            txtPrecio.Text = "";
+                        }
 
-
+                        else
+                        {
+                            throw new SystemException("No ha seleccionado el Tipo de Medicamento");
+                        }
+                    }
+                    else
+                    {
+                        throw new SystemException("No ha seleccionado la Categoria del Medicamento");
+                    }
+                }
+                else
+                {
+                    throw new SystemException("Solo se admiten valores numericos en numeros de existencia");
+                }
+            }
+            else
+            {
+                throw new SystemException("Solo se admiten valores numericos en el costo del producto");
+            }
 
         }
         catch (Exception ex)
         {
 
             mostrarMensaje(ex.Message);
+        }
+
+    }
+    private bool IsNumeric(string num)
+    {
+        try
+        {
+            double x = Convert.ToDouble(num);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
         }
     }
     protected void btnCancelar_Click(object sender, EventArgs e)
     {
-        Response.Redirect("NewAdmin.aspx");
+        txtProducto.Text = "";
+        txtSustancia.Text = "";
+        ddlCategoria.SelectedValue = "1";
+        ddlTipo.SelectedValue = "1";
+        txtCantidad.Text = "";
+        txtExistencia.Text = "";
+        txtPrecio.Text = "";
     }
     protected void btnGuardarU_Click(object sender, EventArgs e)
     {
+        bool lbTel;
+        bool lbCel;
         try
         {
-            EntUsuarios eusua = new EntUsuarios();
+            lbTel = IsNumeric(txtTel.Text);
+            if (lbTel == true)
+            {
+                lbCel = IsNumeric(txtCel.Text);
+                if (lbCel == true)
+                {
+                    EntUsuarios eusua = new EntUsuarios();
 
-            eusua.NombreUsuario = txtNombre.Text;
-            eusua.ApellidoPaterno = txtApaterno.Text;
-            eusua.ApellidoMaterno = txtAmaterno.Text;
-            eusua.Direccion = txtDireccion.Text;
-            eusua.Telefono = txtTel.Text;
-            eusua.Celular = txtCel.Text;
-            eusua.Usuario = txtUsua.Text;
-            eusua.Contraseña = txtPass.Text;
+                    eusua.NombreUsuario = txtNombre.Text;
+                    eusua.ApellidoPaterno = txtApaterno.Text;
+                    eusua.ApellidoMaterno = txtAmaterno.Text;
+                    eusua.Direccion = txtDireccion.Text;
+                    eusua.Telefono = txtTel.Text;
+                    eusua.Celular = txtCel.Text;
+                    eusua.Usuario = txtUsua.Text;
+                    eusua.Contraseña = txtPass.Text;
+                    eusua.Pregunta_Secreta = txtPregunta.Text;
 
-            BusUsuarios busua = new BusUsuarios();
+                    BusUsuarios busua = new BusUsuarios();
+                    busua.InsertaUsuario(eusua);
 
+                    BusBitacora obj2 = new BusBitacora();
+                    EntUsuarios usua = new EntUsuarios();
+                    obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 7, "AltaNuevoEmpleado", "ALTA DE USUARIO : " + DateTime.Now + "Nuevo Usuario: " + eusua.NombreUsuario + " " + eusua.ApellidoPaterno + " " + eusua.ApellidoMaterno + " como Empleado para Ventas ");
 
-
-
+                    txtNombre.Text = "";
+                    txtApaterno.Text = "";
+                    txtAmaterno.Text = "";
+                    txtDireccion.Text = "";
+                    txtTel.Text = "";
+                    txtCel.Text = "";
+                    txtUsua.Text = "";
+                    txtPass.Text = "";
+                    txtPregunta.Text = "";
+                }
+                else
+                {
+                    throw new SystemException("Solo se admiten valores numericos en el numero Celular");
+                }
+            }
+            else
+            {
+                throw new SystemException("Solo se admiten valores numericos en el numero Telefonico");
+            }
         }
         catch (Exception ex)
         {
 
             mostrarMensaje(ex.Message);
         }
+
     }
     protected void btnCancelaU_Click(object sender, EventArgs e)
     {
-        Response.Redirect("NewAdmin.aspx");
+        txtNombre.Text = "";
+        txtApaterno.Text = "";
+        txtAmaterno.Text = "";
+        txtDireccion.Text = "";
+        txtTel.Text = "";
+        txtCel.Text = "";
+        txtUsua.Text = "";
+        txtPass.Text = "";
+        txtPregunta.Text = "";
+
+
     }
 
     protected void txtBuscadorE_TextChanged1(object sender, EventArgs e)
@@ -256,40 +357,42 @@ public partial class NewAdmin : System.Web.UI.Page
     {
         try
         {
-            EntUsuarios usua = new EntUsuarios();
-            usua = (EntUsuarios)Session["Login"];
+          
+                EntUsuarios usua = new EntUsuarios();
+                usua = (EntUsuarios)Session["Login"];
 
-            if (txtPiezasAgregar.Text == "" && txtPiezasDescontar.Text == "" && txtCostoNuevo.Text == "")
-                throw new SystemException("No ha ingresado valores para Actualizar");
-            else
-            {
-                string piezasAgregar;
-                string piezasDescontar;
-                string costoNuevo;
-                piezasAgregar = string.IsNullOrEmpty(txtPiezasAgregar.Text) ? "0" : txtPiezasAgregar.Text;
-                piezasDescontar = string.IsNullOrEmpty(txtPiezasDescontar.Text) ? "0" : txtPiezasDescontar.Text;
-                costoNuevo = string.IsNullOrEmpty(txtCostoNuevo.Text) ? "0" : txtCostoNuevo.Text;
-                BusProductos obj = new BusProductos();
-                obj.updateProducto(Convert.ToInt32(hfIdProductoE.Value), Convert.ToInt32(piezasAgregar), Convert.ToInt32(piezasDescontar), Convert.ToDouble(costoNuevo));
-                 
-                BusBitacora obj2 = new BusBitacora();
-                obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 5, "ActualizacionProducto", "ACTUALIZACION PRODUCTO : " + DateTime.Now + "Producto: " + txtBuscadorE.Text + " Existencia: " + txtExistenciaE.Text + " Piezas Agregadas: " + txtPiezasAgregar.Text + " Piezas Descontar: " + txtPiezasDescontar.Text + " Costo Actual: " + txtCostoE.Text + " Costo Nuevo: $" + txtCostoNuevo.Text);
+                if (txtPiezasAgregar.Text == "" && txtPiezasDescontar.Text == "" && txtCostoNuevo.Text == "")
+                    throw new SystemException("No ha ingresado valores para Actualizar");
+                else
+                {
+                    string piezasAgregar;
+                    string piezasDescontar;
+                    string costoNuevo;
+                    piezasAgregar = string.IsNullOrEmpty(txtPiezasAgregar.Text) ? "0" : txtPiezasAgregar.Text;
+                    piezasDescontar = string.IsNullOrEmpty(txtPiezasDescontar.Text) ? "0" : txtPiezasDescontar.Text;
+                    costoNuevo = string.IsNullOrEmpty(txtCostoNuevo.Text) ? "0" : txtCostoNuevo.Text;
+                    BusProductos obj = new BusProductos();
+                    obj.updateProducto(Convert.ToInt32(hfIdProductoE.Value), Convert.ToInt32(piezasAgregar), Convert.ToInt32(piezasDescontar), Convert.ToDouble(costoNuevo));
 
-                txtBuscadorE.Text = "";
-                txtSustaciaE.Text = "";
-                txtCateE.Text = "";
-                txtTipoE.Text = "";
-                txtCantidadE.Text = "";
-                txtExistenciaE.Text = "";
-                txtCostoE.Text = "";
-                txtPiezasAgregar.Text = "";
-                txtPiezasDescontar.Text = "";
-                txtCostoNuevo.Text = "";
-            }
+                    BusBitacora obj2 = new BusBitacora();
+                    obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 5, "ActualizacionProducto", "ACTUALIZACION PRODUCTO : " + DateTime.Now + "Producto: " + txtBuscadorE.Text + " Existencia: " + txtExistenciaE.Text + " Piezas Agregadas: " + txtPiezasAgregar.Text + " Piezas Descontar: " + txtPiezasDescontar.Text + " Costo Actual: " + txtCostoE.Text + " Costo Nuevo: $" + txtCostoNuevo.Text);
+
+                    txtBuscadorE.Text = "";
+                    txtSustaciaE.Text = "";
+                    txtCateE.Text = "";
+                    txtTipoE.Text = "";
+                    txtCantidadE.Text = "";
+                    txtExistenciaE.Text = "";
+                    txtCostoE.Text = "";
+                    txtPiezasAgregar.Text = "";
+                    txtPiezasDescontar.Text = "";
+                    txtCostoNuevo.Text = "";
+                }            
+            
         }
         catch (Exception ex)
         {
-            
+
             mostrarMensaje(ex.Message);
         }
 

@@ -33,14 +33,14 @@ namespace RS_ProyectoFarmacia.Business
             usua.Celular = dr["Celular"].ToString();
             usua.Direccion = dr["Direccion"].ToString();
             usua.Estatus = Convert.ToBoolean(dr["Estatus"]);
-
+            usua.Pregunta_Secreta = dr["Pregunta_Secreta"].ToString();
             return usua;
         }
         public void InsertaUsuario(EntUsuarios ent)
         {
 
             DatUsuarios dusua = new DatUsuarios();
-            int lintFilas = dusua.agregaUsuarioD(ent.NombreUsuario,ent.ApellidoPaterno,ent.ApellidoMaterno,ent.Direccion,ent.Telefono,ent.Celular,ent.Usuario,ent.Contraseña);
+            int lintFilas = dusua.agregaUsuarioD(ent.NombreUsuario, ent.ApellidoPaterno, ent.ApellidoMaterno, ent.Direccion, ent.Telefono, ent.Celular, ent.Usuario, ent.Contraseña, ent.Pregunta_Secreta);
             if (lintFilas != 1)
             {
                 throw new System.Exception("error en la capa de negocio al insertar un usuario");

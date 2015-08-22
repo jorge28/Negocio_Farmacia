@@ -23,19 +23,20 @@ namespace RS_ProyectoFarmacia.Data
             da.Fill(dt);
             return dt;
         }
-        public int agregaUsuarioD(string nombre, string paterno, string materno, string direccion, string tel, string cel, string usua,string pass)
+        public int agregaUsuarioD(string nombre, string paterno, string materno, string direccion, string tel, string cel, string usua, string pass, string pregunta)
         {
 
-            SqlCommand comando = new SqlCommand("", con);
+            SqlCommand comando = new SqlCommand("sp_InsertaUsuario", con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = nombre, ParameterName = "@nombre" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = paterno, ParameterName = "@paterno" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = materno, ParameterName = "@materno" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = direccion, ParameterName = "@direccion" });
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = tel, ParameterName = "@telefono" });
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = cel, ParameterName = "@celular" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = tel, ParameterName = "@tel" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = cel, ParameterName = "@cel" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = usua, ParameterName = "@usuario" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = pass, ParameterName = "@password" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = pregunta, ParameterName = "@pregunta" });
             try
             {
                 con.Open();

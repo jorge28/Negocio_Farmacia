@@ -22,6 +22,7 @@ namespace RS_ProyectoFarmacia.Business.Entity
         public bool Estatus { get; set; }
         public string Usuario { get; set; }
         public string Contraseña { get; set; }
+        public string Pregunta_Secreta { get; set; }
 
     }
 }
