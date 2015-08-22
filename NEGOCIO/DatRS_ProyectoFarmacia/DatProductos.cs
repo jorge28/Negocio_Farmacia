@@ -150,7 +150,7 @@ namespace RS_ProyectoFarmacia.Data
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Int, Value = usuarioID, ParameterName = "@UsuarioId" });
             DataTable dt = new DataTable();
             da.Fill(dt);
-            
+
             return dt.Rows[0];
         }
         public DataTable ObtenerCategoria()
@@ -173,9 +173,10 @@ namespace RS_ProyectoFarmacia.Data
 
             return ds.Tables[0];
         }
-        public int agregaProducto(string prod,string sust,int cat,int tipo,string cant,int exis,double precio) {
+        public int agregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio)
+        {
 
-            SqlCommand comando = new SqlCommand("",con);
+            SqlCommand comando = new SqlCommand("", con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = prod, ParameterName = "@producto" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = sust, ParameterName = "@sustancia" });
@@ -194,10 +195,54 @@ namespace RS_ProyectoFarmacia.Data
             }
             catch (Exception ex)
             {
-                
+
                 throw new ApplicationException(ex.Message);
             }
-        
+
+        }
+
+        public bool updateProducto(int productoID, int piezasAgregar, int piezasDescontar, double costoNuevo)
+        {
+
+            SqlTransaction objtrans = null;
+            try
+            {
+                con.Open();
+                objtrans = con.BeginTransaction();
+                SqlCommand comando = new SqlCommand("sp_Update_Productos", con);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@ProductoId", productoID);
+                comando.Parameters.AddWithValue("@PiezasAgregar", piezasAgregar);
+                comando.Parameters.AddWithValue("@PiezasDescontar", piezasDescontar);
+                comando.Parameters.AddWithValue("@CostoNuevo", costoNuevo);
+              
+                var _with1 = comando;
+                _with1.Transaction = objtrans;
+                _with1.ExecuteNonQuery();
+
+                comando.Parameters.Clear();
+
+                objtrans.Commit();
+                return true;
+            }
+            catch (DataException)
+            {
+                objtrans.Rollback();
+                return false;
+                throw new SystemException("Error en Capa de Datos al Actualizar el Producto.");
+            }
+            catch (Exception)
+            {
+                objtrans.Rollback();
+                return false;
+                throw new SystemException("Error en Capa de Datos al Actualizar el Producto.");
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
         }
     }
 }

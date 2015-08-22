@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class NewAdmin : System.Web.UI.Page
 {
+   
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -156,11 +157,11 @@ public partial class NewAdmin : System.Web.UI.Page
         Response.Redirect("NewAdmin.aspx");
     }
 
-    protected void TextBox1_TextChanged1(object sender, EventArgs e)
+    protected void txtBuscadorE_TextChanged1(object sender, EventArgs e)
     {
         try
         {
-            Label2.Text = TextBox1.Text;
+            Label2.Text = txtBuscadorE.Text;
             Session["Prod"] = Label2.Text;
 
             BusProductos obj = new BusProductos();
@@ -170,32 +171,34 @@ public partial class NewAdmin : System.Web.UI.Page
 
             if (Session["Prod"].ToString() == prod.Sustancia)
             {
-                TextBox2.Text = prod.Nombre_Producto;
+                txtSustaciaE.Text = prod.Nombre_Producto;
             }
             else
             {
-                TextBox2.Text = prod.Sustancia;
+                txtSustaciaE.Text = prod.Sustancia;
             }
 
             if (prod.Existencia == 0)
             {
-                txtTipo.Text = prod.Tipo;
-                TextBox3.Text = prod.Cantidad;
-                TextBox4.Text = "Existencia:" + prod.Existencia.ToString();
-                txtCosto.Text = prod.Costo.ToString("C");
-                txtCate.Text = prod.Categoria.ToString();
+                hfIdProductoE.Value = Convert.ToString(prod.Id_Producto);
+                txtTipoE.Text = prod.Tipo;
+                txtCantidadE.Text = prod.Cantidad;
+                txtExistenciaE.Text = prod.Existencia.ToString();
+                txtCostoE.Text = prod.Costo.ToString("C");
+                txtCateE.Text = prod.Categoria.ToString();
 
-                TextBox4.ForeColor = System.Drawing.Color.Red;
+                txtExistenciaE.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
-                txtTipo.Text = prod.Tipo;
-                TextBox3.Text = prod.Cantidad;
-                TextBox4.Text = "Existencia:" + prod.Existencia.ToString();
-                txtCosto.Text = prod.Costo.ToString("C");
-                txtCate.Text = prod.Categoria.ToString();
+                hfIdProductoE.Value = Convert.ToString(prod.Id_Producto);
+                txtTipoE.Text = prod.Tipo;
+                txtCantidadE.Text = prod.Cantidad;
+                txtExistenciaE.Text = prod.Existencia.ToString();
+                txtCostoE.Text = prod.Costo.ToString("C");
+                txtCateE.Text = prod.Categoria.ToString();
 
-                TextBox4.ForeColor = System.Drawing.Color.Black;
+                txtExistenciaE.ForeColor = System.Drawing.Color.Black;
             }
 
         }
@@ -229,4 +232,66 @@ public partial class NewAdmin : System.Web.UI.Page
 
     }
 
+    protected void btnCancelarE_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            txtBuscadorE.Text = "";
+            txtSustaciaE.Text = "";
+            txtCateE.Text = "";
+            txtTipoE.Text = "";
+            txtCantidadE.Text = "";
+            txtExistenciaE.Text = "";
+            txtCostoE.Text = "";
+            txtPiezasAgregar.Text = "";
+            txtPiezasDescontar.Text = "";
+            txtCostoNuevo.Text = "";
+        }
+        catch (Exception ex)
+        {
+            mostrarMensaje(ex.Message);
+        }
+    }
+    protected void btnActualizarE_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            EntUsuarios usua = new EntUsuarios();
+            usua = (EntUsuarios)Session["Login"];
+
+            if (txtPiezasAgregar.Text == "" && txtPiezasDescontar.Text == "" && txtCostoNuevo.Text == "")
+                throw new SystemException("No ha ingresado valores para Actualizar");
+            else
+            {
+                string piezasAgregar;
+                string piezasDescontar;
+                string costoNuevo;
+                piezasAgregar = string.IsNullOrEmpty(txtPiezasAgregar.Text) ? "0" : txtPiezasAgregar.Text;
+                piezasDescontar = string.IsNullOrEmpty(txtPiezasDescontar.Text) ? "0" : txtPiezasDescontar.Text;
+                costoNuevo = string.IsNullOrEmpty(txtCostoNuevo.Text) ? "0" : txtCostoNuevo.Text;
+                BusProductos obj = new BusProductos();
+                obj.updateProducto(Convert.ToInt32(hfIdProductoE.Value), Convert.ToInt32(piezasAgregar), Convert.ToInt32(piezasDescontar), Convert.ToDouble(costoNuevo));
+                 
+                BusBitacora obj2 = new BusBitacora();
+                obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 5, "ActualizacionProducto", "ACTUALIZACION PRODUCTO : " + DateTime.Now + "Producto: " + txtBuscadorE.Text + " Existencia: " + txtExistenciaE.Text + " Piezas Agregadas: " + txtPiezasAgregar.Text + " Piezas Descontar: " + txtPiezasDescontar.Text + " Costo Actual: " + txtCostoE.Text + " Costo Nuevo: $" + txtCostoNuevo.Text);
+
+                txtBuscadorE.Text = "";
+                txtSustaciaE.Text = "";
+                txtCateE.Text = "";
+                txtTipoE.Text = "";
+                txtCantidadE.Text = "";
+                txtExistenciaE.Text = "";
+                txtCostoE.Text = "";
+                txtPiezasAgregar.Text = "";
+                txtPiezasDescontar.Text = "";
+                txtCostoNuevo.Text = "";
+            }
+        }
+        catch (Exception ex)
+        {
+            
+            mostrarMensaje(ex.Message);
+        }
+
+    }
 }

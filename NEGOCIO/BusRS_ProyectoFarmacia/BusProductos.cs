@@ -97,7 +97,6 @@ namespace RS_ProyectoFarmacia.Business
                 throw new System.Exception("error en la capa de negocio al insertar un producto");
             }
         }
-        
  
 
         public void InsertVentas(List<EntProductosVentas> ListaProductos)
@@ -133,6 +132,16 @@ namespace RS_ProyectoFarmacia.Business
             ultimo.Venta_Num_Cliente = Convert.ToInt32(dr["Venta_Num_Cliente"] is DBNull ? "0" : dr["Venta_Num_Cliente"]);
 
             return ultimo ;
+        }
+
+        public void updateProducto(int productoID, int piezasAgregar, int piezasDescontar, double costoNuevo)
+        {
+            DatProductos obj = new DatProductos();
+            bool Actualizo = obj.updateProducto(productoID,piezasAgregar,piezasDescontar,costoNuevo);
+            if (Actualizo == false)
+            {
+                throw new SystemException("Error en la Capa de Negocios al Actualizar el Producto.");
+            }
         }
 
     }
