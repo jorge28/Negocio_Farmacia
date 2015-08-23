@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Index" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -101,7 +101,7 @@
     </form><br /><br />
     <div class="footer">
         <p id="copyright" style="text-align: center">
-            &copy; 2015 BusinessControl. Todos los derechos reservados. <a href="Index.aspx">Estrella de la Mañana</a> by <a href="#">ROMA-SYSTEMS</a>
+            &copy; 2015 BusinessControl. Todos los derechos reservados. <a href="Default.aspx">Estrella de la Mañana</a> by <a href="#">ROMA-SYSTEMS</a>
         </p>
     </div>
 </body>

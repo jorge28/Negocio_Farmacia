@@ -16,7 +16,7 @@ public partial class ReportePedidoProductos : System.Web.UI.Page
         {
             if (Session["Login"] == null)
             {
-                Response.Redirect("Index.aspx");
+                Response.Redirect("Default.aspx");
             }
             EntUsuarios usua = new EntUsuarios();
             usua = (EntUsuarios)Session["Login"];

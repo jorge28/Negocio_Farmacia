@@ -15,7 +15,7 @@ public partial class NewAdmin : System.Web.UI.Page
 
         if (Session["Login"] == null)
         {
-            Response.Redirect("Index.aspx");
+            Response.Redirect("Default.aspx");
         }
         EntUsuarios usua = new EntUsuarios();
         usua = (EntUsuarios)Session["Login"];
@@ -91,7 +91,7 @@ public partial class NewAdmin : System.Web.UI.Page
     }
     protected void btnSalir_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Index.aspx");
+        Response.Redirect("Default.aspx");
     }
     protected void btnGuardar_Click(object sender, EventArgs e)
     {

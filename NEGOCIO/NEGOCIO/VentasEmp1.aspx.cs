@@ -15,7 +15,7 @@ public partial class Ventas : System.Web.UI.Page
     {
         if (Session["Login"] == null)
         {
-            Response.Redirect("Index.aspx");
+            Response.Redirect("Default.aspx");
         }
         EntUsuarios usua = new EntUsuarios();
         usua = (EntUsuarios)Session["Login"];
@@ -302,7 +302,7 @@ public partial class Ventas : System.Web.UI.Page
 
     protected void btnSalir_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Index.aspx");
+        Response.Redirect("Default.aspx");
     }
 
     protected void txtIngreso_TextChanged(object sender, EventArgs e)
