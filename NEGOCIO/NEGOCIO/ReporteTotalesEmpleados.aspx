@@ -27,7 +27,8 @@
                         <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick">
                         </asp:Timer>
                         <asp:Label ID="lblFecha" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>
-                        <asp:Button ID="btnRegresar" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Regresar" OnClick="btnRegresar_Click" ></asp:Button>
+                        <asp:Button ID="btnRegresar" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Regresar" OnClick="btnRegresar_Click"></asp:Button>
+                        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Imprimir" OnClick="btnImprimir_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>

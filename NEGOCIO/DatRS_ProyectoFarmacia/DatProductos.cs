@@ -244,5 +244,53 @@ namespace RS_ProyectoFarmacia.Data
                 con.Dispose();
             }
         }
+
+        public bool updateExtraProducto(string prod, string sust, string cat, string tipo, string cant, int productoID)
+        {
+
+            SqlTransaction objtrans = null;
+            try
+            {
+                con.Open();
+                objtrans = con.BeginTransaction();
+                SqlCommand comando = new SqlCommand("sp_UpdateExtraProd", con);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@prod", prod);
+                comando.Parameters.AddWithValue("@sust", sust);
+                comando.Parameters.AddWithValue("@cat", cat);
+                comando.Parameters.AddWithValue("@tipo", tipo);
+                comando.Parameters.AddWithValue("@cant", cant);
+                comando.Parameters.AddWithValue("@idProd", productoID);
+
+                var _with1 = comando;
+                _with1.Transaction = objtrans;
+                _with1.ExecuteNonQuery();
+
+                comando.Parameters.Clear();
+
+                objtrans.Commit();
+                return true;
+            }
+            catch (DataException)
+            {
+                objtrans.Rollback();
+                return false;
+                throw new SystemException("Error en Capa de Datos al Actualizar el Producto.");
+            }
+            catch (Exception)
+            {
+                objtrans.Rollback();
+                return false;
+                throw new SystemException("Error en Capa de Datos al Actualizar el Producto.");
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+        }
+
+
     }
 }

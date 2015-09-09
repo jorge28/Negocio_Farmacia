@@ -186,6 +186,7 @@ public partial class Ventas : System.Web.UI.Page
             {
                 txtSustancia.Text = prod.Sustancia;
             }
+            
 
             if (prod.Existencia == 0)
             {
@@ -198,7 +199,7 @@ public partial class Ventas : System.Web.UI.Page
                 txtPiezasV.Text = "";
                 txtExistencia.ForeColor = System.Drawing.Color.Red;
             }
-            else
+            else 
             {
                 txtTipo.Text = prod.Tipo;
                 txtCantidad.Text = prod.Cantidad;
@@ -209,7 +210,11 @@ public partial class Ventas : System.Web.UI.Page
                 txtPiezasV.Text = "";
                 txtExistencia.ForeColor = System.Drawing.Color.Black;
             }
+            
+            if (prod.Categoria == "Medico")
+                txtExistencia.Text = "";
 
+          
         }
         catch (Exception ex)
         {
@@ -309,11 +314,11 @@ public partial class Ventas : System.Web.UI.Page
     {
         try
         {
-            bool ingreso;
+            //bool ingreso;
 
-            ingreso = IsNumeric(txtIngreso.Text);
-            if (ingreso == true)
-            {
+            //ingreso = IsNumeric(txtIngreso.Text);
+            //if (ingreso == true)
+            //{
 
                 double Cambio = 0;
                 Cambio = Convert.ToDouble(Convert.ToDouble(txtIngreso.Text == "" ? "0" : txtIngreso.Text) - Convert.ToDouble(txtTotal.Text == "" ? "0" : txtTotal.Text.Replace("$", "")));
@@ -322,11 +327,11 @@ public partial class Ventas : System.Web.UI.Page
                     txtCambio.ForeColor = System.Drawing.Color.Blue;
                 else
                     txtCambio.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                throw new SystemException("Debe ingresar valores numericos.");
-            }
+            //}
+            //else
+            //{
+            //    throw new SystemException("Debe ingresar valores numericos.");
+            //}
         }
         catch (Exception ex)
         {
@@ -412,6 +417,11 @@ public partial class Ventas : System.Web.UI.Page
             {
                 txtIngreso.Focus();
                 throw new SystemException("Debe ingresar Dinero para cobro.");
+            }
+            else if (Convert.ToDouble(txtIngreso.Text) < Convert.ToDouble(txtTotal.Text.Replace("$", "")))
+            {
+                txtIngreso.Focus();
+                throw new SystemException("El monto ingresado no cubre el Total de la Venta.");
             }
             else
             {

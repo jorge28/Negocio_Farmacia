@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <script src="js/bootstrap.js"></script>
@@ -97,7 +97,7 @@
                                         <br />
                                         <div class="row">
                                             <div class="input-group">
-                                                <span class="input-group-addon" id="sTipo" style="width: 100px; background-color: #26a929; color: white">Tipo</span>
+                                                <span class="input-group-addon" id="sTipo" style="width: 100px; background-color: #26a929; color: white">Presentacion:</span>
                                                 <asp:DropDownList ID="ddlTipo" runat="server" class="form-control" Width="200px" aria-describedby="sTipo">
                                                 </asp:DropDownList>
                                             </div>
@@ -105,7 +105,7 @@
                                         <br />
                                         <div class="row">
                                             <div class="input-group">
-                                                <span class="input-group-addon" id="sCantidad" style="width: 100px; background-color: #26a929; color: white">Cantidad</span>
+                                                <span class="input-group-addon" id="sCantidad" style="width: 100px; background-color: #26a929; color: white">Contenido:</span>
                                                 <asp:TextBox ID="txtCantidad" runat="server" class="form-control" placeholder="Cantidad del Producto" Width="200px" aria-describedby="sCantidad" ValidationGroup="new" />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*** Campo Requerido" Text="***" Display="Static" ForeColor="Red" ControlToValidate="txtCantidad" ValidationGroup="new"></asp:RequiredFieldValidator>
                                             </div>
@@ -247,18 +247,37 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Producto:</span>
+                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Buscar:</span>
                                                     <asp:TextBox ID="txtBuscadorE" runat="server" Font-Bold="false" ForeColor="Black" Height="35px" Width="400px" placeholder="Buscador" BackColor="Beige" AutoPostBack="True" OnTextChanged="txtBuscadorE_TextChanged1" />
                                                     <asp:Label ID="Label2" runat="server" Text="Label" Visible="false"></asp:Label>
                                                 </div>
                                             </div>
                                         </div>
                                         <br />
+                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Producto:</span>
+                                                    <asp:TextBox ID="txtProdE" runat="server" Font-Bold="false" ForeColor="Black" Height="35px" Width="300px" placeholder="producto" BackColor="Beige" Enabled="false"/>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                  <div class="btn-group">
+                                                    <asp:Button ID="Button1" class="btn btn-default" runat="server"  Text="Editar" OnClick="Button1_Click" />
+                                                  </div>
+                                                </div>
+                                                 
+                                                </div>
+                                            </div>
+                                        
+                                        <br />
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Sustancia:</span>
                                                     <asp:TextBox ID="txtSustaciaE" runat="server" Font-Size="Medium" Font-Bold="false" ForeColor="Black" Height="35px" Width="300px" placeholder="Sustancia/Nombre" BackColor="Beige" Enabled="false" />
+                                                    &nbsp;&nbsp;&nbsp;
+                                                  <div class="btn-group">
+                                                    <asp:Button ID="Button2" class="btn btn-default" runat="server"  Text="Editar" OnClick="Button2_Click" />
+                                                  </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -267,25 +286,37 @@
                                             <div class="col-md-12">
                                                 <div class="input-group">
                                                     <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Categoria:</span>
-                                                    <asp:TextBox ID="txtCateE" runat="server" Font-Size="Medium" Font-Bold="false" ForeColor="Black" Height="35px" Width="300px" placeholder="Categoria" BackColor="Beige" Enabled="false" />
-                                                </div>
+                                                    <asp:DropDownList ID="ddlCatE" class="form-control" Width="200px" runat="server" BackColor="Beige" ></asp:DropDownList>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                  <div class="btn-group">
+                                                    <asp:Button ID="Button3" class="btn btn-default" runat="server"  Text="Editar" OnClick="Button3_Click" />
+                                                  </div>
+                                                    </div>
                                             </div>
                                         </div>
                                         <br />
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Tipo:</span>
-                                                    <asp:TextBox ID="txtTipoE" runat="server" Font-Size="Medium" Font-Bold="false" ForeColor="Black" Height="35px" Width="300px" placeholder="Tipo" BackColor="Beige" Enabled="false" />
-                                                </div>
+                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Prsentacion:</span>
+                                                    <asp:DropDownList ID="ddlTipoE" class="form-control" Width="200px" runat="server" BackColor="Beige" ></asp:DropDownList>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                  <div class="btn-group">
+                                                    <asp:Button ID="Button4" class="btn btn-default" runat="server"  Text="Editar" OnClick="Button4_Click" />
+                                                  </div>
+                                                    </div>
                                             </div>
                                         </div>
                                         <br />
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Catidad:</span>
+                                                    <span class="input-group-addon" style="width: 100px; background-color: #ffa20f; color: white;">Contenido:</span>
                                                     <asp:TextBox ID="txtCantidadE" runat="server" Font-Size="Medium" Font-Bold="false" ForeColor="Black" Height="35px" Width="300px" placeholder="Cantidad" BackColor="Beige" Enabled="false" />
+                                                    &nbsp;&nbsp;&nbsp;
+                                                  <div class="btn-group">
+                                                    <asp:Button ID="Button5" class="btn btn-default" runat="server"  Text="Editar" OnClick="Button5_Click" />
+                                                  </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,8 +355,7 @@
                                                     <asp:TextBox ID="txtCostoNuevo" runat="server" Font-Size="Medium" Font-Bold="false" ForeColor="Black" Height="35px" Width="80px" BackColor="Beige" Enabled="true" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                            </div>
+                                            
                                         </div>
                                         <br />
                                         <br />
@@ -351,7 +381,7 @@
                                             </div>
                                         </div>
                                         <hr style="border: double" />
-                                        <h4>*** Reporte de Ventas y/o Cancelaciones. (Seleccione el Rango de Fechas) ***</h4>
+                                        <%--<h4>*** Reporte de Ventas y/o Cancelaciones. (Seleccione el Rango de Fechas) ***</h4>
                                         <div class="row">
                                             <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-inline" style="padding: 4px;">
@@ -503,7 +533,7 @@
                                             <div class="col-md-12" style="text-align: center;">
                                                 <asp:LinkButton ID="lnkReporteEntArt" runat="server" CssClass="btn btn-danger btn-sm" Font-Bold="true" Style="font-size: large">Reporte Entrada Articulos</asp:LinkButton>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                     </div>
                                 </div>
                             </asp:Panel>
@@ -516,3 +546,4 @@
     </form>
 </body>
 </html>
+

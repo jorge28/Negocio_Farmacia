@@ -56,13 +56,13 @@
                         </div>
                         <div style="height: 5px"></div>
                         <div>
-                            <asp:TextBox ID="txtSustancia" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="22%" placeholder="Sustancia/Nombre:" BackColor="Beige" Enabled="false" />
-                            <asp:TextBox ID="txtTipo" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="10%" placeholder="Tipo:" BackColor="Beige" Enabled="false" />
-                            <asp:TextBox ID="txtCantidad" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="10%" placeholder="Cantidad:" BackColor="Beige" Enabled="false" />
+                            <asp:TextBox ID="txtSustancia" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="43%" placeholder="Sustancia/Nombre:" BackColor="Beige" Enabled="false" />
+                            <asp:TextBox ID="txtTipo" runat="server" Visible="false" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="10%" placeholder="Tipo:" BackColor="Beige" Enabled="false" />
+                            <asp:TextBox ID="txtCantidad" runat="server" Visible="false" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="10%" placeholder="Cantidad:" BackColor="Beige" Enabled="false" />
                             <asp:TextBox ID="txtExistencia" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="11%" placeholder="Existencia:" BackColor="Beige" Enabled="false" />
                             <asp:TextBox ID="txtCosto" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Height="35px" Width="7%" placeholder="Costo:" BackColor="Beige" Enabled="false" />
                             <asp:TextBox ID="txtPiezasV" runat="server" Font-Size="Small" Font-Bold="true" MaxLength="3" ForeColor="Black" Height="35px" Width="13%" placeholder="Piezas a Vender:" BorderWidth="1px" BorderColor="Green" BackColor="Beige" />
-                            &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;
                             <asp:Button ID="Button1" runat="server" CssClass="btn btn-success btn-sm" Font-Bold="true" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="AGREGAR" OnClick="Button1_Click1"></asp:Button>
                         </div>
                     </div>

@@ -28,11 +28,13 @@
                         </asp:Timer>
                         <asp:Label ID="lblFecha" runat="server" Font-Size="X-Large" ForeColor="DarkBlue"></asp:Label>
                         <asp:Button ID="btnRegresar" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Regresar" OnClick="btnRegresar_Click"></asp:Button>
+                        <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-success close" BackColor="LightBlue" ForeColor="Black" Height="35px" Text="Imprimir" OnClick="btnImprimir_Click" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
         </div>
         <div>
+            <asp:TextBox ID="numpag" runat="server" Visible="false" Text="1"></asp:TextBox>
             <CR:CrystalReportViewer ID="crPedidoProductos" runat="server" AutoDataBind="true" />
         </div>
     </form>

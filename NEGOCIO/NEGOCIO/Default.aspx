@@ -41,6 +41,27 @@
                                 <asp:Label ID="lblFecha" runat="server" Font-Size="XX-Large" ForeColor="Black"></asp:Label>
                             </ContentTemplate>
                         </asp:UpdatePanel>
+                        <br />
+                        <asp:LinkButton ID="lnkRecContraseña" runat="server" Style="color: blue">Recuperar/Cambiar Contraseña</asp:LinkButton>
+                        <asp:Panel ID="pnlCamCont" runat="server" Style="display: none; width: 100%;" CssClass="modalPopup">
+                            <asp:Panel ID="pnlDatosCamCont" runat="server">
+                                <div style="text-align: center; background-color: Gray; color: Yellow; font-size: medium;">
+                                    Recuperar/Cambiar Contraseña                                    
+                                    <asp:TextBox ID="txtUsuarioCC" runat="server" PlaceHolder="Usuario:" BackColor="White"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtPalabraSecreta" runat="server" PlaceHolder="Palabra Secreta:" BackColor="White"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtNuevaCont" runat="server" PlaceHolder="Nueva Contraseña:" BackColor="White"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtConfirmarCont" runat="server" PlaceHolder="Confirmar Nueva Contraseña:" BackColor="White"></asp:TextBox><br />
+                                </div>
+                            </asp:Panel>
+                            <div style="background-color: blue; text-align: center;">
+                                <asp:Panel ID="Panel5" runat="server" BackColor="Blue" Height="60px" HorizontalAlign="Center">
+                                    <asp:LinkButton ID="lnkGuardarNuevaCont" runat="server" Style="color: yellow" OnClick="lnkGuardarNuevaCont_Click">Guardar</asp:LinkButton><br />                                    
+                                    <asp:LinkButton ID="lnlCancelarNuevaCOnt" runat="server" Style="color: yellow">Cancelar</asp:LinkButton>
+                                </asp:Panel>
+                            </div>
+                        </asp:Panel>
+                        <asp:ModalPopupExtender ID="ModalPopupExtender2" runat="server" TargetControlID="lnkRecContraseña"
+                            PopupControlID="pnlCamCont" BackgroundCssClass="modalBackground" CancelControlID="lnlCancelarNuevaCOnt" DropShadow="true" PopupDragHandleControlID="pnlDatosCamCont" />
                     </div>
                     <div class="8u">
                         <div class="header">
@@ -98,7 +119,8 @@
                 </div>
             </div>
         </div>
-    </form><br /><br />
+    </form>
+    <br />
     <div class="footer">
         <p id="copyright" style="text-align: center">
             &copy; 2015 BusinessControl. Todos los derechos reservados. <a href="Default.aspx">Estrella de la Mañana</a> by <a href="#">ROMA-SYSTEMS</a>

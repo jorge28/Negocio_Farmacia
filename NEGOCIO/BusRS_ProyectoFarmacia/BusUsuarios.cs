@@ -36,6 +36,24 @@ namespace RS_ProyectoFarmacia.Business
             usua.Pregunta_Secreta = dr["Pregunta_Secreta"].ToString();
             return usua;
         }
+
+        public EntUsuarios SelectCambioPass(string usuario, string palabra)
+        {
+            DataTable dt = new DatUsuarios().SelectCambioPass(usuario, palabra);
+            if (dt.Rows.Count == 0)
+                throw new ApplicationException("Usuario y/o Palabra Secreta incorrectos :(");
+            DataRow dr = dt.Rows[0];
+            EntUsuarios usua = new EntUsuarios();
+            usua.Id_Usuario = Convert.ToInt32(dr["Id_Usuario"]);
+            usua.NombreUsuario = dr["Nombre_Usuario"].ToString();
+            usua.ApellidoPaterno = dr["Apellido_Paterno"].ToString();
+            usua.ApellidoMaterno = dr["Apellido_Materno"].ToString();
+            usua.Usuario = dr["Usuario"].ToString();
+            usua.Pregunta_Secreta = usua.Pregunta_Secreta = dr["Pregunta_Secreta"].ToString();
+
+            return usua;
+        }
+
         public void InsertaUsuario(EntUsuarios ent)
         {
 
@@ -45,6 +63,14 @@ namespace RS_ProyectoFarmacia.Business
             {
                 throw new System.Exception("error en la capa de negocio al insertar un usuario");
             }
+        }
+
+        public void InsertaNuevoPass(EntUsuarios ent)
+        {
+            DatUsuarios usua = new DatUsuarios();
+            int filas = usua.InsertaNuevoPass(ent.Usuario, ent.Pregunta_Secreta, ent.Contraseña);
+            if (filas != 1)
+                throw new ApplicationException("Error en la capa de Negocios al Guardar la Nueva COntraseña. :(");         
         }
 
     }

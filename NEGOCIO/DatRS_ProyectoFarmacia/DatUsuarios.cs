@@ -17,11 +17,24 @@ namespace RS_ProyectoFarmacia.Data
             SqlCommand comando = new SqlCommand("sp_SelectUsuario", con);
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@Usuario", usuario);
-            comando.Parameters.AddWithValue("@Contraseña", contraseña);           
+            comando.Parameters.AddWithValue("@Contraseña", contraseña);
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
+        }
+
+        public DataTable SelectCambioPass(string usuario, string palabra)
+        {
+            SqlCommand comando = new SqlCommand("sp_SelectCambioPass", con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@Usuario", usuario);
+            comando.Parameters.AddWithValue("@Palabra", palabra);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+
         }
         public int agregaUsuarioD(string nombre, string paterno, string materno, string direccion, string tel, string cel, string usua, string pass, string pregunta)
         {
@@ -37,6 +50,31 @@ namespace RS_ProyectoFarmacia.Data
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = usua, ParameterName = "@usuario" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = pass, ParameterName = "@password" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = pregunta, ParameterName = "@pregunta" });
+            try
+            {
+                con.Open();
+                int filas = comando.ExecuteNonQuery();
+                con.Close();
+
+                return filas;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException(ex.Message);
+            }
+
+        }
+
+        public int InsertaNuevoPass(string usuario, string palabra, string contraseña)
+        {
+
+            SqlCommand comando = new SqlCommand("sp_InsertaNuevoPass", con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = usuario, ParameterName = "@Usuario" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = palabra, ParameterName = "@Palabra" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = contraseña, ParameterName = "@Contrasenia" });
+            
             try
             {
                 con.Open();

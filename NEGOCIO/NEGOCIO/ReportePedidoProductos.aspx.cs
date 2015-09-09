@@ -37,6 +37,20 @@ public partial class ReportePedidoProductos : System.Web.UI.Page
         }
     }
 
+    // private void ConfigureCrystalReports()
+    // {
+    //    ReportDocument rep = new ReportDocument();
+    //        rep.Load(Server.MapPath("Reportes\\crPedidoProductos.rpt"));
+    //        rep.SetDataSource(new BusReportes().SelectPedidoProductos());
+    //        crPedidoProductos.ReportSource = rep;
+    // }
+
+    //protected void crReporteGastos_Navigate(object source, crystalDecisions.Web.NavigateEventArgs e) Handles crReporteFacturacion.Navigate
+
+    //    numpag.Text = CStr(e.NewPageNumber)
+
+    //End Sub
+
     protected void btnRegresar_Click(object sender, EventArgs e)
     {
         Response.Redirect("NewAdmin.aspx");
@@ -44,6 +58,15 @@ public partial class ReportePedidoProductos : System.Web.UI.Page
 
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
+        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy");
+    }
+
+    protected void btnImprimir_Click(object sender, EventArgs e)
+    {
+        ReportDocument rep = new ReportDocument();
+        rep.Load(Server.MapPath("Reportes\\crPedidoProductos.rpt"));
+        rep.SetDataSource(new BusReportes().SelectPedidoProductos());
+        rep.PrintOptions.PrinterName = "HP DeskJet 840C/841C/842C/843C";
+        rep.PrintToPrinter(1, false, 0, 0);
     }
 }

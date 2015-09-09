@@ -48,6 +48,16 @@ public partial class ReporteTotalesEmpleados : System.Web.UI.Page
 
     protected void Timer1_Tick(object sender, EventArgs e)
     {
-        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy HH:mm");
+        lblFecha.Text = DateTime.Now.ToString("dd/MMM/yyyy");
+    }
+
+    protected void btnImprimir_Click(object sender, EventArgs e)
+    {
+        int IdUsuario = Convert.ToInt32(Session["IdUsuario"].ToString());
+        ReportDocument rep = new ReportDocument();
+        rep.Load(Server.MapPath("Reportes\\crTotalesEmpleados.rpt"));
+        rep.SetDataSource(new BusReportes().SelectVentasEmpleados(IdUsuario));
+        rep.PrintOptions.PrinterName = "HP DeskJet 840C/841C/842C/843C";
+        rep.PrintToPrinter(1, false, 0, 0);
     }
 }
