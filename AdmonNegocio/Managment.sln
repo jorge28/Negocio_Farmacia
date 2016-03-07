@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Managment", "http://localhost:12625", "{5FD9ED3C-90E8-4D07-A2D3-EF4FA0C22580}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{6aa23da0-70c4-4987-a217-9b620179956f}|Bus_Managment.dll;{B165007F-B03B-4C9E-8B98-92AA877E793C}|Dat_Managment.dll;{72C947E4-C972-433D-8586-0A6B68AE9F55}|Ent_Managment.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_12625"
+		Debug.AspNetCompiler.PhysicalPath = "Managment\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12625\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_12625"
+		Release.AspNetCompiler.PhysicalPath = "Managment\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_12625\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Managment\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 UI", "1 UI", "{D197BB16-E495-43F1-9C89-2056AECFB60A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 BUSINESS", "2 BUSINESS", "{4DA72D5F-D778-440C-BF24-1EA3C46E0CAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 DATA", "3 DATA", "{C4A717E3-972F-47F7-B87C-A15936F0A2AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dat_Managment", "Dat_Managment\Dat_Managment.csproj", "{B165007F-B03B-4C9E-8B98-92AA877E793C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bus_Managment", "Bus_Managment\Bus_Managment.csproj", "{6AA23DA0-70C4-4987-A217-9B620179956F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ent_Managment", "Ent_Managment\Ent_Managment.csproj", "{72C947E4-C972-433D-8586-0A6B68AE9F55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FD9ED3C-90E8-4D07-A2D3-EF4FA0C22580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD9ED3C-90E8-4D07-A2D3-EF4FA0C22580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD9ED3C-90E8-4D07-A2D3-EF4FA0C22580}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD9ED3C-90E8-4D07-A2D3-EF4FA0C22580}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B165007F-B03B-4C9E-8B98-92AA877E793C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B165007F-B03B-4C9E-8B98-92AA877E793C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B165007F-B03B-4C9E-8B98-92AA877E793C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B165007F-B03B-4C9E-8B98-92AA877E793C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA23DA0-70C4-4987-A217-9B620179956F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA23DA0-70C4-4987-A217-9B620179956F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA23DA0-70C4-4987-A217-9B620179956F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA23DA0-70C4-4987-A217-9B620179956F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72C947E4-C972-433D-8586-0A6B68AE9F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72C947E4-C972-433D-8586-0A6B68AE9F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72C947E4-C972-433D-8586-0A6B68AE9F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72C947E4-C972-433D-8586-0A6B68AE9F55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5FD9ED3C-90E8-4D07-A2D3-EF4FA0C22580} = {D197BB16-E495-43F1-9C89-2056AECFB60A}
+		{B165007F-B03B-4C9E-8B98-92AA877E793C} = {C4A717E3-972F-47F7-B87C-A15936F0A2AE}
+		{6AA23DA0-70C4-4987-A217-9B620179956F} = {4DA72D5F-D778-440C-BF24-1EA3C46E0CAB}
+		{72C947E4-C972-433D-8586-0A6B68AE9F55} = {4DA72D5F-D778-440C-BF24-1EA3C46E0CAB}
+	EndGlobalSection
+EndGlobal
