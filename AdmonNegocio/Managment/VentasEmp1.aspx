@@ -9,9 +9,10 @@
     <meta name="description" content="Control de inventarios e interfaces para ventas." />
     <meta name="author" content="Jorge Romero Olguin" />
     <meta name="keywords" content="" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <script src="js/bootstrap.min.js"></script>
+    <%--<link href="tabs/tabs/css/style.css" rel="stylesheet" />--%>
+    <script src="tabs/tabs/js/prefixfree.min.js"></script>
+    <%--<script src="js/bootstrap.min.js"></script>--%>
 </head>
 <body style="background-color: #EDEDF2;">
     <form id="form1" runat="server">
@@ -19,78 +20,73 @@
             <div class="row " style="margin-top: 15px;">
                 <div class="col-sm-12 col-xs-12">
                     <div class="panel panel-success">
-                        <div class="panel-heading" style="background-color: #FAFAFA;">
+                        <div class="panel-heading" style="background-color: #FAFAFA; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
                             <div class="row">
                                 <div class="col-md-5" style="text-align: left;">
                                     <label id="lblEmpleado" style="font-size: large; color: darkblue;">Bianca Cruz</label>
                                 </div>
                                 <div class="col-md-5" style="text-align: left;">
-                                    <label id="lblNumCliente" style="font-size: large; color: darkblue;">Cliente N°</label>
+                                    <label id="lblNumCliente" style="font-size: large; color: darkblue;" class="col-md-4">Cliente N°</label>
+                                    <input type="text" id="txtCodigoBarras" class="form-control input-sm col-md-1" placeholder="Código Barras" style="width: 100px; display: none;" />
                                 </div>
                                 <div class="col-md-2" style="text-align: right;">
                                     <label id="btnSalir" class="btn btn-primary">Salir</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body" style="height: 520px;">
+                        <div class="panel-body" style="height: 520px; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px;">
                             <section class="form-group-horizontal">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="input-group input-group-icon ">
-                                            <span class="input-group-addon">
-                                                <span class="icon"><i class="fa fa-key"></i></span>
-                                            </span>
-                                            <input type="text" id="txtCodigoBarras" class="form-control" placeholder="Código de Barras" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
+
+                                    <div class="col-md-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon">
-                                                <span class="icon"><i class="fa fa-key"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></span>
                                             </span>
-                                            <input type="text" id="txtBuscador" class="form-control" placeholder="Buscador" />
+                                            <%-- <input type="text" id="txtBuscador" class="form-control input-sm" placeholder="Buscador" style="background-color: #fffbd4" />--%>
+                                            <input id="txtBuscador" />
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+
+                                    <div class="col-md-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon">
-                                                <span class="icon"><i class="fa fa-key"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i></span>
                                             </span>
-                                            <input type="text" id="txtProductoSustancia" class="form-control" placeholder="Producto / Sustancia" disabled="disabled" style="background-color: white;" />
+                                            <input type="text" id="txtProductoSustancia" class="form-control input-sm" placeholder="Producto / Sustancia" disabled="disabled" style="background-color: white;" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1">
+                                        <div class="input-group input-group-icon" style="width: 90px;">
+                                            <span class="input-group-addon">
+                                                <span class="icon"><i class="glyphicon glyphicon-equalizer" aria-hidden="true"></i></span>
+                                            </span>
+                                            <input type="number" id="txtExistencia" class="form-control input-sm" placeholder="#" disabled="disabled" style="background-color: white;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="input-group input-group-icon" style="width: 90px;">
+                                            <span class="input-group-addon">
+                                                <span class="icon"><i class="glyphicon glyphicon-usd" aria-hidden="true"></i></span>
+                                            </span>
+                                            <input type="text" id="txtCosto" class="form-control input-sm" placeholder="$" disabled="disabled" style="background-color: white;" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="input-group input-group-icon" style="width: 90px;">
+                                            <span class="input-group-addon">
+                                                <span class="icon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
+                                            </span>
+                                            <input type="number" min="1" max="100" id="txtPiezasVenta" class="form-control input-sm" placeholder="#" style="background-color: #fffbd4" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label id="btnAgregar" class="btn btn-success btn-sm">Agregar</label>
+                                    </div>
+                                </div>
+                                <div id="TablaVentas" style="display: none; overflow-x: scroll; font-size: 0.8em; height: 400px; text-align: center;">
                                 </div>
                             </section>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-icon">
-                                        <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-key"></i></span>
-                                        </span>
-                                        <input type="number" id="txtExistencia" class="form-control" placeholder="Existencia" disabled="disabled" style="background-color: white;" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-icon">
-                                        <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-key"></i></span>
-                                        </span>
-                                        <input type="number" id="txtCosto" class="form-control input-sm" placeholder="Costo" disabled="disabled" style="background-color: white;" />
-                                    </div>
-                                </div>           
-                                <div class="col-md-2">
-                                    <div class="input-group input-group-icon">
-                                        <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-key"></i></span>
-                                        </span>
-                                        <input type="number" id="txtPiezasVenta" class="form-control" placeholder="Piezas Venta" />
-                                    </div>
-                                </div>                          
-                                <div class="col-md-3">
-                                    <label id="btnAgregar" class="btn btn-success">Agregar</label>
-                                </div>
-                            </div>
                         </div>
                         <div class="panel-footer" style="text-align: center;">
                             <div class="row">
@@ -113,5 +109,50 @@
             </div>
         </div>
     </form>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="EasyAutocomplete/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            function JsonProductos() {
+                $.ajax({
+                    type: "POST",
+                    url: "VentasEmp1.aspx/BusquedaProductos",
+                    data: '',
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        lista = $.parseJSON(msg.d);
+                    },
+                    error: function (msg) {
+                        alert('Error al cargar el Buscador' + msg.responseText);
+                    }
+                });
+            };
+
+            var options = {
+
+                url: ,
+                getValue: function (element) {
+                    return element.Nombre_Producto;
+                },              
+                list: {
+                    match: {
+                        enabled: true
+                    },
+                    sort: {
+                        enabled: true
+                    }
+                },
+                theme: "square"
+            };
+
+            $("#txtBuscador").easyAutocomplete(options);
+
+
+        });
+    </script>
 </body>
 </html>

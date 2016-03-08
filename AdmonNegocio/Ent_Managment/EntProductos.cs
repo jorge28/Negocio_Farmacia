@@ -23,6 +23,23 @@ namespace Managment.Business.Entity
         public double TotalVentaProd { get; set; }
     }
 
+    public class EntProductosBuscador
+    {
+        public EntProductosBuscador() { }
+
+        
+        public string Nombre_Producto { get; set; }
+        public int Id_Producto { get; set; }
+        public string Sustancia { get; set; }
+        public int IdCategoria { get; set; }
+        public int IdTipo { get; set; }
+        public string Cantidad { get; set; }
+        public int Existencia { get; set; }
+        public double Costo { get; set; }
+        public string CodigoBarras { get; set; }
+       
+    }
+
     public class EntUltimoCliente
     {
         public EntUltimoCliente() { }

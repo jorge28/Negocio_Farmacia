@@ -27,14 +27,14 @@
                                 <section class="form-group-vertical">
                                     <div class="input-group input-group-icon">
                                         <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-user"></i></span>
+                                            <span class="icon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
                                         </span>
                                         <asp:TextBox runat="server" ID="txtUser" Title="Ingresa tu nombre de Usuario" AutoCompleteType="DisplayName" class="form-control" MaxLength="20" placeholder="Usuario" required="required" />
                                     </div>
                                     <br />
                                     <div class="input-group input-group-icon">
                                         <span class="input-group-addon">
-                                            <span class="icon"><i class="fa fa-key"></i></span>
+                                            <span class="icon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
                                         </span>
                                         <asp:TextBox runat="server" ID="txtPass" class="form-control" Title="Ingresa tu Contraseña" MaxLength="20" type="password" placeholder="Contraseña" required="required" />
                                     </div>

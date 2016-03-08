@@ -12,15 +12,16 @@ namespace Managment.Business
     {
         public BusProductos() { }
 
-        public List<EntProductos> Obtener()
+        public List<EntProductosBuscador> Obtener()
         {
             DatProductos obj = new DatProductos();
             DataTable dt = obj.Obtener();
-            List<EntProductos> lista = new List<EntProductos>();
+            List<EntProductosBuscador> lista = new List<EntProductosBuscador>();
 
             foreach (DataRow r in dt.Rows)
             {
-                EntProductos per = new EntProductos();
+                EntProductosBuscador per = new EntProductosBuscador();
+                per.Id_Producto = Convert.ToInt32(r["Id_Producto"]);
                 per.Nombre_Producto = r["Nombre_Producto"].ToString();
                 per.Sustancia = r["Sustancia"].ToString();
                 per.IdCategoria = Convert.ToInt32(r["Id_Categoria"]);
@@ -28,6 +29,7 @@ namespace Managment.Business
                 per.Cantidad = r["Cantidad"].ToString();
                 per.Existencia = Convert.ToInt32(r["Existencia"]);
                 per.Costo = Convert.ToInt32(r["Costo"]);
+                per.CodigoBarras = r["CodigoBarras"].ToString();
 
                 lista.Add(per);
             }
