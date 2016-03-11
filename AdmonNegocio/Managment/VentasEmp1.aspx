@@ -112,7 +112,8 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <%--<script src="EasyAutocomplete/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>--%>
     <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-
+    <%--<link href="jquery-ui-1.11.4.custom/autocomplete_personalizado.css" rel="stylesheet" />--%>
+    <link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" />
     <script>
          $(document).ready(function () {
             var lista;
@@ -138,7 +139,8 @@
             $(function () {
                 var arrLinks = lista;
                 $("input[name=Sustancia]").autocomplete({
-                    source: arrLinks
+                    source: arrLinks,
+                    minLength: 3
                 }).data("ui-autocomplete")._renderItem = function (ul, item) {
                     $("<li>").data("ui-autocomplete-item", item).append("<a>" + item.label + "</a>").appendTo(ul);
                     //$("<li>").data("ui-autocomplete-item", item).append("<a>" + item.Sustancia + "</a>").appendTo(ul);
