@@ -1,0 +1,112 @@
+﻿[
+    {
+        "Nombre_Producto": "Amsapen Sol Inyectable 2 Gr",
+        "Id_Producto": 1,
+        "Sustancia": "Ampicilina Sol Inyectable 2 Gr",
+        "IdCategoria": 1,
+        "IdTipo": 4,
+        "Cantidad": "2 gr",
+        "Existencia": 0,
+        "Costo": 20,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Alphapen Sol Inyectable 500 Mg ",
+        "Id_Producto": 2,
+        "Sustancia": "Ampicilina Sol Inyectable 500 Mg ",
+        "IdCategoria": 1,
+        "IdTipo": 4,
+        "Cantidad": "500 mg ",
+        "Existencia": 0,
+        "Costo": 0,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Tabs 1 Gr",
+        "Id_Producto": 3,
+        "Sustancia": "Ampicilina Tabs 1 Gr Mexapin",
+        "IdCategoria": 1,
+        "IdTipo": 2,
+        "Cantidad": "1 gr",
+        "Existencia": 2,
+        "Costo": 50,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Pentiver Tabs 1 Gr",
+        "Id_Producto": 4,
+        "Sustancia": "Ampicilina Tabs 1 Gr Pentiver",
+        "IdCategoria": 1,
+        "IdTipo": 2,
+        "Cantidad": "1 gr",
+        "Existencia": 1,
+        "Costo": 45,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Caps 500 Mg ",
+        "Id_Producto": 5,
+        "Sustancia": "Ampicilina Caps 500 Mg ",
+        "IdCategoria": 1,
+        "IdTipo": 1,
+        "Cantidad": "500 mg ",
+        "Existencia": 0,
+        "Costo": 0,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Caps 250 Mg",
+        "Id_Producto": 6,
+        "Sustancia": "Ampicilina Caps 250 Mg",
+        "IdCategoria": 1,
+        "IdTipo": 1,
+        "Cantidad": "250 mg",
+        "Existencia": 2,
+        "Costo": 25,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Caps 250 Mg",
+        "Id_Producto": 7,
+        "Sustancia": "Ampicilina Caps 250 Mg",
+        "IdCategoria": 1,
+        "IdTipo": 1,
+        "Cantidad": "250 mg",
+        "Existencia": 2,
+        "Costo": 25,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Susp 500 Mg/5Ml",
+        "Id_Producto": 8,
+        "Sustancia": "Ampicilina Susp 500 Mg/5Ml",
+        "IdCategoria": 1,
+        "IdTipo": 10,
+        "Cantidad": "500 mg/5ml",
+        "Existencia": 3,
+        "Costo": 35,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Susp 250Mg/5Ml",
+        "Id_Producto": 9,
+        "Sustancia": "Ampicilina Susp 250Mg/5Ml",
+        "IdCategoria": 1,
+        "IdTipo": 10,
+        "Cantidad": "250mg/5ml",
+        "Existencia": 3,
+        "Costo": 25,
+        "CodigoBarras": ""
+    },
+    {
+        "Nombre_Producto": "Mexapin Susp 125Mg/5Ml",
+        "Id_Producto": 10,
+        "Sustancia": "Ampicilina Susp 125Mg/5Ml",
+        "IdCategoria": 1,
+        "IdTipo": 10,
+        "Cantidad": "125mg/5ml",
+        "Existencia": 3,
+        "Costo": 20,
+        "CodigoBarras": ""
+    }
+] 

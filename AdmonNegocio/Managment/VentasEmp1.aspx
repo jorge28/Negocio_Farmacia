@@ -43,8 +43,8 @@
                                             <span class="input-group-addon">
                                                 <span class="icon"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></span>
                                             </span>
-                                            <%-- <input type="text" id="txtBuscador" class="form-control input-sm" placeholder="Buscador" style="background-color: #fffbd4" />--%>
-                                            <input id="txtBuscador" />
+                                            <input type="text" name="Sustancia" id="txtBuscador" class="form-control input-sm" placeholder="Buscador" style="background-color: #fffbd4" />
+                                            <%--<input id="txtBuscador" />--%>
                                         </div>
                                     </div>
 
@@ -110,12 +110,13 @@
         </div>
     </form>
     <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="EasyAutocomplete/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>
+    <%--<script src="EasyAutocomplete/EasyAutocomplete/jquery.easy-autocomplete.min.js"></script>--%>
+    <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 
     <script>
-        $(document).ready(function () {
-
-            function JsonProductos() {
+         $(document).ready(function () {
+            var lista;
+            (function JsonProductos() {
                 $.ajax({
                     type: "POST",
                     url: "VentasEmp1.aspx/BusquedaProductos",
@@ -125,33 +126,27 @@
                     dataType: "json",
                     success: function (msg) {
                         lista = $.parseJSON(msg.d);
+                        //lista2 = JSON.stringify(lista);
+                        return lista
                     },
                     error: function (msg) {
                         alert('Error al cargar el Buscador' + msg.responseText);
                     }
                 });
-            };
+            })();
 
-            var options = {
-
-                url: ,
-                getValue: function (element) {
-                    return element.Nombre_Producto;
-                },              
-                list: {
-                    match: {
-                        enabled: true
-                    },
-                    sort: {
-                        enabled: true
-                    }
-                },
-                theme: "square"
-            };
-
-            $("#txtBuscador").easyAutocomplete(options);
-
-
+            $(function () {
+                var arrLinks = lista;
+                $("input[name=Sustancia]").autocomplete({
+                    source: arrLinks
+                }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                    $("<li>").data("ui-autocomplete-item", item).append("<a>" + item.label + "</a>").appendTo(ul);
+                    //$("<li>").data("ui-autocomplete-item", item).append("<a>" + item.Sustancia + "</a>").appendTo(ul);
+                    return $("<li>");
+                };
+            });
+            //.data("autocomplete")._renderItem = function(ul, item) {
+            //    return $("<li>").data("item.autocomplete", item).append("<a>" + item.url + "</a>").appendTo(ul);
         });
     </script>
 </body>

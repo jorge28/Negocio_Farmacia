@@ -28,7 +28,7 @@ namespace Managment.Business.Entity
         public EntProductosBuscador() { }
 
         
-        public string Nombre_Producto { get; set; }
+        public string label { get; set; }
         public int Id_Producto { get; set; }
         public string Sustancia { get; set; }
         public int IdCategoria { get; set; }
