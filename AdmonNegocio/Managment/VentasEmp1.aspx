@@ -84,9 +84,16 @@
                                 </div>
                                 <br />
                                 <div class="row" id="tablaVentas">
-                                    <div class="col-xs-12">
+                                    <div class="col-md-12">
                                         <div id="Tabla" class="table table-responsive" style="text-align: -webkit-center;">
                                         </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12" style="text-align: -webkit-right;">
+                                        <label id="lblVentaT" style="color:red; font-size:xx-large;">VENTA TOTAL: $</label>
+                                        <label id="lblVentaTotal" style="color:red; font-size:xx-large;">0.00</label>
                                     </div>
                                 </div>
 
@@ -252,6 +259,7 @@
 
             });
 
+            //Funcion para el llenado de la tabla de ventas dinamicamente.
             function cargarTablaVentas() {
 
                 tabla = '';
@@ -351,14 +359,20 @@
                                         numPiezas = 1;
                                         costoNumPiezas = this.Costo;
                                     }
-                                    var datosProductoLectora = { "Id_Producto": this.Id_Producto, "Producto": this.label, "Sustancia": this.Sustancia, "Existencia": this.Existencia, "Costo": this.Costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + this.Id_Producto }
-                                    var jsonDatosProductoLectora = JSON.stringify(datosProductoLectora);
-                                    sessionStorage.setItem("ProductoAgregar" + this.Id_Producto, jsonDatosProductoLectora);
+                                    if (numPiezas <= this.Existencia) {
+                                        var datosProductoLectora = { "Id_Producto": this.Id_Producto, "Producto": this.label, "Sustancia": this.Sustancia, "Existencia": this.Existencia, "Costo": this.Costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + this.Id_Producto }
+                                        var jsonDatosProductoLectora = JSON.stringify(datosProductoLectora);
+                                        sessionStorage.setItem("ProductoAgregar" + this.Id_Producto, jsonDatosProductoLectora);
+                                        cargarTablaVentas();
+                                    }
+                                    else {
+                                        $('#txtCodigoBarras').focus();
+                                        alert('No hay existencias suficientes de -' + this.label + '- VERIFIQUE.');
+                                    }
                                 }
                                 else {
                                     throw new Error('Tu Navegador no soporta SessionStorage!');
                                 }
-                                cargarTablaVentas();
                             }
                             else {
                                 alert('No hay Existencias de: ' + this.label);
@@ -367,16 +381,12 @@
                         else {
                             alert('Producto ' + this.label + ' SIN costo registrado. Avise al Encargado.');
                         }
-
                     }
                 })
                 if (encontrado != 'TRUE') {
                     alert('Producto No Registrado: Código de Barras ' + codigo);
                 }
-
             });
-
-
         });
     </script>
 </body>
