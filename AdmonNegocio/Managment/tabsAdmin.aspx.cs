@@ -16,13 +16,46 @@ public partial class tabsAdmin : System.Web.UI.Page
 
     }
     [WebMethod]
-    public static string BuscaProducto() {
+    public static string GetCategoria() {
 
-        List<EntProductos> productos = new List<EntProductos>();
-    //productos = new BusProductos().BuscaProductos1();
+        List<EntDdlAlta> productos = new List<EntDdlAlta>();
+        productos = new BusProductos().ObtenerCatB();
 
     JavaScriptSerializer oSerializer = new JavaScriptSerializer();
     string sJson = oSerializer.Serialize(productos);
     return sJson;
+    }
+    [WebMethod]
+    public static string GetTipo()
+    {
+
+        List<EntDdlAlta> productos = new List<EntDdlAlta>();
+        productos = new BusProductos().ObtenerTipoB();
+
+        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+        string sJson = oSerializer.Serialize(productos);
+        return sJson;
+    }
+    [WebMethod]
+    public static void AgregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double costo, string codigo)
+    {
+        BusProductos bp = new BusProductos();
+        bp.InsertaProducto(prod, sust, cat, tipo, cant, exis, costo, codigo);
+    }
+    [WebMethod]
+    public static void AgregaUsuario(string nombre, string paterno, string materno, string direccion, string tel, string cel, string usua, string pass, string pregunta) 
+    {
+        BusUsuarios bu = new BusUsuarios();
+        bu.InsertaUsuario(nombre,paterno,materno,direccion,tel,cel,usua,pass,pregunta);
+    }
+    [WebMethod]
+    public static string BusquedaProductos()
+    {
+        List<EntProductosBuscador> productos = new List<EntProductosBuscador>();
+        productos = new BusProductos().Obtener();
+
+        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+        string sJson = oSerializer.Serialize(productos);
+        return sJson;
     }
 }

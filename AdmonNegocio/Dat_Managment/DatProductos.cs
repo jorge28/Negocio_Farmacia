@@ -172,11 +172,12 @@ namespace Managment.Data
 
             return ds.Tables[0];
         }
-        public int agregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio)
+        public int agregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio,string codigo)
         {
 
             SqlCommand comando = new SqlCommand("sp_InsertaProd", con);
             comando.CommandType = CommandType.StoredProcedure;
+            
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = prod, ParameterName = "@producto" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = sust, ParameterName = "@sustancia" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Int, Value = cat, ParameterName = "@categoria" });
@@ -184,6 +185,7 @@ namespace Managment.Data
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = cant, ParameterName = "@cantidad" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Int, Value = exis, ParameterName = "@existencia" });
             comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.Float, Value = precio, ParameterName = "@costo" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = codigo, ParameterName = "@codigoBarras" });
             try
             {
                 con.Open();

@@ -29,7 +29,7 @@ namespace Managment.Business
                 per.Cantidad = r["Cantidad"].ToString();
                 per.Existencia = Convert.ToInt32(r["Existencia"]);
                 per.Costo = Convert.ToInt32(r["Costo"]);
-                per.CodigoBarras = r["CodigoBarras"].ToString();
+                per.CodigoBarras = r["Codigo_Barras"].ToString();
 
                 lista.Add(per);
             }
@@ -92,11 +92,11 @@ namespace Managment.Business
             return lista;
         }
 
-        public void InsertaProducto(EntProductos ent)
+        public void InsertaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio,string codigo)
         {
 
             DatProductos dprod = new DatProductos();
-            int lintFilas = dprod.agregaProducto(ent.Nombre_Producto, ent.Sustancia, ent.IdCategoria, ent.IdTipo, ent.Cantidad, ent.Existencia, ent.Costo);
+            int lintFilas = dprod.agregaProducto(prod,sust,cat,tipo,cant,exis,precio,codigo);
             if (lintFilas != 1)
             {
                 throw new System.Exception("error en la capa de negocio al insertar un producto");
