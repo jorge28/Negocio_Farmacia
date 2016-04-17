@@ -24,21 +24,20 @@
         <div class="row " style="margin-top: 15px;">
             <div class="col-sm-12 col-xs-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading" style="background-color: #FAFAFA; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
+                    <div class="panel-heading" style="background-color: whitesmoke; background-image: linear-gradient(to bottom, whitesmoke 0%, whitesmoke 100%); padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; height:50px;">
                         <div class="row">
-                            <div class="col-md-5" style="text-align: left;">
-                                <asp:Label ID="lblEmpleado" runat="server" Style="font-size: large; color: darkblue;"></asp:Label>
+                            <div class="col-md-10" style="text-align: left;">
+                                <label style="font-size:medium; color:darkblue;">Administrador:</label>&nbsp&nbsp
+                                <asp:Label ID="lblEmpleado" runat="server" Style="font-size:medium;; color: darkblue;"></asp:Label>
                             </div>
-                            <div class="col-md-5" style="text-align: left;">
-                            </div>
-                            <div class="col-md-2" style="text-align: right;">
+                            <div class="col-md-2" style="text-align: right; margin-top: 5px;">
                                 <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-body" style="height: 820px; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px;">
+                    <div class="panel-body" style="height: 710px; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px;">
                         <%--                        <h1>Responsive CSS Tabs</h1>--%>
-                         <main>
+                        <main>
 
                         <input id="tab1" type="radio" name="tabs" checked />
                         <label for="tab1">Alta de Producto</label>
@@ -132,7 +131,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-list"></i></span>
                                             </span>
-                                            <input type="number" class="form-control input-sm" id="txtExistencia" min="0" max="30" style="width: 60px" name="txtExistencia" />
+                                            <input type="number" class="form-control input-sm" id="txtExistencia" min="0" max="100" style="width: 80px" name="txtExistencia" />
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +142,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-usd"></i></span>
                                             </span>
-                                            <input type="text" class="form-control input-sm" id="txtCosto" style="width: 60px" name="txtCosto" placeholder="Ingresa Costo del Producto" />
+                                            <input type="number" class="form-control input-sm" step="any" id="txtCosto" style="width: 80px" name="txtCosto"/>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +159,7 @@
                                         <button type="button" id="btnGuardarProducto" class="btn btn-warning">Guardar Producto</button>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label id="btnCancelarProducto" class="btn btn-primary">Cancelar</label>
+                                        <label id="btnCancelarProducto" class="btn btn-primary">Limpiar</label>
                                     </div>
                                 </div>
                             </form>
@@ -221,7 +220,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-phone-square"></i></span>
                                             </span>
-                                            <input type="text" class="form-control input-sm" id="txtTelefono" style="width: 60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario" />
+                                            <input type="tel"  class="form-control input-sm" id="txtTelefono" style="width: 60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario" />
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +231,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-mobile"></i></span>
                                             </span>
-                                            <input type="text" class="form-control input-sm" id="txtCelular" style="width: 60%" name="txtCelular" placeholder="Ingresa el No. Celular del Usuario" />
+                                            <input type="tel" class="form-control input-sm" id="txtCelular" style="width: 60%" name="txtCelular" placeholder="Ingresa el No. Celular del Usuario" />
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +258,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size: smaller">Pregunta Secreta:</label>
+                                    <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size: smaller">Palabra Secreta:</label>
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
@@ -277,7 +276,7 @@
                                         <label id="btnGuardarUsuario" class="btn btn-warning">Guardar Usuario</label>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label id="btnCancelarUsuario" class="btn btn-primary">Cancelar</label>
+                                        <label id="btnCancelarUsuario" class="btn btn-primary">Limpiar</label>
                                     </div>
                                 </div>
                             </form>
@@ -448,7 +447,8 @@
                                 <br />
                                 <h4 style="font-weight: bold">Generar reporte por Existencia.
                                 </h4>
-                                <hr />
+                                 <hr />
+                                <h5>Si quiere consultar que productos tienen de cierto número de existencias hacia abajo, seleccione el número deseado.</h5>
                                 <div class="form-group">
                                     <label for="txtExistenciaExis" class="col-lg-1 control-label" style="font-size: smaller"></label>
                                     <div class="col-lg-2">
@@ -458,9 +458,13 @@
                                             </span>
                                             <input type="number" min="0" max="100" class="form-control input-sm" id="txtPiezasRepor" name="txtPiezasRepor" />
                                         </div>
+                                         <div class="col-md-12" style="display:none">
+                                            <div id="TablaProdExis" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label id="GeneraReportexPiezas" class="btn btn-warning">Generar</label>
+                                        <button type="button" id="btnExistencias" class="btn btn-warning">Generar</button>
                                     </div>
                                 </div>
                                 <hr />
@@ -469,6 +473,7 @@
                                 <h4 style="font-weight: bold">Generar reporte de ventas por Dia.
                                 </h4>
                                 <hr />
+                                <h5>Si quiere consultar el reporte de ventas de un día diferente, seleccione la fecha deseada en el calendario.</h5>
                                 <div class="form-group">
                                     <label for="txtFechaRepor" class="col-lg-1 control-label" style="font-size: smaller"></label>
                                     <div class="col-lg-4">
@@ -478,34 +483,37 @@
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtFechaRepor" name="txtFechaRepor" />
                                         </div>
+                                         <div class="col-md-12" style="display:none">
+                                            <div id="TablaVenDias" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-3">
-                                        <label id="btnGeneraxDiaVentas" class="btn btn-warning">Generar</label>
+                                        <button type="button" id="btnVentasDia" class="btn btn-warning">Generar</button>
                                     </div>
                                 </div>
                                 <hr />
                             </form>
                         </section>
-
                         </main>
                     </div>
                     <div class="panel-footer" style="text-align: center;">
-                        <div class="row" style="width: 97%;">
-                            <div class="col-md-1">
+                        <div class="row">
+                            <div class="col-md-12" style="text-align:center;">
                                 <label id="RomaSystems" style="font-size: x-small; color: darkgray"><a href="#">&copy; ROMA SYSTEMS.</a></label>
                             </div>
-                            <div class="col-md-2" style="text-align: left;">
-                                <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <%--<div class="col-md-2" style="text-align: left;">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
                                             <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>   
                                             <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>                
                                         </ContentTemplate>
-                                    </asp:UpdatePanel>--%>
+                                    </asp:UpdatePanel>
                             </div>
                             <div class="col-md-4">
                             </div>
                             <div class="col-md-5" style="text-align: right; padding-right: 0px;">
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                 </div>
@@ -516,12 +524,20 @@
     <script src="jquery-validate/jquery-validate.js"></script>
     <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" />
-
+    <script src="js/base64.js"></script>
     <script src="build/jquery.datetimepicker.full.min.js"></script>
     <script>
         $(document).ready(function () {
             //Variables Globales
             var lista;
+            var today = new Date(); // Fecha Actual
+
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1
+            var yy = today.getFullYear();
+
+            if ($('#txtFechaRepor').val() == '')
+                $('#txtFechaRepor').val(yy + '/' + mm + '/' + dd);
             //------------------------------------------- A L T A   D E   P R O D U C T O S ---------------------------------------
             //Llena ddlCategoria
             var categoria;
@@ -569,7 +585,7 @@
             });
             //Funcion para Guardar Producto
             function AgregaProducto() {
-                var codigo = $('#txtCodigo').val();
+                var codigo = $('#txtCodigo').val() == '' ? 'S/C' : $('#txtCodigo').val();
                 var prod = $('#txtProducto').val();
                 var sust = $('#txtSustancia').val();
                 var cat = $('#ddlCategoria').val();
@@ -578,33 +594,51 @@
                 var exis = $('#txtExistencia').val();
                 var costo = $('#txtCosto').val();
                 var misDatos = '{}';
-                misDatos = '{"prod":"' + prod + '","sust":"' + sust + '","cat":"' + cat + '","tipo":"' + tipo + '","cant":"' + cant + '","exis":"' + exis + '","costo":"' + costo + '","codigo":"' + codigo + '"}';
-                $.ajax({
-                    type: "POST",
-                    url: "tabsAdmin.aspx/AgregaProducto",
-                    data: misDatos,
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (msg) {
-                        $('#txtCodigo').val('');
-                        $('#txtProducto').val('');
-                        $('#txtSustancia').val('');
-                        $('#ddlCategoria').val('');
-                        $('#ddlTipo').val('');
-                        $('#txtCantidad').val('');
-                        $('#txtExistencia').val('');
-                        $('#txtCosto').val('');
-                    },
-                    error: function (msg) {
-                        alert('Error' + msg.responseText);
-                    }
 
-                }); //fin de ajax
+                if (prod == '' || sust == '' || cat == '' || tipo == '' || cant == '' || exis == '' || costo == '')
+                    alert("Debe llenar todos los campos.");
+                else {
+                    misDatos = '{"prod":"' + prod + '","sust":"' + sust + '","cat":"' + cat + '","tipo":"' + tipo + '","cant":"' + cant + '","exis":"' + exis + '","costo":"' + costo + '","codigo":"' + codigo + '"}';
+                    $.ajax({
+                        type: "POST",
+                        url: "tabsAdmin.aspx/AgregaProducto",
+                        data: misDatos,
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+                            $('#txtCodigo').val('');
+                            $('#txtProducto').val('');
+                            $('#txtSustancia').val('');
+                            $('#ddlCategoria').val('');
+                            $('#ddlTipo').val('');
+                            $('#txtCantidad').val('');
+                            $('#txtExistencia').val('');
+                            $('#txtCosto').val('');
+                        },
+                        error: function (msg) {
+                            alert('Error' + msg.responseText);
+                        }
+
+                    }); //fin de ajax
+                    alert('Producto Agregado con Exito.');
+                }
             }
             //Boton de Guardado de Producto
             $('#btnGuardarProducto').on("click", function () {
                 AgregaProducto();
+            });
+
+            //Evento Click del Boton Limpiar Campos Nuevo Producto
+            $('#btnCancelarProducto').on("click", function () {
+                $('#txtCodigo').val('');
+                $('#txtProducto').val('');
+                $('#txtSustancia').val('');
+                $('#ddlCategoria').val('');
+                $('#ddlTipo').val('');
+                $('#txtCantidad').val('');
+                $('#txtExistencia').val('');
+                $('#txtCosto').val('');
             });
             // ---------------------------------T E R M I N A   A L T A   D E  P R O D U C T O --------------------------------------------
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -622,36 +656,54 @@
                 var usua = $('#txtUsuario').val();
                 var pass = $('#txtContraseña').val();
                 var pregunta = $('#txtPreguntaSecreta').val();
-
                 var misDatos = '{}';
-                misDatos = '{"nombre":"' + nombre + '","paterno":"' + paterno + '","materno":"' + materno + '","direccion":"' + direccion + '","tel":"' + tel + '","cel":"' + cel + '","usua":"' + usua + '","pass":"' + pass + '","pregunta":"' + pregunta + '"}';
-                $.ajax({
-                    type: "POST",
-                    url: "tabsAdmin.aspx/AgregaUsuario",
-                    data: misDatos,
-                    async: false,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (msg) {
-                        $('#txtNombre').val('');
-                        $('#txtApaterno').val('');
-                        $('#txtAmaterno').val('');
-                        $('#txtDireccion').val('');
-                        $('#txtTelefono').val('');
-                        $('#txtCelular').val('');
-                        $('#txtUsuario').val('');
-                        $('#txtContraseña').val('');
-                        $('#txtPreguntaSecreta').val('');
-                    },
-                    error: function (msg) {
-                        alert('Error' + msg.responseText);
-                    }
 
-                }); //fin de ajax
+                if (nombre == '' || paterno == '' || materno == '' || direccion == '' || tel == '' || cel == '' || usua == '' || pass == '' || pregunta == '')
+                    alert("Debe llenar todos los campos.");
+                else {
+                    misDatos = '{"nombre":"' + nombre + '","paterno":"' + paterno + '","materno":"' + materno + '","direccion":"' + direccion + '","tel":"' + tel + '","cel":"' + cel + '","usua":"' + usua + '","pass":"' + pass + '","pregunta":"' + pregunta + '"}';
+                    $.ajax({
+                        type: "POST",
+                        url: "tabsAdmin.aspx/AgregaUsuario",
+                        data: misDatos,
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+                            $('#txtNombre').val('');
+                            $('#txtApaterno').val('');
+                            $('#txtAmaterno').val('');
+                            $('#txtDireccion').val('');
+                            $('#txtTelefono').val('');
+                            $('#txtCelular').val('');
+                            $('#txtUsuario').val('');
+                            $('#txtContraseña').val('');
+                            $('#txtPreguntaSecreta').val('');
+                        },
+                        error: function (msg) {
+                            alert('Error' + msg.responseText);
+                        }
+
+                    }); //fin de ajax
+                    alert('Usuario Agregado con Exito');
+                }
             }
             //Boton de Guardado de Usuario
             $('#btnGuardarUsuario').on("click", function () {
                 AgregaUsuario();
+            });
+
+            //Evento Click del Boton Limpiar Campos Nuevo Usuario
+            $('#btnCancelarUsuario').on("click", function () {
+                $('#txtNombre').val('');
+                $('#txtApaterno').val('');
+                $('#txtAmaterno').val('');
+                $('#txtDireccion').val('');
+                $('#txtTelefono').val('');
+                $('#txtCelular').val('');
+                $('#txtUsuario').val('');
+                $('#txtContraseña').val('');
+                $('#txtPreguntaSecreta').val('');
             });
             // ----------------------------------------T E R M I N A   A L T A  D E   U S U A R I O-----------------------------------
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -836,6 +888,156 @@
             //        }
             //    }
             //});
+
+            //Exceles
+
+            $('#btnVentasDia').on("click", function () {
+                var fecha = $('#txtFechaRepor').val();
+                var misDatos = '{"fechaVentas":"' + fecha + '"}';
+                $.ajax({
+                    type: "POST",
+                    url: "tabsAdmin.aspx/SelectVentasEmpleados",
+                    data: misDatos,
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        list = $.parseJSON(msg.d);
+                        if (list.length == 0)
+                            alert('No hay ventas para el día seleccionado');
+                        TablaVenDias = '';
+                        TablaVenDias += '<table class="table table-responsive table-hover" border="1" id="body_gvQuejas" style="border-collapse:collapse;font-size: 0.7em; overflow-x: auto">'
+                        TablaVenDias += '<tr style="background-color: #F2F7FA;"; text-align:center;">';
+                        TablaVenDias += ' <td>[Cliente]</td>';
+                        TablaVenDias += ' <td>[Fecha]</td>';
+                        TablaVenDias += ' <td>[Usuario]</td>';
+                        TablaVenDias += ' <td>[IdProducto]</td>';
+                        TablaVenDias += ' <td>[Código Barras]</td>';
+                        TablaVenDias += ' <td>[Nombre Producto]</td>';
+                        TablaVenDias += ' <td>[Piezas Vendidas]</td>';
+                        TablaVenDias += ' <td>[Costo Unitario]</td>';
+                        TablaVenDias += ' <td>[Costo Total]</td>';
+                        TablaVenDias += ' <td>[Gran TOTAL]</td>';
+                        TablaVenDias += '</tr>';
+                        $(list).each(function () {
+                            TablaVenDias += '<tr style="text-align:center;">';
+                            TablaVenDias += ' <td>' + this.NumCliente + '</td>';
+                            TablaVenDias += ' <td>' + this.fAlta + '</td>';
+                            TablaVenDias += ' <td>' + this.NombreUsuario + '</td>';
+                            TablaVenDias += ' <td>' + this.ProductoId + '</td>';
+                            TablaVenDias += ' <td>' + this.CodigoBarras + '</td>';
+                            TablaVenDias += ' <td>' + this.NombreProducto + '</td>';
+                            TablaVenDias += ' <td>' + this.PiezasVendidas; + '</td>';
+                            TablaVenDias += ' <td>' + this.CostoUnitario + '</td>';
+                            TablaVenDias += ' <td>' + this.CostoTotal + '</td>';
+                            TablaVenDias += ' <td>' + this.CostoTotalVenta; + '</td>';
+                            TablaVenDias += '</tr>';
+                        });
+                        TablaVenDias += '</table>';
+                        $('#TablaVenDias').empty();
+                        $('#TablaVenDias').append(TablaVenDias);
+                    },
+                    error: function (msg) {
+                        alert('Error al generar el reporte de Ventas X Día' + msg.responseText);
+                    }
+                });//Fin .ajax()
+
+                var dt = new Date();
+                var day = dt.getDate();
+                var month = dt.getMonth() + 1;
+                var year = dt.getFullYear();
+                var hour = dt.getHours();
+                var mins = dt.getMinutes();
+                var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+                //creating a temporary HTML link element (they support setting file names)
+                var a = document.createElement('a');
+                //getting data from our div that contains the HTML table
+                var table = document.getElementById('TablaVenDias');
+                var html = table.outerHTML;
+                var data_type = 'data:application/vnd.ms-excel;base64,' + $.base64.encode(html);
+                a.href = data_type;
+                ////setting the file name
+                a.download = 'Ventas del Día: ' + postfix + '.xls';
+                ////triggering the function
+                a.click();
+                ////just in case, prevent default behaviour
+                e.preventDefault();
+            });
+
+
+            $('#btnExistencias').on("click", function () {
+                var piezas = $("#txtPiezasRepor").val() == '' ? "500" : $("#txtPiezasRepor").val();
+                var misDatos = '{"piezas":"' + piezas + '"}';
+                $.ajax({
+                    type: "POST",
+                    url: "tabsAdmin.aspx/SelectExistenciasProducto",
+                    data: misDatos,
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        list = $.parseJSON(msg.d);
+                        if (list.length == 0)
+                            alert('No hay Productos con esas Existencias');
+                        TablaProdExis = '';
+                        TablaProdExis += '<table class="table table-responsive table-hover" border="1" id="body_gvQuejas" style="border-collapse:collapse;font-size: 0.7em; overflow-x: auto">'
+                        TablaProdExis += '<tr style="background-color: #F2F7FA;"; text-align:center;">';
+                        TablaProdExis += ' <td>[IdProducto]</td>';
+                        TablaProdExis += ' <td>[Código Barras]</td>';
+                        TablaProdExis += ' <td>[Producto]</td>';
+                        TablaProdExis += ' <td>[Sustancia]</td>';
+                        TablaProdExis += ' <td>[Costo]</td>';
+                        TablaProdExis += ' <td>[Existencia]</td>';
+                        TablaProdExis += '</tr>';
+                        $(list).each(function () {
+                            TablaProdExis += '<tr style="text-align:center;">';
+                            TablaProdExis += ' <td>' + this.Id_Producto + '</td>';
+                            TablaProdExis += ' <td>' + this.CodigoBarras + '</td>';
+                            TablaProdExis += ' <td>' + this.Nombre_Producto + '</td>';
+                            TablaProdExis += ' <td>' + this.Sustancia + '</td>';
+                            TablaProdExis += ' <td>' + this.Costo + '</td>';
+                            TablaProdExis += ' <td>' + this.Existencia + '</td>';
+                            TablaProdExis += '</tr>';
+                        });
+                        TablaProdExis += '</table>';
+                        $('#TablaProdExis').empty();
+                        $('#TablaProdExis').append(TablaProdExis);
+                    },
+                    error: function (msg) {
+                        alert('Error al generar el reporte para Pedido' + msg.responseText);
+                    }
+                });//Fin .ajax()
+
+                var dt = new Date();
+                var day = dt.getDate();
+                var month = dt.getMonth() + 1;
+                var year = dt.getFullYear();
+                var hour = dt.getHours();
+                var mins = dt.getMinutes();
+                var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+                //creating a temporary HTML link element (they support setting file names)
+                var a = document.createElement('a');
+                //getting data from our div that contains the HTML table
+                var table = document.getElementById('TablaProdExis');
+                var html = table.outerHTML;
+                var data_type = 'data:application/vnd.ms-excel;base64,' + $.base64.encode(html);
+                a.href = data_type;
+                ////setting the file name
+                a.download = 'ExistenciaProductos: ' + postfix + '.xls';
+                ////triggering the function
+                a.click();
+                ////just in case, prevent default behaviour
+                e.preventDefault();
+            });
+
+            // --------------------------------------------T E R M I N A   R E P O R T E S -------------------------------------------------
+
+            //Evento Click del Boton Salir
+            $('#btnSalir').on("click", function () {
+                if (confirm("¿Seguro de Salir del Modulo de Administración?")) {
+                    window.location = 'Default.aspx';
+                }
+            });
 
 
         }); //fin del document ready

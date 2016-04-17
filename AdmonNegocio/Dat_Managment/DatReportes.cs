@@ -11,10 +11,11 @@ namespace Managment.Data
     {
         public DatReportes() { }
 
-        public DataTable SelectVentasEmpleados()
+        public DataTable SelectVentasEmpleados(string fechaVentas)
         {
             SqlCommand comando = new SqlCommand("sp_Select_VentasEmpleado", con);
             comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@fechaVentas", fechaVentas);
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);

@@ -12,13 +12,13 @@ namespace Managment.Business
     {
         public BusReportes() { }
 
-        public List<EntProductosVentas> SelectVentasEmpleados()
+        public List<EntProductosVentas> SelectVentasEmpleados(string fechaVentas)
         {
 
-            DataTable dt = new DatReportes().SelectVentasEmpleados();
+            DataTable dt = new DatReportes().SelectVentasEmpleados(fechaVentas);
             List<EntProductosVentas> lista = new List<EntProductosVentas>();
-            if (dt.Rows.Count == 0)
-                throw new ApplicationException("No hay Ventas Registradas :(");
+            //if (dt.Rows.Count == 0)
+            //    throw new ApplicationException("No hay Ventas Registradas :(");
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -53,8 +53,8 @@ namespace Managment.Business
 
             DataTable dt = new DatReportes().SelectPedidoProductos(piezas);
             List<EntProductosPedido> lista = new List<EntProductosPedido>();
-            if (dt.Rows.Count == 0)
-                throw new ApplicationException("No hay Productos Agotados :)");
+            //if (dt.Rows.Count == 0)
+            //    throw new ApplicationException("No hay Productos Agotados :)");
 
             foreach (DataRow dr in dt.Rows)
             {

@@ -94,26 +94,5 @@ public partial class VentasEmp1 : System.Web.UI.Page
       
         return cadena;
     }
-
-    [WebMethod]
-    public static string SelectVentasEmpleados()
-    {
-        List<EntProductosVentas> productos = new List<EntProductosVentas>();
-        productos = new BusReportes().SelectVentasEmpleados();
-
-        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
-        string sJson = oSerializer.Serialize(productos);
-        return sJson;
-    }
-
-    [WebMethod]
-    public static string SelectExistenciasProducto(string piezas)
-    {
-        List<EntProductosPedido> productos = new List<EntProductosPedido>();
-        productos = new BusReportes().SelectPedidoProductos(Convert.ToInt32(piezas));
-
-        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
-        string sJson = oSerializer.Serialize(productos);
-        return sJson;
-    }
+       
 }
