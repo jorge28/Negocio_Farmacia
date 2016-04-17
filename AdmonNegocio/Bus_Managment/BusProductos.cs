@@ -28,7 +28,7 @@ namespace Managment.Business
                 per.IdTipo = Convert.ToInt32(r["Id_Tipo"]);
                 per.Cantidad = r["Cantidad"].ToString();
                 per.Existencia = Convert.ToInt32(r["Existencia"]);
-                per.Costo = Convert.ToInt32(r["Costo"]);
+                per.Costo = Convert.ToDouble(r["Costo"]);
                 per.CodigoBarras = r["CodigoBarras"].ToString();
 
                 lista.Add(per);

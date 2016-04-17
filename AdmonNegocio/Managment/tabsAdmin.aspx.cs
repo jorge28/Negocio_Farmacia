@@ -13,6 +13,18 @@ public partial class tabsAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            if (Session["Login"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
+            EntUsuarios usua = new EntUsuarios();
+            usua = (EntUsuarios)Session["Login"];
+
+            //lblEmpleado.Text = usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno;
+                      
+        }
 
     }
     [WebMethod]

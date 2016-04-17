@@ -49,7 +49,7 @@
                             <div class="logo" style="text-align: -webkit-center;">
                                 <img src="imagenes/banner-medicina-general-jpg.jpg" class="img-responsive" />
                             </div>
-                            <br />
+                            <br />                            
                             <br />
                             <p style="text-align: center; font-family: 'webkit-body'; font-size: large; color: darkgray">
                                 Administra tu negocio de una forma sencilla y clara.
