@@ -21,6 +21,7 @@ namespace Managment.Business.Entity
         public string Tipo { get; set; }
         public string Piezas { get; set; }
         public double TotalVentaProd { get; set; }
+        public string CodigoBarras { get; set; }
     }
 
     public class EntProductosBuscador

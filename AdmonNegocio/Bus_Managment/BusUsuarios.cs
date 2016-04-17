@@ -53,11 +53,11 @@ namespace Managment.Business
             return usua;
         }
 
-        public void InsertaUsuario(EntUsuarios ent)
+        public void InsertaUsuario(string nombre, string paterno, string materno, string direccion, string tel, string cel, string usua, string pass, string pregunta)
         {
 
             DatUsuarios dusua = new DatUsuarios();
-            int lintFilas = dusua.agregaUsuarioD(ent.NombreUsuario, ent.ApellidoPaterno, ent.ApellidoMaterno, ent.Direccion, ent.Telefono, ent.Celular, ent.Usuario, ent.Contraseña, ent.Pregunta_Secreta);
+            int lintFilas = dusua.agregaUsuarioD(nombre, paterno, materno, direccion, tel, cel, usua, pass, pregunta);
             if (lintFilas != 1)
             {
                 throw new System.Exception("error en la capa de negocio al insertar un usuario");
