@@ -58,4 +58,11 @@ public partial class tabsAdmin : System.Web.UI.Page
         string sJson = oSerializer.Serialize(productos);
         return sJson;
     }
+    [WebMethod]
+    public static void ActualizarProducto(string producto, string sustancia, int categoria, int tipo, string cantidad, int existencia, double costo, string codigo, int productoID)
+    {
+        BusProductos bp = new BusProductos();
+        bp.actualizaProdBus(producto, sustancia, categoria, tipo, cantidad, existencia, costo, codigo,productoID);
+    }
+    
 }

@@ -268,7 +268,7 @@
   <section id="content3">
     <br />
     <br />
-      <p>
+      <p id="pBuscador">
           Buscar por <a href="#" role="button" id="lnkCodigoExis">Codigo de Barras</a> o por <a href="#" role="button" id="lnkProductoExis">Nombre del Producto</a>.
       </p>
       <br />
@@ -376,7 +376,7 @@
                       <span class="input-group-addon" style="background-color:white;border-color:orange">
                           <span class="icon"><i class="fa fa-list"></i></span>
                       </span>
-                   <input type="number" min="1" max="100" class="form-control input-sm" id="txtAgregarPiezasExis" name="txtAgregarPiezasExis" />   
+                   <input type="number" min="0" max="100" class="form-control input-sm" id="txtAgregarPiezasExis" name="txtAgregarPiezasExis" />   
                   </div>
               </div>
               <label for="txtQuitarPiezasExis" class="col-lg-1 control-label" style="font-size:smaller">Quitar Piezas:</label>
@@ -385,7 +385,7 @@
                       <span class="input-group-addon" style="background-color:white;border-color:orange">
                           <span class="icon"><i class="fa fa-list"></i></span>
                       </span>
-                   <input type="number" min="1" max="100" class="form-control input-sm" id="txtQuitarPiezasExis" name="txtQuitarPiezasExis"/>   
+                   <input type="number" min="0" max="100" class="form-control input-sm" id="txtQuitarPiezasExis" name="txtQuitarPiezasExis"/>   
                   </div>
               </div>
           </div>
@@ -416,10 +416,10 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-3"></div>
               <div class="col-lg-3">
-                  <button id="btnActualizarExis" class="btn btn-warning">Actualizar Producto</button>
+                  <label id="btnActualizarExis" class="btn btn-warning">Actualizar Producto</label>
               </div>
               <div class="col-lg-3">
-                  <button id="btnCancelarExis" class="btn btn-warning">Cancelar</button>
+                  <label id="btnCancelarExis" class="btn btn-warning">Cancelar</label>
               </div>
           </div>
       </form>
@@ -616,7 +616,8 @@
             // ----------------------------------------T E R M I N A   A L T A  D E   U S U A R I O-----------------------------------
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // -----------------------------------------------E X I S T E N C I A S --------------------------------------------------
-
+            var productoIDcodigo = '';
+            var productoIDautocomplete = '';
             //Funcion que se carga primero para obtener todos los productos...
             (function JsonProductos() {
                 $.ajax({
@@ -652,8 +653,9 @@
                 select: function (event, ui) {
 
                     $('#divBuscador').hide("fast");
+                    $('#pBuscador').hide();
                     $('#formExistencia').show("fast");
-                    var productoID = ui.item.Id_Producto;
+                     productoIDautocomplete = ui.item.Id_Producto;
                     var codigo = ui.item.CodigoBarras
                    var producto = ui.item.label;
                    var sustancia = ui.item.Sustancia;
@@ -680,23 +682,25 @@
                     if (this.CodigoBarras == codigo) {
                         $('#divBuscador').hide("fast");
                         $('#formExistencia').show("fast");
+                        $('#pBuscador').hide();
 
-                        var codigoBarras = this.CodigoBarras;
-                        var prod = this.label;
-                        var sust = this.Sustancia;
-                        var cat = this.IdCategoria;
+                         productoIDcodigo = this.Id_Producto;
+                        var codigo = this.CodigoBarras;
+                        var producto = this.label;
+                        var sustancia = this.Sustancia;
+                        var categoria = this.IdCategoria;
                         var tipo = this.IdTipo;
-                        var cant = this.Cantidad;
-                        var exis = this.Existencia;
+                        var cantidad = this.Cantidad;
+                        var existencia = this.Existencia;
                         var costo = this.Costo;
 
-                        $('#txtCodigoExis').val(codigoBarras);
-                        $('#txtProductoExis').val(prod);
-                        $('#txtSustanciaExis').val(sust);
-                        $('#ddlCategoriaExis').val(cat);
+                        $('#txtCodigoExis').val(codigo);
+                        $('#txtProductoExis').val(producto);
+                        $('#txtSustanciaExis').val(sustancia);
+                        $('#ddlCategoriaExis').val(categoria);
                         $('#ddlTipoExis').val(tipo);
-                        $('#txtCantidadExis').val(cant);
-                        $('#txtExistenciaExis').val(exis);
+                        $('#txtCantidadExis').val(cantidad);
+                        $('#txtExistenciaExis').val(existencia);
                         $('#txtCostoExis').val(costo);
                     }
                 });
@@ -756,6 +760,115 @@
                 },
                 error: function (msg) {
                     alert('Error al cargar las Categorias' + msg.responseText);
+                }
+            });
+            //Funcion para Agregar Usuario
+            function ActualizaProductoPiezasCosto() {
+
+                var codigo = $('#txtCodigoExis').val() == '' ? 'S/C' : $('#txtCodigoExis').val();
+                var producto = $('#txtProductoExis').val();
+                var sustancia = $('#txtSustanciaExis').val();
+                var categoria = $('#ddlCategoriaExis').val();
+                var tipo = $('#ddlTipoExis').val();
+                var cantidad = $('#txtCantidadExis').val();
+                var existencias = $('#txtExistenciaExis').val();
+                var costoInicial = $('#txtCostoExis').val();
+                var piezasAgregar = $('#txtAgregarPiezasExis').val();
+                var piezasDescontar = $('#txtQuitarPiezasExis').val();
+                var costoNuevo = $('#txtCostoNuevoExis').val();
+                var costo;
+                var existencia;
+                var productoID;
+
+                if (producto == '' || sustancia == '' || categoria == '' || tipo == '' || cantidad == '' || existencias == '' || costoInicial == '')
+                    alert("Debe llenar todos los campos.");
+                else {
+
+                    if (piezasAgregar != '' && piezasAgregar != '0') {
+                        existencia = parseInt(existencias) + parseInt(piezasAgregar);
+                    }
+                    else if (piezasDescontar != '' && piezasDescontar != '0') {
+                        existencia = parseInt(existencias) - parseInt(piezasDescontar);
+                    }
+                    else {
+                        existencia = existencias
+                    }
+
+                    if (costoNuevo != '') {
+                        costo = costoNuevo;
+                    }
+                    else {
+                        costo = costoInicial;
+                    }
+                    if (productoIDautocomplete != '') {
+                        productoID = productoIDautocomplete
+                    }
+                    else if (productoIDcodigo != '') {
+                        productoID = productoIDcodigo
+                    }
+
+                    var misDatos = '{}';
+                    misDatos = '{"producto":"' + producto + '","sustancia":"' + sustancia + '","categoria":"' + categoria + '","tipo":"' + tipo + '","cantidad":"' + cantidad + '","existencia":"' + existencia + '","costo":"' + costo + '","codigo":"' + codigo + '","productoID":"' + productoID + '"}';
+                    $.ajax({
+                        type: "POST",
+                        url: "tabsAdmin.aspx/ActualizarProducto",
+                        data: misDatos,
+                        async: false,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+
+                            alert('Se actualizo con exito el producto');
+
+                            $('#txtCodigoExis').val('');
+                            $('#txtProductoExis').val('');
+                            $('#txtSustanciaExis').val('');
+                            $('#ddlCategoriaExis').val('');
+                            $('#ddlTipoExis').val('');
+                            $('#txtCantidadExis').val('');
+                            $('#txtExistenciaExis').val('');
+                            $('#txtCostoExis').val('');
+                            $('#txtAgregarPiezasExis').val('');
+                            $('#txtQuitarPiezasExis').val('');
+                            $('#txtCostoNuevoExis').val('');
+
+                            $('#formExistencia').hide();
+                            $('#pBuscador').show();
+                            $('#txtProductoBuscador').val('');
+                            $('#txtCodigoBuscador').val('');
+                        },
+                        error: function (msg) {
+                            alert('Error' + msg.responseText);
+                        }
+
+                    }); //fin de ajax
+                }
+            }
+            $('#btnActualizarExis').on("click", function () {
+                ActualizaProductoPiezasCosto();
+            });
+            $('#txtAgregarPiezasExis').change(function () {
+                var agregarP = $('#txtAgregarPiezasExis').val();
+                if (agregarP == '') {
+                    $('#txtQuitarPiezasExis').attr("disabled", false);
+                }
+                else if (agregarP == 0) {
+                    $('#txtQuitarPiezasExis').attr("disabled", false);
+                }
+                else {
+                    $('#txtQuitarPiezasExis').attr("disabled", true);
+                }
+            });
+            $('#txtQuitarPiezasExis').change(function () {
+                var quitarP = $('#txtQuitarPiezasExis').val();
+                if (quitarP == '') {
+                    $('#txtAgregarPiezasExis').attr("disabled", false);
+                }
+                else if (quitarP == 0) {
+                    $('#txtAgregarPiezasExis').attr("disabled", false);
+                }
+                else {
+                    $('#txtAgregarPiezasExis').attr("disabled", true);
                 }
             });
             // --------------------------------------------T E R M I N A   E X I S T E N C I A S -------------------------------------------------
