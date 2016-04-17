@@ -12,10 +12,10 @@ namespace Managment.Business
     {
         public BusReportes() { }
 
-        public List<EntProductosVentas> SelectVentasEmpleados(int usuario)
+        public List<EntProductosVentas> SelectVentasEmpleados()
         {
 
-            DataTable dt = new DatReportes().SelectVentasEmpleados(usuario);
+            DataTable dt = new DatReportes().SelectVentasEmpleados();
             List<EntProductosVentas> lista = new List<EntProductosVentas>();
             if (dt.Rows.Count == 0)
                 throw new ApplicationException("No hay Ventas Registradas :(");
@@ -23,25 +23,35 @@ namespace Managment.Business
             foreach (DataRow dr in dt.Rows)
             {
                 EntProductosVentas venta = new EntProductosVentas();
-                venta.NombreUsuario = dr["Venta_Nombre_Usuario"].ToString();
                 venta.NumCliente = Convert.ToInt32(dr["Venta_Num_cliente"]);
                 venta.FechaAlta = Convert.ToDateTime(dr["Venta_Fecha_Alta"]);
-                venta.CategoriaProd = dr["Nombre_Categoria"].ToString();
-                venta.TipoProd = dr["Nombre_Tipo"].ToString();
+                venta.fAlta = venta.FechaAlta.ToString("dd/MM/yyyy HH:mm");
+                venta.NombreUsuario = dr["Venta_Nombre_Usuario"].ToString();
+                venta.ProductoId = Convert.ToInt32(dr["Venta_Producto_Id"]);
+                venta.CodigoBarras = dr["CodigoBarras"].ToString();
                 venta.NombreProducto = dr["Venta_Nombre_Producto"].ToString();
                 venta.PiezasVendidas = Convert.ToInt32(dr["Venta_Piezas_Vendidas"]);
                 venta.CostoUnitario = Convert.ToDouble(dr["Venta_Costo_Unitario"]);
                 venta.CostoTotal = Convert.ToDouble(dr["Venta_Costo_Total"]);
-
+                venta.CostoTotalVenta = Convert.ToDouble(dr["GranTotal"]);
+               
                 lista.Add(venta);
             }
             return lista;
         }
 
-        public List<EntProductosPedido> SelectPedidoProductos()
+        public string SelectVentasEmpleadosNEW(int usuarioID)
+        {
+            DatReportes obj = new DatReportes();
+            DataRow dr =  obj.SelectVentasEmpleadosNEW(usuarioID);
+
+            return (dr["Totales"] is DBNull ? "0" : dr["Totales"]).ToString();
+        }
+
+        public List<EntProductosPedido> SelectPedidoProductos(int piezas)
         {
 
-            DataTable dt = new DatReportes().SelectPedidoProductos();
+            DataTable dt = new DatReportes().SelectPedidoProductos(piezas);
             List<EntProductosPedido> lista = new List<EntProductosPedido>();
             if (dt.Rows.Count == 0)
                 throw new ApplicationException("No hay Productos Agotados :)");
@@ -58,6 +68,7 @@ namespace Managment.Business
                 pedido.Costo = Convert.ToDouble(dr["Costo"]);
                 pedido.Categoria = dr["Categoria"].ToString();
                 pedido.Tipo = dr["Tipo"].ToString();
+                pedido.CodigoBarras = dr["CodigoBarras"].ToString();
 
                 lista.Add(pedido);
             }

@@ -9,13 +9,15 @@
     <meta name="description" content="Control de inventarios e interfaces para ventas." />
     <meta name="author" content="Jorge Romero Olguin" />
     <meta name="keywords" content="" />
+    <%--<meta http-equiv="Cache-control" content="no-cache" />--%>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <%--<link href="tabs/tabs/css/style.css" rel="stylesheet" />--%>
     <script src="tabs/tabs/js/prefixfree.min.js"></script>
     <%--<script src="js/bootstrap.min.js"></script>--%>
 </head>
-<body style="background-color: #EDEDF2;">
-    <form id="form1" runat="server">
+<body style="background-color: #EDEDF2;">   
+    <form id="form1" runat="server">        
+         <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
         <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
             <div class="row " style="margin-top: 15px;">
                 <div class="col-sm-12 col-xs-12">
@@ -23,14 +25,15 @@
                         <div class="panel-heading" style="background-color: #FAFAFA; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
                             <div class="row">
                                 <div class="col-md-5" style="text-align: left;">
-                                    <label id="lblEmpleado" style="font-size: large; color: darkblue;">Bianca Cruz</label>
+                                    <input type="text" id="txtCodigoBarras" class="form-control input-sm col-md-1" style="height: 30px; width: 20px; background-color: #FAFAFA; border-color: #FAFAFA;" />&nbsp;
+                                    <asp:Label ID="lblEmpleado" runat="server" Style="font-size: large; color: darkblue;"></asp:Label>
                                 </div>
                                 <div class="col-md-5" style="text-align: left;">
-                                    <label id="lblNumCliente" style="font-size: large; color: darkblue;" class="col-md-4">Cliente N°</label>
-                                    <input type="text" id="txtCodigoBarras" class="form-control input-sm col-md-1" placeholder="Código Barras" style="width: 100px;" />
+                                    <asp:Label ID="lblCliente" runat="server" Style="font-size: large; color: darkblue; padding-right: 0px; width: 100px;" class="col-md-4">Cliente N°</asp:Label>
+                                    <asp:Label ID="lblNumCliente" runat="server" Style="font-size: large; color: darkblue; padding-left: 2px;" class="col-md-4"></asp:Label>
                                 </div>
                                 <div class="col-md-2" style="text-align: right;">
-                                    <label id="btnSalir" class="btn btn-primary">Salir</label>
+                                    <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +52,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon">
-                                                <span class="icon"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-tint" aria-hidden="true"></i></span>
                                             </span>
                                             <input type="text" id="txtSustancia" class="form-control input-sm" placeholder="Sustancia" disabled="disabled" style="background-color: white;" />
                                         </div>
@@ -83,35 +86,61 @@
                                     </div>
                                 </div>
                                 <br />
-                                <div class="row" id="tablaVentas">
+                                <div class="row" id="tablaVentas" style="height: 400px;">
                                     <div class="col-md-12">
-                                        <div id="Tabla" class="table table-responsive" style="text-align: -webkit-center;">
+                                        <div id="Tabla" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
                                         </div>
                                     </div>
                                 </div>
                                 <br />
-                                <div class="row">
-                                    <div class="col-md-12" style="text-align: -webkit-right;">
-                                        <label id="lblVentaT" style="color:red; font-size:xx-large;">VENTA TOTAL: $</label>
-                                        <label id="lblVentaTotal" style="color:red; font-size:xx-large;">0.00</label>
+                                <div class="row" style="width: 97%;">
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5" style="text-align: center;">
+                                    </div>
+                                    <div class="col-md-1">
+                                    </div>
+                                    <div class="col-md-5" style="text-align: right;">
+                                        <label id="lblVentaT" style="color: #0e41cf; font-size: xx-large;">TOTAL: $</label>
+                                        <label id="lblVentaTotal" style="color: #0e41cf; font-size: xx-large;">0.00</label>
                                     </div>
                                 </div>
-
                             </section>
                         </div>
                         <div class="panel-footer" style="text-align: center;">
-                            <div class="row">
+                            <div class="row" style="width: 97%;">
                                 <div class="col-md-1">
                                     <label id="RomaSystems" style="font-size: x-small; color: darkgray"><a href="#">&copy; ROMA SYSTEMS.</a></label>
                                 </div>
-                                <div class="col-md-5" style="text-align: center;">
-                                    <button type="button" id="btnTotales" class="btn btn-primary" disabled="disabled">Totales</button>
+                                <div class="col-md-2" style="text-align: left;">
+                                    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>
+                                            <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>
+                                            <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>--%>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-4">
                                 </div>
-                                <div class="col-md-5" style="text-align: center;">
+                                <div class="col-md-5" style="text-align: right; padding-right: 0px;">
+                                    <button type="button" id="btnVentasDia" style="width: 50px" class="btn btn-primary">VDía</button>&nbsp&nbsp&nbsp
+                                    <div class="row" id="tablaVentasDia" style="display:none;">
+                                        <div class="col-md-12">
+                                            <div id="TablaVenDias" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="number" id="numExis" min="0" max="100" />
+                                    <button type="button" id="btnExistencias" style="width: 50px" class="btn btn-primary">Exis</button>&nbsp&nbsp&nbsp
+                                    <div class="row" id="tablaProductosExis" style="display:none;">
+                                        <div class="col-md-12">
+                                            <div id="TablaProdExis" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" id="btnTotales" class="btn btn-primary">Totales</button>&nbsp&nbsp&nbsp
                                     <button type="button" id="btnCancelar" class="btn btn-primary">Cancelar</button>&nbsp&nbsp&nbsp
-                                     <button type="button" id="btnGuardar" class="btn btn-success">Guardar</button>
+                                    <button type="button" id="btnGuardar" class="btn btn-success">Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -123,6 +152,7 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" />
+    <script src="js/base64.js"></script>
     <script>
         $(document).ready(function () {
             //Variables Globales
@@ -131,10 +161,10 @@
             var producto = '';
             var sustancia = '';
             var existencia = 0;
-            var costo = 0;
+            var costo = 0.0;
             var codigoBarras = '';
             var piezasVenta = 0;
-            var costoTotalProd = 0;
+            var costoTotalProd = 0.0;
 
             //Obtener Id
             function ObtenerId(cadena) {
@@ -231,21 +261,41 @@
 
             //Evento Click del boton Agregar
             $('#btnAgregar').on("click", function () {
-                //$('#txtPiezasVenta').val() != '' ? $('#txtPiezasVenta').removeClass("error") : $('#txtPiezasVenta').addClass("error");
+                var numPiezas = 0;
+                var costoNumPiezas = 0;
                 if ($("#txtPiezasVenta").val() != '') {
                     if ($("#txtPiezasVenta").val() <= existencia) {
                         piezasVenta = $("#txtPiezasVenta").val();
                         costoTotalProd = (piezasVenta * costo);
                         if (window.sessionStorage) {
-                            var datosProducto = { "Id_Producto": productoID, "Producto": producto, "Sustancia": sustancia, "Existencia": existencia, "Costo": costo, "PiezasVenta": piezasVenta, "CostoTotalProd": costoTotalProd, "EliminarProd": "EliminarProd" + productoID }
-                            var jsonDatosProducto = JSON.stringify(datosProducto);
-                            sessionStorage.setItem("ProductoAgregar" + productoID, jsonDatosProducto);
+                            if (sessionStorage.getItem("ProductoAgregar" + productoID) != null) {
+                                list3 = $.parseJSON(sessionStorage.getItem("ProductoAgregar" + productoID));
+                                $.each(list3, function (key, value) {
+                                    if (key == "PiezasVenta") {
+                                        numPiezas = parseInt(value) + parseInt(piezasVenta);
+                                    }
+                                })
+                                costoNumPiezas = (numPiezas * costo);
+                            }
+                            else {
+                                numPiezas = piezasVenta;
+                                costoNumPiezas = costoTotalProd;
+                            }
+                            if (numPiezas <= existencia) {
+                                var datosProducto = { "Id_Producto": productoID, "Producto": producto, "Sustancia": sustancia, "Existencia": existencia, "Costo": costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + productoID }
+                                var jsonDatosProducto = JSON.stringify(datosProducto);
+                                sessionStorage.setItem("ProductoAgregar" + productoID, jsonDatosProducto);
+                                $('#txtCodigoBarras').focus();
+                                cargarTablaVentas();
+                            }
+                            else {
+                                $('#txtCodigoBarras').focus();
+                                alert('No hay existencias suficientes de -' + this.label + '- VERIFIQUE.');
+                            }
                         }
                         else {
                             throw new Error('Tu Navegador no soporta SessionStorage!');
                         }
-                        $('#txtCodigoBarras').focus();
-                        cargarTablaVentas();
                     }
                     else {
                         $('#txtCodigoBarras').focus();
@@ -263,53 +313,58 @@
             function cargarTablaVentas() {
 
                 tabla = '';
-                tabla += '<table class="table table-responsive table-hover" border="1" id="body_gvTablaVentas" style="width:75%;border-collapse:collapse;font-size: 0.7em; overflow-x: auto">'
+                tabla += '<table class="table table-responsive table-hover" border="1" id="body_gvTablaVentas" style="width:90%; border-collapse:collapse; font-size: 0.7em; overflow-x: auto">'
                 tabla += '<tr style="background-color: #EDEDF2; text-align:center;">';
-                tabla += ' <td>[CLV_PROD]</td>';
-                tabla += ' <td>[PRODUCTO]</td>';
-                tabla += ' <td>[SUSTANCIA]</td>';
-                tabla += ' <td>[EXISTENCIA]</td>';
-                tabla += ' <td>[COSTO]</td>';
-                tabla += ' <td>[PIEZAS A VENDER]</td>';
-                tabla += ' <td>[TOTAL]</td>';
-                tabla += ' <td>[ELIMINAR]</td>';
+                tabla += ' <td style="font-size: small;">[CLV_PROD]</td>';
+                tabla += ' <td style="font-size: small;">[PRODUCTO]</td>';
+                tabla += ' <td style="font-size: small;">[SUSTANCIA]</td>';
+                tabla += ' <td style="font-size: small;">[EXISTENCIA]</td>';
+                tabla += ' <td style="font-size: small;">[COSTO]</td>';
+                tabla += ' <td style="font-size: small;">[PIEZAS A VENDER]</td>';
+                tabla += ' <td style="font-size: small;">[TOTAL]</td>';
+                tabla += ' <td style="font-size: small;">[ELIMINAR]</td>';
                 tabla += '</tr>';
 
                 if (sessionStorage.length == 0) {
                     $("#btnCancelar").attr("disabled", true);
                     $("#btnGuardar").attr("disabled", true);
                     tabla += '<tr style="text-align:center;">';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
-                    tabla += ' <td>Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
+                    tabla += ' <td style="font-size: small;">Ingrese Producto</td>';
                     tabla += '</tr>';
                 }
                 else {
                     $("#btnCancelar").attr("disabled", false);
                     $("#btnGuardar").attr("disabled", false);
+                    var VentaTotal = 0;
                     for (var x = 0; x <= sessionStorage.length; x++) {
                         if (sessionStorage.getItem(sessionStorage.key(x)) != null) {
                             list = $.parseJSON(sessionStorage.getItem(sessionStorage.key(x)));
                             tabla += '<tr style="text-align:center;">';
                             $.each(list, function (key, value) {
                                 if (key == "EliminarProd") {
-                                    tabla += '<td><span id="lnkSup' + value + '" class="glyphicon glyphicon-remove" style="font-size: 1.5em; padding: 0 15px;" title="Eliminar Producto"></span></td>';
+                                    tabla += '<td><span id="lnkSup' + value + '" class="glyphicon glyphicon-remove" style="font-size: 1.5em; padding: 0 15px; color:red;" title="Eliminar Producto"></span></td>';
                                 }
                                 else if (key == "Costo" || key == "CostoTotalProd") {
-                                    tabla += ' <td>$ ' + value + '</td>';
+                                    tabla += ' <td style="font-size: small;">$ ' + value + '</td>';
                                 }
                                 else {
-                                    tabla += ' <td>' + value + '</td>';
+                                    tabla += ' <td style="font-size: small;">' + value + '</td>';
+                                }
+                                if (key == "CostoTotalProd") {
+                                    VentaTotal += value
                                 }
                             });
                             tabla += '</tr>';
                         }
                     }
+                    $('#lblVentaTotal').text(VentaTotal);
                 }
                 tabla += '</table>';
                 $('#Tabla').empty();
@@ -327,6 +382,9 @@
                     productoID = ObtenerId($(this).attr("id"));
                     sessionStorage.removeItem("ProductoAgregar" + productoID);
                     $('#txtCodigoBarras').focus();
+                    if (sessionStorage.length == 0) {
+                        $('#lblVentaTotal').text("0.00");
+                    }
                     cargarTablaVentas();
                 });
             }
@@ -350,10 +408,10 @@
                                         list2 = $.parseJSON(sessionStorage.getItem("ProductoAgregar" + this.Id_Producto));
                                         $.each(list2, function (key, value) {
                                             if (key == "PiezasVenta") {
-                                                numPiezas = value + 1;
+                                                numPiezas = parseInt(value) + 1;
                                             }
                                         })
-                                        costoNumPiezas = numPiezas * this.Costo;
+                                        costoNumPiezas = (numPiezas * this.Costo);
                                     }
                                     else {
                                         numPiezas = 1;
@@ -387,7 +445,265 @@
                     alert('Producto No Registrado: Código de Barras ' + codigo);
                 }
             });
-        });
+
+            //Evento Click del Boton Cancelar
+            $('#btnCancelar').on("click", function () {
+                if (confirm("¿Seguro de Cancelar la Operación?")) {
+                    sessionStorage.clear();
+                    $('#lblVentaTotal').text("0.00");
+                    cargarTablaVentas();
+                    $('#txtCodigoBarras').focus();
+                }
+            });
+
+            //Evento Click del Boton Salir
+            $('#btnSalir').on("click", function () {
+                if (confirm("¿Seguro de Salir del Registro de Ventas?")) {
+                    //$('#lblEmpleado').html('');
+                    sessionStorage.clear();
+                    window.location = 'Default.aspx';
+                }
+            });
+
+            //Evento Click del Boton Guardar
+            $('#btnGuardar').on("click", function () {
+                if (confirm("¿Se guardara la venta del Cliente?")) {
+                    if (sessionStorage.length != 0) {
+                        for (var x = 0; x <= sessionStorage.length; x++) {
+                            if (sessionStorage.getItem(sessionStorage.key(x)) != null) {
+                                list = $.parseJSON(sessionStorage.getItem(sessionStorage.key(x)));
+                                var misDatos = '';
+                                var idProducto = 0;
+                                var nombreProducto = '';
+                                var piezasVendidas = 0;
+                                var costoUnitario = 0.0;
+                                var costoTotal = 0.0;
+                                var numCliente = '';
+                                numCliente = $('#lblNumCliente').text();
+                                var costoTotalVenta = 0.0;
+                                costoTotalVenta = $('#lblVentaTotal').text();
+                                $.each(list, function (key, value) {
+                                    switch (key) {
+                                        case 'Id_Producto': { idProducto = value; }
+                                        case "Producto": { nombreProducto = value; }
+                                        case "Costo": { costoUnitario = value }
+                                        case "PiezasVenta": { piezasVendidas = value }
+                                        case "CostoTotalProd": { costoTotal = value }
+                                    }
+                                });
+                                misDatos = '{"idProducto":"' + idProducto + '", "nombreProducto":"' + nombreProducto + '", "piezasVendidas":"' + piezasVendidas + '", "costoUnitario":"' + costoUnitario + '", "costoTotal":"' + costoTotal + '", "numCliente":"' + numCliente + '", "costoTotalVenta":"' + costoTotalVenta + '"}';
+                                $.ajax({
+                                    type: "POST",
+                                    url: "VentasEmp1.aspx/InsertaVentas",
+                                    data: misDatos,
+                                    async: false,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (msg) {
+                                    },
+                                    error: function (msg) {
+                                        alert('Error al Guardar la Venta' + msg.responseText);
+                                    }
+                                });
+                            }
+                        }
+                        sessionStorage.clear();
+                        $('#lblVentaTotal').text("0.00");
+                        var clienteMas = 0;
+                        clienteMas = parseInt($('#lblNumCliente').text()) + 1;
+                        $('#lblNumCliente').text(clienteMas)
+                        cargarTablaVentas();
+                        $('#txtCodigoBarras').focus();
+
+                    } else {
+                        alert("No hay elementos a Guardar.");
+                    }
+                }
+            });
+
+            //Evento Click del Boton Totales
+            $('#btnTotales').on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "VentasEmp1.aspx/SelectVentasEmpleadosNEW",
+                    data: '',
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        totales = $.parseJSON(msg.d);
+                        if (totales.totalVentaEmpleado == "0")
+                            alert("Sus Ventas del Día son : $ 0.00 ");
+                        else
+                            alert("Sus Ventas del Día son : $ " + totales.totalVentaEmpleado);
+                        $('#txtCodigoBarras').focus();
+                    },
+                    error: function (msg) {
+                        alert('Error al cargar el impoorte de Ventas del Día' + msg.responseText);
+                        $('#txtCodigoBarras').focus();
+                    }
+                });
+            });
+
+            //Exceles
+
+            $('#btnVentasDia').on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "VentasEmp1.aspx/SelectVentasEmpleados",
+                    data: '',
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        list = $.parseJSON(msg.d);
+                        TablaVenDias = '';
+                        TablaVenDias += '<table class="table table-responsive table-hover" border="1" id="body_gvQuejas" style="border-collapse:collapse;font-size: 0.7em; overflow-x: auto">'
+                        TablaVenDias += '<tr style="background-color: #F2F7FA;"; text-align:center;">';
+                        TablaVenDias += ' <td>[Cliente]</td>';
+                        TablaVenDias += ' <td>[Fecha]</td>';
+                        TablaVenDias += ' <td>[Usuario]</td>';
+                        TablaVenDias += ' <td>[IdProducto]</td>';
+                        TablaVenDias += ' <td>[Código Barras]</td>';
+                        TablaVenDias += ' <td>[Nombre Producto]</td>';
+                        TablaVenDias += ' <td>[Piezas Vendidas]</td>';
+                        TablaVenDias += ' <td>[Costo Unitario]</td>';
+                        TablaVenDias += ' <td>[Costo Total]</td>';
+                        TablaVenDias += ' <td>[Gran TOTAL]</td>';
+                        TablaVenDias += '</tr>';
+                        $(list).each(function () {
+                            TablaVenDias += '<tr style="text-align:center;">';
+                            TablaVenDias += ' <td>' + this.NumCliente + '</td>';
+                            TablaVenDias += ' <td>' + this.fAlta + '</td>';
+                            TablaVenDias += ' <td>' + this.NombreUsuario + '</td>';
+                            TablaVenDias += ' <td>' + this.ProductoId + '</td>';
+                            TablaVenDias += ' <td>' + this.CodigoBarras + '</td>';
+                            TablaVenDias += ' <td>' + this.NombreProducto + '</td>';
+                            TablaVenDias += ' <td>' + this.PiezasVendidas; + '</td>';
+                            TablaVenDias += ' <td>' + this.CostoUnitario + '</td>';
+                            TablaVenDias += ' <td>' + this.CostoTotal + '</td>';
+                            TablaVenDias += ' <td>' + this.CostoTotalVenta; + '</td>';
+                            TablaVenDias += '</tr>';
+                        });
+                        TablaVenDias += '</table>';
+                        $('#TablaVenDias').empty();
+                        $('#TablaVenDias').append(TablaVenDias);
+                    },
+                    error: function (msg) {
+                        alert('Error al generar el reporte de Ventas X Día' + msg.responseText);
+                    }
+                });//Fin .ajax()
+
+                var dt = new Date();
+                var day = dt.getDate();
+                var month = dt.getMonth() + 1;
+                var year = dt.getFullYear();
+                var hour = dt.getHours();
+                var mins = dt.getMinutes();
+                var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+                //creating a temporary HTML link element (they support setting file names)
+                var a = document.createElement('a');
+                //getting data from our div that contains the HTML table
+                var table = document.getElementById('TablaVenDias');
+                var html = table.outerHTML;
+                var data_type = 'data:application/vnd.ms-excel;base64,' + $.base64.encode(html);
+                a.href = data_type;
+                ////setting the file name
+                a.download = 'Ventas del Día: ' + postfix + '.xls';
+                ////triggering the function
+                a.click();
+                ////just in case, prevent default behaviour
+                e.preventDefault();
+            });
+
+            $('#btnTotales').on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "VentasEmp1.aspx/SelectVentasEmpleadosNEW",
+                    data: '',
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        totales = $.parseJSON(msg.d);
+                        if (totales.totalVentaEmpleado == "0")
+                            alert("Sus Ventas del Día son : $ 0.00 ");
+                        else
+                            alert("Sus Ventas del Día son : $ " + totales.totalVentaEmpleado);
+                        $('#txtCodigoBarras').focus();
+                    },
+                    error: function (msg) {
+                        alert('Error al cargar el impoorte de Ventas del Día' + msg.responseText);
+                        $('#txtCodigoBarras').focus();
+                    }
+                });
+            });
+
+            //Exceles
+
+            $('#btnExistencias').on("click", function () {
+                var piezas = $("#numExis").val() == '' ? "500" : $("#numExis").val();
+                var misDatos = '{"piezas":"' + piezas + '"}';
+                $.ajax({
+                    type: "POST",
+                    url: "VentasEmp1.aspx/SelectExistenciasProducto",
+                    data: misDatos,
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        list = $.parseJSON(msg.d);
+                        TablaProdExis = '';
+                        TablaProdExis += '<table class="table table-responsive table-hover" border="1" id="body_gvQuejas" style="border-collapse:collapse;font-size: 0.7em; overflow-x: auto">'
+                        TablaProdExis += '<tr style="background-color: #F2F7FA;"; text-align:center;">';
+                        TablaProdExis += ' <td>[IdProducto]</td>';
+                        TablaProdExis += ' <td>[Código Barras]</td>';
+                        TablaProdExis += ' <td>[Producto]</td>';
+                        TablaProdExis += ' <td>[Sustancia]</td>';
+                        TablaProdExis += ' <td>[Costo]</td>';
+                        TablaProdExis += ' <td>[Existencia]</td>';                       
+                        TablaProdExis += '</tr>';
+                        $(list).each(function () {
+                            TablaProdExis += '<tr style="text-align:center;">';
+                            TablaProdExis += ' <td>' + this.Id_Producto + '</td>';
+                            TablaProdExis += ' <td>' + this.CodigoBarras + '</td>';
+                            TablaProdExis += ' <td>' + this.Nombre_Producto + '</td>';
+                            TablaProdExis += ' <td>' + this.Sustancia + '</td>';
+                            TablaProdExis += ' <td>' + this.Costo + '</td>';
+                            TablaProdExis += ' <td>' + this.Existencia + '</td>';                           
+                            TablaProdExis += '</tr>';
+                        });
+                        TablaProdExis += '</table>';
+                        $('#TablaProdExis').empty();
+                        $('#TablaProdExis').append(TablaProdExis);
+                    },
+                    error: function (msg) {
+                        alert('Error al generar el reporte para Pedido' + msg.responseText);
+                    }
+                });//Fin .ajax()
+
+                var dt = new Date();
+                var day = dt.getDate();
+                var month = dt.getMonth() + 1;
+                var year = dt.getFullYear();
+                var hour = dt.getHours();
+                var mins = dt.getMinutes();
+                var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+                //creating a temporary HTML link element (they support setting file names)
+                var a = document.createElement('a');
+                //getting data from our div that contains the HTML table
+                var table = document.getElementById('TablaProdExis');
+                var html = table.outerHTML;
+                var data_type = 'data:application/vnd.ms-excel;base64,' + $.base64.encode(html);
+                a.href = data_type;
+                ////setting the file name
+                a.download = 'ExistenciaProductos: ' + postfix + '.xls';
+                ////triggering the function
+                a.click();
+                ////just in case, prevent default behaviour
+                e.preventDefault();
+            });
+        })
     </script>
 </body>
 </html>

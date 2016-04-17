@@ -11,21 +11,32 @@ namespace Managment.Data
     {
         public DatReportes() { }
 
-        public DataTable SelectVentasEmpleados(int usuario)
+        public DataTable SelectVentasEmpleados()
         {
             SqlCommand comando = new SqlCommand("sp_Select_VentasEmpleado", con);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@UsuarioId", usuario);
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
         }
 
-        public DataTable SelectPedidoProductos()
+        public DataRow SelectVentasEmpleadosNEW(int usuario)
+        {
+            SqlCommand comando = new SqlCommand("sp_Select_VentasEmpleadoNEW", con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@UsuarioId", usuario);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt.Rows[0];
+        }
+
+        public DataTable SelectPedidoProductos(int piezas)
         {
             SqlCommand comando = new SqlCommand("sp_Select_Pedido_Productos", con);
             comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@Piezas", piezas);
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);

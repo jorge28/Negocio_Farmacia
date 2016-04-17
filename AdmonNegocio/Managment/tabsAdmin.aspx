@@ -4,13 +4,13 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="Control de inventarios e interfaces para ventas." />
     <meta name="author" content="Jorge Romero Olguin" />
     <title>Administrador</title>
     <link href="css/bootstrap-theme.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
-    
+
     <script src="js/bootstrap.js"></script>
     <script src="tabs/tabs/js/prefixfree.min.js"></script>
     <link href="tabs/tabs/css/style.css" rel="stylesheet" />
@@ -20,252 +20,271 @@
     <link href="css/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
-<main>
-  
-  <input id="tab1" type="radio" name="tabs" checked/>
-  <label for="tab1">Alta de Producto</label>
-    
-  <input id="tab2" type="radio" name="tabs" />
-  <label for="tab2">Alta de Usuario</label>
-    
-  <input id="tab3" type="radio" name="tabs" />
-  <label for="tab3">Existencias</label>
-    
-  <input id="tab4" type="radio" name="tabs" />
-  <label for="tab4">Reportes</label>
-    
-  <section id="content1">
-      <br />
-      <br />
-      <form class="form-horizontal" id="formAlta" autocomplete="off" method="post" action="javascript:void(0)">
-          <div class="form-group">
-              <label for="txtCodigo" class="col-lg-2 control-label" style="font-size:smaller;" >Codigo de Barras:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-barcode"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCodigo" style="width:70%" name="txtCodigo" autofocus="autofocus" placeholder="Ingresa Codigo de Barras" required="required" title="Ingresa Codigo de Barras"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtProducto" class="col-lg-2 control-label" style="font-size:smaller">Producto:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange;">
-                          <span class="icon"><i class="fa fa-shopping-cart"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtProducto" style="width:60%" name="txtProducto" placeholder="Ingresa Nombre del Producto" required/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtSustancia" class="col-lg-2 control-label" style="font-size:smaller">Sustancia:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-flask"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtSustancia" style="width:60%" name="txtSustancia" placeholder="Ingresa Nombre de la Sustancia"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="ddlCategoria" class="col-lg-2 control-label" style="font-size:smaller">Categoria:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-sitemap"></i></span>
-                      </span>
-                      <select id="ddlCategoria" class="form-control input-sm" style="width:150px">
-                     </select>
-                   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="ddlTipo" class="col-lg-2 control-label" style="font-size:smaller">Tipo:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-cubes"></i></span>
-                      </span>
-                    <select id="ddlTipo" class="form-control input-sm" style="width:150px">
-                     </select>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtCantidad" class="col-lg-2 control-label" style="font-size:smaller">Cantidad:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-tint"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCantidad" style="width:60%" name="txtCantidad" placeholder="Ingrese Cantidad del Producto"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtExistencia" class="col-lg-2 control-label" style="font-size:smaller">Existencia:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-list"></i></span>
-                      </span>
-                   <input type="number" class="form-control input-sm" id="txtExistencia" min="0" max="30" style="width:60px" name="txtExistencia"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtCosto" class="col-lg-2 control-label" style="font-size:smaller">Costo:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-usd"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCosto" style="width:60px" name="txtCosto" placeholder="Ingresa Costo del Producto"/>   
-                  </div>
-              </div>
-          </div>
-           <div class="form-group">
-              <div class="col-lg-12">
-                  <div class="alert alert-success" id="alertListoProd" style="display:none;"><strong>Felicidades:</strong>&nbsp El producto ha sido agregado</div>
-              </div>
-          </div>
-          <br />
-          <div class="form-group">
-              <div class="col-lg-3"></div>
-              <div class="col-lg-3"></div>
-              <div class="col-lg-3">
-                  <button type="button" id="btnGuardarProducto" class="btn btn-warning">Guardar Producto</button>
-              </div>
-              <div class="col-lg-3">
-                  <label id="btnCancelarProducto" class="btn btn-primary">Cancelar</label>
-              </div>
-          </div>
-      </form>
-  </section>
-    
-  <section id="content2">
-      <br />
-      <br />
-      <form class="form-horizontal">
-      <div class="form-group">
-              <label for="txtNombre" class="col-lg-2 control-label" style="font-size:smaller">Nombre de Usuario:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-child"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtNombre" style="width:60%" name="txtNombre" placeholder="Ingresa Nombre de Usuario"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtApaterno" class="col-lg-2 control-label" style="font-size:smaller">Apellido Paterno:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-pinterest"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtApaterno" style="width:60%" name="txtApaterno" placeholder="Ingresa Apellido Paterno"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtAmaterno" class="col-lg-2 control-label" style="font-size:smaller">Apellido Materno:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-maxcdn"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtAmaterno" style="width:60%" name="txtAmaterno" placeholder="Ingresa Apellido Materno"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtDireccion" class="col-lg-2 control-label" style="font-size:smaller">Direccion:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-map-marker"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtDireccion" style="width:60%" name="txtDireccion" placeholder="Ingresa Direccion del Usuario"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtTelefono" class="col-lg-2 control-label" style="font-size:smaller">Telefono Casa:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-phone-square"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtTelefono" style="width:60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtCelular" class="col-lg-2 control-label" style="font-size:smaller">Telefono Celular:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-mobile"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCelular" style="width:60%" name="txtCelular" placeholder="Ingresa el No. Celular del Usuario"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtUsuario" class="col-lg-2 control-label" style="font-size:smaller">Usuario:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-user"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtUsuario" style="width:60%" name="txtUsuario" placeholder="Ingresa un Usuario"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtContraseña" class="col-lg-2 control-label" style="font-size:smaller">Contraseña:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-unlock"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtContraseña" style="width:60%" name="txtContraseña" placeholder="Ingresa una Contraseña"/>   
-                  </div>
-              </div>
-          </div>
-      <div class="form-group">
-              <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size:smaller">Pregunta Secreta:</label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-puzzle-piece"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtPreguntaSecreta" style="width:60%" name="txtPreguntaSecreta" placeholder="Ingresa una Pregunta Secreta"/>   
-                  </div>
-              </div>
-          </div>
-      <br />
-      <div class="form-group">
-              <div class="col-lg-3"></div>
-              <div class="col-lg-3"></div>
-              <div class="col-lg-3">
-                  <label id="btnGuardarUsuario" class="btn btn-warning">Guardar Usuario</label>
-              </div>
-              <div class="col-lg-3">
-                  <label id="btnCancelarUsuario" class="btn btn-primary">Cancelar</label>
-              </div>
-          </div>
-      </form>
-  </section>
-    
-  <section id="content3">
+ 
+    <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
+        <div class="row " style="margin-top: 15px;">
+            <div class="col-sm-12 col-xs-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading" style="background-color: #FAFAFA; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
+                        <div class="row">
+                            <div class="col-md-5" style="text-align: left;">
+                                <asp:Label ID="lblEmpleado" runat="server" Style="font-size: large; color: darkblue;"></asp:Label>
+                            </div>
+                            <div class="col-md-5" style="text-align: left;">
+                            </div>
+                            <div class="col-md-2" style="text-align: right;">
+                                <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body" style="height: 820px; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px;">
+                        <%--                        <h1>Responsive CSS Tabs</h1>--%>
+                         <main>
+
+                        <input id="tab1" type="radio" name="tabs" checked />
+                        <label for="tab1">Alta de Producto</label>
+
+                        <input id="tab2" type="radio" name="tabs" />
+                        <label for="tab2">Alta de Usuario</label>
+
+                        <input id="tab3" type="radio" name="tabs" />
+                        <label for="tab3">Existencias</label>
+
+                        <input id="tab4" type="radio" name="tabs" />
+                        <label for="tab4">Reportes</label>
+
+                        <section id="content1">
+                            <br />
+                            <br />
+                            <form class="form-horizontal" id="formAlta" autocomplete="off" method="post" action="javascript:void(0)">
+                                <div class="form-group">
+                                    <label for="txtCodigo" class="col-lg-2 control-label" style="font-size: smaller;">Codigo de Barras:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-barcode"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCodigo" style="width: 70%" name="txtCodigo" autofocus="autofocus" placeholder="Ingresa Codigo de Barras" required="required" title="Ingresa Codigo de Barras" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtProducto" class="col-lg-2 control-label" style="font-size: smaller">Producto:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange;">
+                                                <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtProducto" style="width: 60%" name="txtProducto" placeholder="Ingresa Nombre del Producto" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSustancia" class="col-lg-2 control-label" style="font-size: smaller">Sustancia:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-flask"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtSustancia" style="width: 60%" name="txtSustancia" placeholder="Ingresa Nombre de la Sustancia" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ddlCategoria" class="col-lg-2 control-label" style="font-size: smaller">Categoria:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-sitemap"></i></span>
+                                            </span>
+                                            <select id="ddlCategoria" class="form-control input-sm" style="width: 150px">
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ddlTipo" class="col-lg-2 control-label" style="font-size: smaller">Tipo:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-cubes"></i></span>
+                                            </span>
+                                            <select id="ddlTipo" class="form-control input-sm" style="width: 150px">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCantidad" class="col-lg-2 control-label" style="font-size: smaller">Cantidad:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-tint"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCantidad" style="width: 60%" name="txtCantidad" placeholder="Ingrese Cantidad del Producto" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtExistencia" class="col-lg-2 control-label" style="font-size: smaller">Existencia:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                            </span>
+                                            <input type="number" class="form-control input-sm" id="txtExistencia" min="0" max="30" style="width: 60px" name="txtExistencia" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCosto" class="col-lg-2 control-label" style="font-size: smaller">Costo:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-usd"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCosto" style="width: 60px" name="txtCosto" placeholder="Ingresa Costo del Producto" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-12">
+                                        <div class="alert alert-success" id="alertListoProd" style="display: none;"><strong>Felicidades:</strong>&nbsp El producto ha sido agregado</div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3">
+                                        <button type="button" id="btnGuardarProducto" class="btn btn-warning">Guardar Producto</button>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label id="btnCancelarProducto" class="btn btn-primary">Cancelar</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+
+                        <section id="content2">
+                            <br />
+                            <br />
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="txtNombre" class="col-lg-2 control-label" style="font-size: smaller">Nombre de Usuario:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-child"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtNombre" style="width: 60%" name="txtNombre" placeholder="Ingresa Nombre de Usuario" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtApaterno" class="col-lg-2 control-label" style="font-size: smaller">Apellido Paterno:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-pinterest"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtApaterno" style="width: 60%" name="txtApaterno" placeholder="Ingresa Apellido Paterno" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtAmaterno" class="col-lg-2 control-label" style="font-size: smaller">Apellido Materno:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-maxcdn"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtAmaterno" style="width: 60%" name="txtAmaterno" placeholder="Ingresa Apellido Materno" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtDireccion" class="col-lg-2 control-label" style="font-size: smaller">Direccion:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-map-marker"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtDireccion" style="width: 60%" name="txtDireccion" placeholder="Ingresa Direccion del Usuario" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtTelefono" class="col-lg-2 control-label" style="font-size: smaller">Telefono Casa:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-phone-square"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtTelefono" style="width: 60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCelular" class="col-lg-2 control-label" style="font-size: smaller">Telefono Celular:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-mobile"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCelular" style="width: 60%" name="txtCelular" placeholder="Ingresa el No. Celular del Usuario" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtUsuario" class="col-lg-2 control-label" style="font-size: smaller">Usuario:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-user"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtUsuario" style="width: 60%" name="txtUsuario" placeholder="Ingresa un Usuario" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtContraseña" class="col-lg-2 control-label" style="font-size: smaller">Contraseña:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-unlock"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtContraseña" style="width: 60%" name="txtContraseña" placeholder="Ingresa una Contraseña" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size: smaller">Pregunta Secreta:</label>
+                                    <div class="col-lg-10">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-puzzle-piece"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtPreguntaSecreta" style="width: 60%" name="txtPreguntaSecreta" placeholder="Ingresa una Pregunta Secreta" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3">
+                                        <label id="btnGuardarUsuario" class="btn btn-warning">Guardar Usuario</label>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label id="btnCancelarUsuario" class="btn btn-primary">Cancelar</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+
+                        <section id="content3">
     <br />
     <br />
       <p id="pBuscador">
@@ -424,54 +443,76 @@
           </div>
       </form>
   </section>
-    
-  <section id="content4">
-    <form class="form-horizontal" role="form" id="formReportes">
-        <br />
-       <h4 style="font-weight:bold">
-          Generar reporte por Existencia.
-      </h4>
-        <hr />
-        <div class="form-group">
-              <label for="txtExistenciaExis" class="col-lg-1 control-label" style="font-size:smaller"></label>
-              <div class="col-lg-2">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-list"></i></span>
-                      </span>
-                   <input type="number" min="0" max="100" class="form-control input-sm" id="txtPiezasRepor" name="txtPiezasRepor"/>   
-                  </div>
-              </div>
-              <div class="col-lg-3">
-                   <label id="GeneraReportexPiezas" class="btn btn-warning">Generar</label>  
-              </div>
-        </div>
-        <hr />
 
-        <br />
-        <h4 style="font-weight:bold">
-          Generar reporte de ventas por Dia.
-      </h4>
-        <hr />
-        <div class="form-group">
-              <label for="txtFechaRepor" class="col-lg-1 control-label" style="font-size:smaller"></label>
-              <div class="col-lg-4">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-calendar"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtFechaRepor" name="txtFechaRepor"/>   
-                  </div>
-              </div>
-              <div class="col-lg-3">
-                   <label id="btnGeneraxDiaVentas" class="btn btn-warning">Generar</label>  
-              </div>
+                        <section id="content4">
+                            <form class="form-horizontal" role="form" id="formReportes">
+                                <br />
+                                <h4 style="font-weight: bold">Generar reporte por Existencia.
+                                </h4>
+                                <hr />
+                                <div class="form-group">
+                                    <label for="txtExistenciaExis" class="col-lg-1 control-label" style="font-size: smaller"></label>
+                                    <div class="col-lg-2">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                            </span>
+                                            <input type="number" min="0" max="100" class="form-control input-sm" id="txtPiezasRepor" name="txtPiezasRepor" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label id="GeneraReportexPiezas" class="btn btn-warning">Generar</label>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                <br />
+                                <h4 style="font-weight: bold">Generar reporte de ventas por Dia.
+                                </h4>
+                                <hr />
+                                <div class="form-group">
+                                    <label for="txtFechaRepor" class="col-lg-1 control-label" style="font-size: smaller"></label>
+                                    <div class="col-lg-4">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-calendar"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtFechaRepor" name="txtFechaRepor" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label id="btnGeneraxDiaVentas" class="btn btn-warning">Generar</label>
+                                    </div>
+                                </div>
+                                <hr />
+                            </form>
+                        </section>
+
+                        </main>
+                    </div>
+                    <div class="panel-footer" style="text-align: center;">
+                        <div class="row" style="width: 97%;">
+                            <div class="col-md-1">
+                                <label id="RomaSystems" style="font-size: x-small; color: darkgray"><a href="#">&copy; ROMA SYSTEMS.</a></label>
+                            </div>
+                            <div class="col-md-2" style="text-align: left;">
+                                <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>
+                                            <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>   
+                                            <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>                
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>--%>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-5" style="text-align: right; padding-right: 0px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <hr />
-    </form>
-  </section>
-    
-</main>
+    </div>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="jquery-validate/jquery-validate.js"></script>
     <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
@@ -657,13 +698,13 @@
                     $('#formExistencia').show("fast");
                      productoIDautocomplete = ui.item.Id_Producto;
                     var codigo = ui.item.CodigoBarras
-                   var producto = ui.item.label;
-                   var sustancia = ui.item.Sustancia;
-                   var categoria = ui.item.IdCategoria;
-                   var tipo = ui.item.IdTipo;
+                    var producto = ui.item.label;
+                    var sustancia = ui.item.Sustancia;
+                    var categoria = ui.item.IdCategoria;
+                    var tipo = ui.item.IdTipo;
                     var cantidad = ui.item.Cantidad
-                   var existencia = ui.item.Existencia;
-                   var costo = ui.item.Costo;
+                    var existencia = ui.item.Existencia;
+                    var costo = ui.item.Costo;
 
                     $('#txtCodigoExis').val(codigo);
                     $('#txtProductoExis').val(producto);
@@ -704,7 +745,7 @@
                         $('#txtCostoExis').val(costo);
                     }
                 });
-                
+
             });
             //buscador por codigo de barras
             $('#lnkCodigoExis').on("click", function () {
@@ -718,6 +759,14 @@
                 $('#divCodigoBus').hide();
                 $('#divProductoBus').show();
             });
+
+            //var options = {
+            //    data: BusquedaProducto(),
+            //};
+            //$('#txtProductoBuscador').easyAutocomplete(valor);
+
+            //var valor;
+
             //Llena ddlCategoria
             var categoriaExis;
             $.ajax({
@@ -740,6 +789,10 @@
                     alert('Error al cargar las Categorias' + msg.responseText);
                 }
             });
+
+
+            //});
+
             //Llena ddlTipo
             var tipoExis;
             $.ajax({
@@ -897,11 +950,11 @@
             //        }
             //    }
             //});
-            
+
 
         }); //fin del document ready
     </script>
 
 </body>
-    
+
 </html>
