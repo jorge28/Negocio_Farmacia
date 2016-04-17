@@ -149,10 +149,10 @@ namespace Managment.Business
             }
         }
 
-        public void updateExProducto(string prod, string sust, string cat, string tipo, string cant, int productoID)
+        public void actualizaProdBus(string prod, string sust, int cat, int tipo, string cant, int exist, double costo, string codigo, int productoID)
         {
             DatProductos obj = new DatProductos();
-            bool Actualizo = obj.updateExtraProducto(prod, sust, cat, tipo, cant, productoID);
+            bool Actualizo = obj.ActualizaProd(prod, sust, cat, tipo, cant,exist,costo,codigo, productoID);
             if (Actualizo == false)
             {
                 throw new SystemException("Error en la Capa de Negocios al Actualizar el Producto.");

@@ -291,7 +291,54 @@ namespace Managment.Data
                 con.Dispose();
             }
         }
+        public bool ActualizaProd(string prod, string sust, int cat, int tipo, string cant,int exist,double costo,string codigo, int productoID)
+        {
 
+            SqlTransaction objtrans = null;
+            try
+            {
+                con.Open();
+                objtrans = con.BeginTransaction();
+                SqlCommand comando = new SqlCommand("sp_UpdateProductosCompleto", con);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@producto", prod);
+                comando.Parameters.AddWithValue("@sustancia", sust);
+                comando.Parameters.AddWithValue("@categoria", cat);
+                comando.Parameters.AddWithValue("@tipo", tipo);
+                comando.Parameters.AddWithValue("@cantidad", cant);
+                comando.Parameters.AddWithValue("@existencia", exist);
+                comando.Parameters.AddWithValue("@costo", costo);
+                comando.Parameters.AddWithValue("@codigoBarras", codigo);
+                comando.Parameters.AddWithValue("@idProducto", productoID);
+
+                var _with1 = comando;
+                _with1.Transaction = objtrans;
+                _with1.ExecuteNonQuery();
+
+                comando.Parameters.Clear();
+
+                objtrans.Commit();
+                return true;
+            }
+            catch (DataException)
+            {
+                objtrans.Rollback();
+                return false;
+                throw new SystemException("Error en Capa de Datos al Actualizar el Producto.");
+            }
+            catch (Exception)
+            {
+                objtrans.Rollback();
+                return false;
+                throw new SystemException("Error en Capa de Datos al Actualizar el Producto.");
+            }
+            finally
+            {
+                con.Close();
+                con.Dispose();
+            }
+        }
 
     }
 }
