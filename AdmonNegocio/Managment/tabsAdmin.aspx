@@ -20,16 +20,16 @@
     <link href="css/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
- 
+
     <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
         <div class="row " style="margin-top: 15px;">
             <div class="col-sm-12 col-xs-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading" style="background-color: whitesmoke; background-image: linear-gradient(to bottom, whitesmoke 0%, whitesmoke 100%); padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; height:50px;">
+                    <div class="panel-heading" style="background-color: whitesmoke; background-image: linear-gradient(to bottom, whitesmoke 0%, whitesmoke 100%); padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; height: 50px;">
                         <div class="row">
                             <div class="col-md-10" style="text-align: left;">
-                                <label style="font-size:medium; color:darkblue;">Administrador:</label>&nbsp&nbsp
-                                <asp:Label ID="lblEmpleado" runat="server" Style="font-size:medium;; color: darkblue;"></asp:Label>
+                                <label style="font-size: medium; color: darkblue;">Administrador:</label>&nbsp&nbsp
+                                <asp:Label ID="lblEmpleado" runat="server" Style="font-size: medium; color: darkblue;"></asp:Label>
                             </div>
                             <div class="col-md-2" style="text-align: right; margin-top: 5px;">
                                 <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
@@ -37,17 +37,16 @@
                         </div>
                     </div>
                     <div class="panel-body" style="height: 710px; padding-top: 5px; padding-bottom: 5px; padding-right: 5px; padding-left: 5px;">
-                        <%--                        <h1>Responsive CSS Tabs</h1>--%>
                         <main>
 
-                        <input id="tab1" type="radio" name="tabs" checked />
-                        <label for="tab1">Alta de Producto</label>
+                        <input id="tab1" type="radio" name="tabs" />
+                        <label for="tab1">Nuevo Producto</label>
 
                         <input id="tab2" type="radio" name="tabs" />
-                        <label for="tab2">Alta de Usuario</label>
+                        <label for="tab2">Nuevo Usuario</label>
 
-                        <input id="tab3" type="radio" name="tabs" />
-                        <label for="tab3">Existencias</label>
+                        <input id="tab3" type="radio" name="tabs" checked />
+                        <label for="tab3">Edicion Producto</label>
 
                         <input id="tab4" type="radio" name="tabs" />
                         <label for="tab4">Reportes</label>
@@ -143,7 +142,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-usd"></i></span>
                                             </span>
-                                            <input type="number" class="form-control input-sm" step="any" id="txtCosto" style="width: 80px" name="txtCosto"/>
+                                            <input type="number" class="form-control input-sm" step="any" id="txtCosto" style="width: 80px" name="txtCosto" />
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +220,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-phone-square"></i></span>
                                             </span>
-                                            <input type="tel"  class="form-control input-sm" id="txtTelefono" style="width: 60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario" />
+                                            <input type="tel" class="form-control input-sm" id="txtTelefono" style="width: 60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario" />
                                         </div>
                                     </div>
                                 </div>
@@ -284,171 +283,171 @@
                         </section>
 
                         <section id="content3">
-    <br />
-    <br />
-      <p id="pBuscador">
-          Buscar por <a href="#" role="button" id="lnkCodigoExis">Codigo de Barras</a> o por <a href="#" role="button" id="lnkProductoExis">Nombre del Producto</a>.
-      </p>
-      <br />
-      <div class="form-group" id="divBuscador" style="display:none">
-              <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size:smaller"></label>
-              <div class="col-lg-10">
-                  <div class="input-group input-group-icon" style="display:none" id="divCodigoBus">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-barcode"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCodigoBuscador" style="width:70%" name="txtCodigo" placeholder="Ingresa Codigo de Barras"/>   
-                  </div>
-                  <div class="input-group input-group-icon" style="display:none" id="divProductoBus">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-shopping-cart"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtProductoBuscador" style="width:300px" name="Producto" placeholder="Ingresa Nombre del Producto"/>   
-                  </div>
-              </div>
-          </div>
-      <br />
-      <form class="form-horizontal" role="form" id="formExistencia" style="display:none">
-          <div class="form-group">
-              <label for="txtCodigoExis" class="col-lg-1 control-label" style="font-size:smaller">Codigo de Barras:</label>
-              <div class="col-lg-6">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-barcode"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCodigoExis"  name="txtCodigoExis" placeholder="Ingresa Codigo de Barras"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtProductoExis" class="col-lg-1 control-label" style="font-size:smaller">Producto:</label>
-              <div class="col-lg-7">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-shopping-cart"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtProductoExis" name="txtProductoExis" placeholder="Ingresa Nombre del Producto"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtSustanciaExis" class="col-lg-1 control-label" style="font-size:smaller">Sustancia:</label>
-              <div class="col-lg-5">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-flask"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtSustanciaExis" name="txtSustanciaExis" placeholder="Ingresa Nombre de la Sustancia"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="ddlCategoriaExis" class="col-lg-1 control-label" style="font-size:smaller">Categoria:</label>
-              <div class="col-lg-4">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-sitemap"></i></span>
-                      </span>
-                      <select id="ddlCategoriaExis" class="form-control input-sm">
-                     </select>
-                   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="ddlTipoExis" class="col-lg-1 control-label" style="font-size:smaller">Tipo:</label>
-              <div class="col-lg-4">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-cubes"></i></span>
-                      </span>
-                    <select id="ddlTipoExis" class="form-control input-sm">
-                     </select>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtCantidadExis" class="col-lg-1 control-label" style="font-size:smaller">Cantidad:</label>
-              <div class="col-lg-4">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-tint"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCantidadExis" name="txtCantidadExis" placeholder="Ingrese Cantidad del Producto"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtExistenciaExis" class="col-lg-1 control-label" style="font-size:smaller">Existencia:</label>
-              <div class="col-lg-3">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-list"></i></span>
-                      </span>
-                   <input type="number" min="0" max="100" class="form-control input-sm" id="txtExistenciaExis" name="txtExistenciaExis"/>   
-                  </div>
-              </div>
-              <label for="txtAgregarPiezasExis" class="col-lg-1 control-label" style="font-size:smaller">Agregar Piezas:</label>
-              <div class="col-lg-3">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-list"></i></span>
-                      </span>
-                   <input type="number" min="0" max="100" class="form-control input-sm" id="txtAgregarPiezasExis" name="txtAgregarPiezasExis" />   
-                  </div>
-              </div>
-              <label for="txtQuitarPiezasExis" class="col-lg-1 control-label" style="font-size:smaller">Quitar Piezas:</label>
-              <div class="col-lg-3">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-list"></i></span>
-                      </span>
-                   <input type="number" min="0" max="100" class="form-control input-sm" id="txtQuitarPiezasExis" name="txtQuitarPiezasExis"/>   
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label for="txtCostoExis" class="col-lg-1 control-label" style="font-size:smaller">Costo:</label>
-              <div class="col-lg-3">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-usd"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCostoExis" name="txtCostoExis" placeholder=""/>
-                  </div>
-              </div>
-              
-              <label for="txtCostoNuevoExis" class="col-lg-1 control-label" style="font-size:smaller">Costo Nuevo:</label>
-              <div class="col-lg-3">
-                  <div class="input-group input-group-icon">
-                      <span class="input-group-addon" style="background-color:white;border-color:orange">
-                          <span class="icon"><i class="fa fa-usd"></i></span>
-                      </span>
-                   <input type="text" class="form-control input-sm" id="txtCostoNuevoExis" name="txtCostoNuevoExis" placeholder=""/> 
-                  </div>
-              </div>
-              <div class="col-lg-4"></div>
-          </div>
-          <br />
-          <div class="form-group">
-              <div class="col-lg-3"></div>
-              <div class="col-lg-3"></div>
-              <div class="col-lg-3">
-                  <label id="btnActualizarExis" class="btn btn-warning">Actualizar Producto</label>
-              </div>
-              <div class="col-lg-3">
-                  <label id="btnCancelarExis" class="btn btn-warning">Cancelar</label>
-              </div>
-          </div>
-      </form>
-  </section>
+                            <br />
+                            <br />
+                            <p id="pBuscador">
+                                Buscar por <a href="#" role="button" id="lnkCodigoExis">Codigo de Barras</a> o por <a href="#" role="button" id="lnkProductoExis">Nombre del Producto</a>.
+                            </p>
+                            <br />
+                            <div class="form-group" id="divBuscador" style="display: none">
+                                <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size: smaller"></label>
+                                <div class="col-lg-10">
+                                    <div class="input-group input-group-icon" style="display: none" id="divCodigoBus">
+                                        <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                            <span class="icon"><i class="fa fa-barcode"></i></span>
+                                        </span>
+                                        <input type="text" class="form-control input-sm" id="txtCodigoBuscador" style="width: 70%" name="txtCodigo" placeholder="Ingresa Codigo de Barras" />
+                                    </div>
+                                    <div class="input-group input-group-icon" style="display: none" id="divProductoBus">
+                                        <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                            <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                        </span>
+                                        <input type="text" class="form-control input-sm" id="txtProductoBuscador" style="width: 300px" name="Producto" placeholder="Ingresa Nombre del Producto" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <form class="form-horizontal" role="form" id="formExistencia" style="display: none">
+                                <div class="form-group">
+                                    <label for="txtCodigoExis" class="col-lg-1 control-label" style="font-size: smaller">Codigo de Barras:</label>
+                                    <div class="col-lg-6">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-barcode"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCodigoExis" name="txtCodigoExis" placeholder="Ingresa Codigo de Barras" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtProductoExis" class="col-lg-1 control-label" style="font-size: smaller">Producto:</label>
+                                    <div class="col-lg-7">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtProductoExis" name="txtProductoExis" placeholder="Ingresa Nombre del Producto" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSustanciaExis" class="col-lg-1 control-label" style="font-size: smaller">Sustancia:</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-flask"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtSustanciaExis" name="txtSustanciaExis" placeholder="Ingresa Nombre de la Sustancia" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ddlCategoriaExis" class="col-lg-1 control-label" style="font-size: smaller">Categoria:</label>
+                                    <div class="col-lg-4">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-sitemap"></i></span>
+                                            </span>
+                                            <select id="ddlCategoriaExis" class="form-control input-sm">
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ddlTipoExis" class="col-lg-1 control-label" style="font-size: smaller">Tipo:</label>
+                                    <div class="col-lg-4">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-cubes"></i></span>
+                                            </span>
+                                            <select id="ddlTipoExis" class="form-control input-sm">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCantidadExis" class="col-lg-1 control-label" style="font-size: smaller">Cantidad:</label>
+                                    <div class="col-lg-4">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-tint"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCantidadExis" name="txtCantidadExis" placeholder="Ingrese Cantidad del Producto" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtExistenciaExis" class="col-lg-1 control-label" style="font-size: smaller">Existencia:</label>
+                                    <div class="col-lg-3">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                            </span>
+                                            <input type="number" min="0" max="100" class="form-control input-sm" id="txtExistenciaExis" name="txtExistenciaExis" />
+                                        </div>
+                                    </div>
+                                    <label for="txtAgregarPiezasExis" class="col-lg-1 control-label" style="font-size: smaller">Agregar Piezas:</label>
+                                    <div class="col-lg-3">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                            </span>
+                                            <input type="number" min="0" max="100" class="form-control input-sm" id="txtAgregarPiezasExis" name="txtAgregarPiezasExis" />
+                                        </div>
+                                    </div>
+                                    <label for="txtQuitarPiezasExis" class="col-lg-1 control-label" style="font-size: smaller">Quitar Piezas:</label>
+                                    <div class="col-lg-3">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                            </span>
+                                            <input type="number" min="0" max="100" class="form-control input-sm" id="txtQuitarPiezasExis" name="txtQuitarPiezasExis" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtCostoExis" class="col-lg-1 control-label" style="font-size: smaller">Costo:</label>
+                                    <div class="col-lg-3">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-usd"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCostoExis" name="txtCostoExis" placeholder="" />
+                                        </div>
+                                    </div>
+
+                                    <label for="txtCostoNuevoExis" class="col-lg-1 control-label" style="font-size: smaller">Costo Nuevo:</label>
+                                    <div class="col-lg-3">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-usd"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCostoNuevoExis" name="txtCostoNuevoExis" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4"></div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-3">
+                                        <label id="btnActualizarExis" class="btn btn-warning">Actualizar Producto</label>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label id="btnCancelarExis" class="btn btn-primary">Cancelar</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
 
                         <section id="content4">
                             <form class="form-horizontal" role="form" id="formReportes">
                                 <br />
                                 <h4 style="font-weight: bold">Generar reporte por Existencia.
                                 </h4>
-                                 <hr />
+                                <hr />
                                 <h5>Si quiere consultar que productos tienen de cierto número de existencias hacia abajo, seleccione el número deseado.</h5>
                                 <div class="form-group">
                                     <label for="txtExistenciaExis" class="col-lg-1 control-label" style="font-size: smaller"></label>
@@ -459,7 +458,7 @@
                                             </span>
                                             <input type="number" min="0" max="100" class="form-control input-sm" id="txtPiezasRepor" name="txtPiezasRepor" />
                                         </div>
-                                         <div class="col-md-12" style="display:none">
+                                        <div class="col-md-12" style="display: none">
                                             <div id="TablaProdExis" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
                                             </div>
                                         </div>
@@ -484,7 +483,7 @@
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtFechaRepor" name="txtFechaRepor" />
                                         </div>
-                                         <div class="col-md-12" style="display:none">
+                                        <div class="col-md-12" style="display: none">
                                             <div id="TablaVenDias" class="table table-responsive" style="text-align: -webkit-center; height: 400px; margin-bottom: 0px;">
                                             </div>
                                         </div>
@@ -496,11 +495,11 @@
                                 <hr />
                             </form>
                         </section>
-                        </main>
+                      </main>
                     </div>
                     <div class="panel-footer" style="text-align: center;">
                         <div class="row">
-                            <div class="col-md-12" style="text-align:center;">
+                            <div class="col-md-12" style="text-align: center;">
                                 <label id="RomaSystems" style="font-size: x-small; color: darkgray"><a href="#">&copy; ROMA SYSTEMS.</a></label>
                             </div>
                             <%--<div class="col-md-2" style="text-align: left;">
@@ -748,7 +747,7 @@
                     $('#divBuscador').hide("fast");
                     $('#pBuscador').hide();
                     $('#formExistencia').show("fast");
-                     productoIDautocomplete = ui.item.Id_Producto;
+                    productoIDautocomplete = ui.item.Id_Producto;
                     var codigo = ui.item.CodigoBarras
                     var producto = ui.item.label;
                     var sustancia = ui.item.Sustancia;
@@ -770,14 +769,15 @@
             });
             //codigo para buscar por codigo de barras
             $('#txtCodigoBuscador').change(function () {
-                codigo = $('#txtCodigoBuscador').val();
+                var codigo1 = '';
+                codigo1 = $('#txtCodigoBuscador').val();
                 $(lista).each(function () {
-                    if (this.CodigoBarras == codigo) {
+                    if (this.CodigoBarras == codigo1) {
                         $('#divBuscador').hide("fast");
                         $('#formExistencia').show("fast");
                         $('#pBuscador').hide();
 
-                         productoIDcodigo = this.Id_Producto;
+                        productoIDcodigo = this.Id_Producto;
                         var codigo = this.CodigoBarras;
                         var producto = this.label;
                         var sustancia = this.Sustancia;
@@ -804,12 +804,33 @@
                 $('#divBuscador').show();
                 $('#divCodigoBus').show();
                 $('#divProductoBus').hide();
+                $('#txtCodigoBuscador').focus();
             });
             //buscador por producto
             $('#lnkProductoExis').on("click", function () {
                 $('#divBuscador').show();
                 $('#divCodigoBus').hide();
                 $('#divProductoBus').show();
+            });
+
+            //evento click del cancelar
+            $('#btnCancelarExis').on("click", function () {
+                $('#txtCodigoExis').val('');
+                $('#txtProductoExis').val('');
+                $('#txtSustanciaExis').val('');
+                $('#ddlCategoriaExis').val('');
+                $('#ddlTipoExis').val('');
+                $('#txtCantidadExis').val('');
+                $('#txtExistenciaExis').val('');
+                $('#txtCostoExis').val('');
+                $('#txtAgregarPiezasExis').val('');
+                $('#txtQuitarPiezasExis').val('');
+                $('#txtCostoNuevoExis').val('');
+
+                $('#formExistencia').hide();
+                $('#pBuscador').show();
+                $('#txtProductoBuscador').val('');
+                $('#txtCodigoBuscador').val('');
             });
 
             //var options = {
@@ -951,6 +972,7 @@
             }
             $('#btnActualizarExis').on("click", function () {
                 ActualizaProductoPiezasCosto();
+                window.location = 'tabsAdmin.aspx';
             });
             $('#txtAgregarPiezasExis').change(function () {
                 var agregarP = $('#txtAgregarPiezasExis').val();

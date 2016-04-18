@@ -175,7 +175,7 @@
             //Carga Inicial Tabla Ventas
             cargarTablaVentas();
             $('#txtCodigoBarras').focus();
-
+            
             //Funcion que se carga primero para obtener todos los productos...
             (function JsonProductos() {
                 $.ajax({
@@ -187,7 +187,7 @@
                     dataType: "json",
                     success: function (msg) {
                         lista = $.parseJSON(msg.d);
-                        return lista
+                        return lista;
                     },
                     error: function (msg) {
                         alert('Error al obtener todos los Productos' + msg.responseText);
@@ -499,6 +499,7 @@
                         $('#lblNumCliente').text(clienteMas)
                         cargarTablaVentas();
                         $('#txtCodigoBarras').focus();
+                        window.location = 'VentasEmp1.aspx';
 
                     } else {
                         alert("No hay elementos a Guardar.");
