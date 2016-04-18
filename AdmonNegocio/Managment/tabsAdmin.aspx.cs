@@ -27,6 +27,12 @@ public partial class tabsAdmin : System.Web.UI.Page
         }
 
     }
+
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+        lblFecha.Text = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
+    }
+
     [WebMethod]
     public static string GetCategoria() {
 
@@ -109,8 +115,14 @@ public partial class tabsAdmin : System.Web.UI.Page
     [WebMethod]
     public static void ActualizarProducto(string producto, string sustancia, int categoria, int tipo, string cantidad, int existencia, double costo, string codigo, int productoID)
     {
+        EntUsuarios usuario = new EntUsuarios();
+        usuario = (EntUsuarios)HttpContext.Current.Session["Login"];  
+
         BusProductos bp = new BusProductos();
         bp.actualizaProdBus(producto, sustancia, categoria, tipo, cantidad, existencia, costo, codigo,productoID);
+
+        BusBitacora obj2 = new BusBitacora();
+        obj2.InsertBitacoraFarmacia(usuario.Id_Usuario, usuario.NombreUsuario + " " + usuario.ApellidoPaterno + " " + usuario.ApellidoMaterno, DateTime.Now, 5, "ActualizacionProducto", "ACTUALIZACION PRODUCTO : " + DateTime.Now + ", Codigo: " + codigo + ", Producto: " + producto + ", Sustancia:" + sustancia + ", Existencia: " + existencia + ", Costo: " + costo);
     }
     
 }

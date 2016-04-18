@@ -17,7 +17,7 @@
 </head>
 <body style="background-color: #EDEDF2;">   
     <form id="form1" runat="server">        
-         <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
+         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
             <div class="row " style="margin-top: 15px;">
                 <div class="col-sm-12 col-xs-12">
@@ -113,12 +113,12 @@
                                     <label id="RomaSystems" style="font-size: x-small; color: darkgray"><a href="#">&copy; ROMA SYSTEMS.</a></label>
                                 </div>
                                 <div class="col-md-2" style="text-align: left;">
-                                    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
                                             <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>
                                             <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>
                                         </ContentTemplate>
-                                    </asp:UpdatePanel>--%>
+                                    </asp:UpdatePanel>
                                 </div>
                                 <div class="col-md-4">
                                 </div>

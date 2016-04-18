@@ -20,18 +20,29 @@
     <link href="css/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
-
+    
     <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
         <div class="row " style="margin-top: 15px;">
             <div class="col-sm-12 col-xs-12">
                 <div class="panel panel-success">
                     <div class="panel-heading" style="background-color: whitesmoke; background-image: linear-gradient(to bottom, whitesmoke 0%, whitesmoke 100%); padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; height: 50px;">
                         <div class="row">
-                            <div class="col-md-10" style="text-align: left;">
+                            <div class="col-md-9" style="text-align: left;">
                                 <label style="font-size: medium; color: darkblue;">Administrador:</label>&nbsp&nbsp
                                 <asp:Label ID="lblEmpleado" runat="server" Style="font-size: medium; color: darkblue;"></asp:Label>
                             </div>
-                            <div class="col-md-2" style="text-align: right; margin-top: 5px;">
+                             <div class="col-md-2" style="text-align: right; margin-top: 15px;">
+                                <form id="form1" runat="server">        
+                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>   
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>
+                                            <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>   
+                                            <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>                
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </form> 
+                            </div>                          
+                            <div class="col-md-1" style="text-align: right; margin-top: 5px;">
                                 <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
                             </div>
                         </div>
@@ -502,18 +513,6 @@
                             <div class="col-md-12" style="text-align: center;">
                                 <label id="RomaSystems" style="font-size: x-small; color: darkgray"><a href="#">&copy; ROMA SYSTEMS.</a></label>
                             </div>
-                            <%--<div class="col-md-2" style="text-align: left;">
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                        <ContentTemplate>
-                                            <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>   
-                                            <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>                
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-5" style="text-align: right; padding-right: 0px;">
-                            </div>--%>
                         </div>
                     </div>
                 </div>

@@ -40,10 +40,10 @@ public partial class VentasEmp1 : System.Web.UI.Page
         }
     }
 
-    //protected void Timer1_Tick(object sender, EventArgs e)
-    //{
-    //    lblFecha.Text = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
-    //}
+    protected void Timer1_Tick(object sender, EventArgs e)
+    {
+        lblFecha.Text = DateTime.Now.ToString("dd/MMMM/yyyy HH:mm");
+    }
 
     [WebMethod]
     public static string BusquedaProductos()
