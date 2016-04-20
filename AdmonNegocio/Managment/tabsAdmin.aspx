@@ -296,29 +296,8 @@
                         <section id="content3">
                             <br />
                             <br />
-                            <p id="pBuscador">
-                                Buscar por <a href="#" role="button" id="lnkCodigoExis">Codigo de Barras</a> o por <a href="#" role="button" id="lnkProductoExis">Nombre del Producto</a>.
-                            </p>
-                            <br />
-                            <div class="form-group" id="divBuscador" style="display: none">
-                                <label for="txtPreguntaSecreta" class="col-lg-2 control-label" style="font-size: smaller"></label>
-                                <div class="col-lg-10">
-                                    <div class="input-group input-group-icon" style="display: none" id="divCodigoBus">
-                                        <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                            <span class="icon"><i class="fa fa-barcode"></i></span>
-                                        </span>
-                                        <input type="text" class="form-control input-sm" id="txtCodigoBuscador" style="width: 70%" name="txtCodigo" placeholder="Ingresa Codigo de Barras" />
-                                    </div>
-                                    <div class="input-group input-group-icon" style="display: none" id="divProductoBus">
-                                        <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                            <span class="icon"><i class="fa fa-shopping-cart"></i></span>
-                                        </span>
-                                        <input type="text" class="form-control input-sm" id="txtProductoBuscador" style="width: 300px" name="Producto" placeholder="Ingresa Nombre del Producto" />
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <form class="form-horizontal" role="form" id="formExistencia" style="display: none">
+                            
+                            <form class="form-horizontal" role="form" id="formExistencia">
                                 <div class="form-group">
                                     <label for="txtCodigoExis" class="col-lg-1 control-label" style="font-size: smaller">Codigo de Barras:</label>
                                     <div class="col-lg-6">
@@ -337,7 +316,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-shopping-cart"></i></span>
                                             </span>
-                                            <input type="text" class="form-control input-sm" id="txtProductoExis" name="txtProductoExis" placeholder="Ingresa Nombre del Producto" />
+                                            <input type="text" class="form-control input-sm" id="txtProductoExis" name="Producto" placeholder="Ingresa Nombre del Producto" />
                                         </div>
                                     </div>
                                 </div>
@@ -740,12 +719,10 @@
             });
 
             //Evento Select del Buscador
-            $("#txtProductoBuscador").autocomplete({
+            $("#txtProductoExis").autocomplete({
                 select: function (event, ui) {
 
-                    $('#divBuscador').hide("fast");
-                    $('#pBuscador').hide();
-                    $('#formExistencia').show("fast");
+                    productoIDcodigo = '';
                     productoIDautocomplete = ui.item.Id_Producto;
                     var codigo = ui.item.CodigoBarras
                     var producto = ui.item.label;
@@ -757,7 +734,6 @@
                     var costo = ui.item.Costo;
 
                     $('#txtCodigoExis').val(codigo);
-                    $('#txtProductoExis').val(producto);
                     $('#txtSustanciaExis').val(sustancia);
                     $('#ddlCategoriaExis').val(categoria);
                     $('#ddlTipoExis').val(tipo);
@@ -767,17 +743,15 @@
                 }
             });
             //codigo para buscar por codigo de barras
-            $('#txtCodigoBuscador').change(function () {
+            $('#txtCodigoExis').change(function () {
+                productoIDautocomplete = '';
                 var codigo1 = '';
-                codigo1 = $('#txtCodigoBuscador').val();
+                codigo1 = $('#txtCodigoExis').val();
                 $(lista).each(function () {
                     if (this.CodigoBarras == codigo1) {
-                        $('#divBuscador').hide("fast");
-                        $('#formExistencia').show("fast");
-                        $('#pBuscador').hide();
+                        
 
                         productoIDcodigo = this.Id_Producto;
-                        var codigo = this.CodigoBarras;
                         var producto = this.label;
                         var sustancia = this.Sustancia;
                         var categoria = this.IdCategoria;
@@ -786,7 +760,6 @@
                         var existencia = this.Existencia;
                         var costo = this.Costo;
 
-                        $('#txtCodigoExis').val(codigo);
                         $('#txtProductoExis').val(producto);
                         $('#txtSustanciaExis').val(sustancia);
                         $('#ddlCategoriaExis').val(categoria);
@@ -797,19 +770,6 @@
                     }
                 });
 
-            });
-            //buscador por codigo de barras
-            $('#lnkCodigoExis').on("click", function () {
-                $('#divBuscador').show();
-                $('#divCodigoBus').show();
-                $('#divProductoBus').hide();
-                $('#txtCodigoBuscador').focus();
-            });
-            //buscador por producto
-            $('#lnkProductoExis').on("click", function () {
-                $('#divBuscador').show();
-                $('#divCodigoBus').hide();
-                $('#divProductoBus').show();
             });
 
             //evento click del cancelar
@@ -826,10 +786,6 @@
                 $('#txtQuitarPiezasExis').val('');
                 $('#txtCostoNuevoExis').val('');
 
-                $('#formExistencia').hide();
-                $('#pBuscador').show();
-                $('#txtProductoBuscador').val('');
-                $('#txtCodigoBuscador').val('');
             });
 
             //var options = {
