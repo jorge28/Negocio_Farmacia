@@ -211,10 +211,11 @@
             $("#txtBuscador").autocomplete({
                 select: function (event, ui) {
                     productoID = ui.item.Id_Producto;
-                    producto = ui.item.label;
+                    producto = ui.item.Nombre_Producto;
                     sustancia = ui.item.Sustancia;
                     existencia = ui.item.Existencia;
                     costo = ui.item.Costo;
+                    $("#txtBuscador").val(ui.item.Nombre_Producto)
                     $("#txtSustancia").val(ui.item.Sustancia);
                     $("#txtExistencia").val(ui.item.Existencia);
                     $("#txtCosto").val(ui.item.Costo);
@@ -230,7 +231,7 @@
                             $("#btnAgregar").attr("disabled", true);
                             $("#txtPiezasVenta").attr("disabled", true);
                             $('#txtCodigoBarras').focus();
-                            alert('No hay Existencias de: ' + ui.item.label);
+                            alert('No hay Existencias de: ' + ui.item.Nombre_Producto);
                         }
                     }
                     else {

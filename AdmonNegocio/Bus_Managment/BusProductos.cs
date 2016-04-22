@@ -22,7 +22,8 @@ namespace Managment.Business
             {
                 EntProductosBuscador per = new EntProductosBuscador();
                 per.Id_Producto = Convert.ToInt32(r["Id_Producto"]);
-                per.label = r["Nombre_Producto"].ToString();
+                per.Nombre_Producto = r["Nombre_Producto"].ToString();
+                per.label = r["Buscador"].ToString();
                 per.Sustancia = r["Sustancia"].ToString();
                 per.IdCategoria = Convert.ToInt32(r["Id_Categoria"]);
                 per.IdTipo = Convert.ToInt32(r["Id_Tipo"]);
