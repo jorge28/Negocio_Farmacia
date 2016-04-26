@@ -297,10 +297,31 @@
                             <br />
                             <br />
                             
-                            <form class="form-horizontal" role="form" id="formExistencia">
+                            <form class="form-horizontal" role="form" id="formExistencia" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="txtCodigoBusExis" class="col-lg-1 control-label" style="font-size: smaller">Codigo de Barras:</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-barcode"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtCodigoBusExis" name="txtCodigoBusExis" placeholder="Ingresa Codigo de Barras" />
+                                        </div>
+                                    </div>
+                                    <label for="txtProductoBusExis" class="col-lg-1 control-label" style="font-size: smaller">Producto:</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group input-group-icon">
+                                            <span class="input-group-addon" style="background-color: white; border-color: orange">
+                                                <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                            </span>
+                                            <input type="text" class="form-control input-sm" id="txtProductoBusExis" name="Producto" placeholder="Ingresa Nombre del Producto" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
                                 <div class="form-group">
                                     <label for="txtCodigoExis" class="col-lg-1 control-label" style="font-size: smaller">Codigo de Barras:</label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-5">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-barcode"></i></span>
@@ -310,7 +331,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtProductoExis" class="col-lg-1 control-label" style="font-size: smaller">Producto:</label>
+                                    <label for="txtProductoBusExis" class="col-lg-1 control-label" style="font-size: smaller">Producto:</label>
                                     <div class="col-lg-7">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
@@ -374,7 +395,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-list"></i></span>
                                             </span>
-                                            <input type="number" min="0" max="100" class="form-control input-sm" id="txtExistenciaExis" name="txtExistenciaExis" />
+                                            <input type="number" min="0" max="100" class="form-control input-sm" disabled="disabled" id="txtExistenciaExis" name="txtExistenciaExis" />
                                         </div>
                                     </div>
                                     <label for="txtAgregarPiezasExis" class="col-lg-1 control-label" style="font-size: smaller">Agregar Piezas:</label>
@@ -407,18 +428,17 @@
                                         </div>
                                     </div>
 
-                                    <label for="txtCostoNuevoExis" class="col-lg-1 control-label" style="font-size: smaller">Costo Nuevo:</label>
-                                    <div class="col-lg-3">
-                                        <div class="input-group input-group-icon">
+                                    <%--<label for="txtCostoNuevoExis" class="col-lg-1 control-label" style="font-size: smaller">Costo Nuevo:</label>--%>
+                                    <div class="col-lg-4">
+                                        <%--<div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-usd"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCostoNuevoExis" name="txtCostoNuevoExis" placeholder="" />
-                                        </div>
+                                        </div>--%>
                                     </div>
                                     <div class="col-lg-4"></div>
                                 </div>
-                                <br />
                                 <div class="form-group">
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-3"></div>
@@ -487,6 +507,7 @@
                         </section>
                       </main>
                     </div>
+                    <br />
                     <div class="panel-footer" style="text-align: center;">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
@@ -719,7 +740,7 @@
             });
 
             //Evento Select del Buscador
-            $("#txtProductoExis").autocomplete({
+            $("#txtProductoBusExis").autocomplete({
                 select: function (event, ui) {
 
                     productoIDcodigo = '';
@@ -734,24 +755,28 @@
                     var costo = ui.item.Costo;
 
                     $('#txtCodigoExis').val(codigo);
+                    $('#txtProductoExis').val(producto);
                     $('#txtSustanciaExis').val(sustancia);
                     $('#ddlCategoriaExis').val(categoria);
                     $('#ddlTipoExis').val(tipo);
                     $('#txtCantidadExis').val(cantidad);
                     $('#txtExistenciaExis').val(existencia);
                     $('#txtCostoExis').val(costo);
+                    $('#txtProductoBusExis').val('');
                 }
             });
             //codigo para buscar por codigo de barras
-            $('#txtCodigoExis').change(function () {
+            $('#txtCodigoBusExis').change(function () {
                 productoIDautocomplete = '';
                 var codigo1 = '';
-                codigo1 = $('#txtCodigoExis').val();
+                $('#txtProductoBusExis').val('');
+                codigo1 = $('#txtCodigoBusExis').val();
                 $(lista).each(function () {
                     if (this.CodigoBarras == codigo1) {
                         
 
                         productoIDcodigo = this.Id_Producto;
+                        var codigo = this.CodigoBarras
                         var producto = this.label;
                         var sustancia = this.Sustancia;
                         var categoria = this.IdCategoria;
@@ -760,6 +785,7 @@
                         var existencia = this.Existencia;
                         var costo = this.Costo;
 
+                        $('#txtCodigoExis').val(codigo);
                         $('#txtProductoExis').val(producto);
                         $('#txtSustanciaExis').val(sustancia);
                         $('#ddlCategoriaExis').val(categoria);
@@ -767,6 +793,7 @@
                         $('#txtCantidadExis').val(cantidad);
                         $('#txtExistenciaExis').val(existencia);
                         $('#txtCostoExis').val(costo);
+                        $('#txtCodigoBusExis').val('');
                     }
                 });
 
@@ -784,7 +811,7 @@
                 $('#txtCostoExis').val('');
                 $('#txtAgregarPiezasExis').val('');
                 $('#txtQuitarPiezasExis').val('');
-                $('#txtCostoNuevoExis').val('');
+                //$('#txtCostoNuevoExis').val('');
 
             });
 
@@ -853,15 +880,14 @@
                 var tipo = $('#ddlTipoExis').val();
                 var cantidad = $('#txtCantidadExis').val();
                 var existencias = $('#txtExistenciaExis').val();
-                var costoInicial = $('#txtCostoExis').val();
+                var costo = $('#txtCostoExis').val();
                 var piezasAgregar = $('#txtAgregarPiezasExis').val();
                 var piezasDescontar = $('#txtQuitarPiezasExis').val();
-                var costoNuevo = $('#txtCostoNuevoExis').val();
-                var costo;
+                //var costoNuevo = $('#txtCostoNuevoExis').val();
                 var existencia;
                 var productoID;
 
-                if (producto == '' || sustancia == '' || categoria == '' || tipo == '' || cantidad == '' || existencias == '' || costoInicial == '')
+                if (producto == '' || sustancia == '' || categoria == '' || tipo == '' || cantidad == '' || existencias == '' || costo == '')
                     alert("Debe llenar todos los campos.");
                 else {
 
@@ -875,12 +901,12 @@
                         existencia = existencias
                     }
 
-                    if (costoNuevo != '') {
-                        costo = costoNuevo;
-                    }
-                    else {
-                        costo = costoInicial;
-                    }
+                    //if (costoNuevo != '') {
+                    //    costo = costoNuevo;
+                    //}
+                    //else {
+                    //    costo = costoInicial;
+                    //}
                     if (productoIDautocomplete != '') {
                         productoID = productoIDautocomplete
                     }
