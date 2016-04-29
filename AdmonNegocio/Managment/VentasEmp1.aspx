@@ -404,7 +404,7 @@
                                         costoNumPiezas = this.Costo;
                                     }
                                     if (numPiezas <= this.Existencia) {
-                                        var datosProductoLectora = { "Id_Producto": this.Id_Producto, "Producto": this.label, "Sustancia": this.Sustancia, "Existencia": this.Existencia, "Costo": this.Costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + this.Id_Producto }
+                                        var datosProductoLectora = { "Id_Producto": this.Id_Producto, "Producto": this.Nombre_Producto, "Sustancia": this.Sustancia, "Existencia": this.Existencia, "Costo": this.Costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + this.Id_Producto }
                                         var jsonDatosProductoLectora = JSON.stringify(datosProductoLectora);
                                         sessionStorage.setItem("ProductoAgregar" + this.Id_Producto, jsonDatosProductoLectora);
                                         cargarTablaVentas();
