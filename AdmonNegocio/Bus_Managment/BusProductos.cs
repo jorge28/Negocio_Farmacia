@@ -58,8 +58,6 @@ namespace Managment.Business
 
             return per;
         }
-
-
         public List<EntDdlAlta> ObtenerCatB()
         {
             DatProductos obj = new DatProductos();
@@ -92,19 +90,21 @@ namespace Managment.Business
 
             return lista;
         }
-
-        public void InsertaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio,string codigo)
+        public string InsertaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double precio, string codigo)
         {
-
             DatProductos dprod = new DatProductos();
-            int lintFilas = dprod.agregaProducto(prod,sust,cat,tipo,cant,exis,precio,codigo);
-            if (lintFilas != 1)
+            string mensaje = "OK";
+            bool existe = dprod.ValidarInsertProducto(codigo);
+            if (existe)
+                mensaje = (string.Format("Ya existe el código {0}, favor de verificar.", codigo));
+            else
             {
-                throw new System.Exception("error en la capa de negocio al insertar un producto");
+                int lintFilas = dprod.agregaProducto(prod, sust, cat, tipo, cant, exis, precio, codigo);
+                if (lintFilas != 1)
+                    mensaje = ("Error en la capa de negocio al guardar el nuevo producto");
             }
+            return mensaje;
         }
-
-
         public void InsertVentas(List<EntProductosVentas> ListaProductos)
         {
             DatProductos obj = new DatProductos();
@@ -115,7 +115,6 @@ namespace Managment.Business
             }
 
         }
-
         public void InsertCancelaciones(List<EntProductosVentas> ListaProductos)
         {
             DatProductos obj = new DatProductos();
@@ -126,7 +125,6 @@ namespace Managment.Business
             }
 
         }
-
         public EntUltimoCliente SelectUltimoCliente(int usuarioID)
         {
             DatProductos obj = new DatProductos();
@@ -139,7 +137,6 @@ namespace Managment.Business
 
             return ultimo;
         }
-
         public void updateProducto(int productoID, int piezasAgregar, int piezasDescontar, double costoNuevo)
         {
             DatProductos obj = new DatProductos();
@@ -149,15 +146,20 @@ namespace Managment.Business
                 throw new SystemException("Error en la Capa de Negocios al Actualizar el Producto.");
             }
         }
-
-        public void actualizaProdBus(string prod, string sust, int cat, int tipo, string cant, int exist, double costo, string codigo, int productoID)
+        public string actualizaProdBus(string prod, string sust, int cat, int tipo, string cant, int exist, double costo, string codigo, int productoID)
         {
             DatProductos obj = new DatProductos();
-            bool Actualizo = obj.ActualizaProd(prod, sust, cat, tipo, cant,exist,costo,codigo, productoID);
-            if (Actualizo == false)
+            string mensaje = "OK";
+            bool existe = obj.ValidarUpdateProducto(codigo, productoID);
+            if (existe)
+                mensaje = (string.Format("Ya existe el código {0}, favor de verificar.", codigo));
+            else
             {
-                throw new SystemException("Error en la Capa de Negocios al Actualizar el Producto.");
+                bool Actualizo = obj.ActualizaProd(prod, sust, cat, tipo, cant, exist, costo, codigo, productoID);
+                if (Actualizo == false)
+                    mensaje = ("Error en la Capa de Negocios al Actualizar el Producto.");
             }
+            return mensaje;
         }
 
     }

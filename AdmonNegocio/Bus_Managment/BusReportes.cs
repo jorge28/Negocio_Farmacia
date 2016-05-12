@@ -14,7 +14,6 @@ namespace Managment.Business
 
         public List<EntProductosVentas> SelectVentasEmpleados(string fechaVentas)
         {
-
             DataTable dt = new DatReportes().SelectVentasEmpleados(fechaVentas);
             List<EntProductosVentas> lista = new List<EntProductosVentas>();
             //if (dt.Rows.Count == 0)
@@ -40,12 +39,47 @@ namespace Managment.Business
             return lista;
         }
 
-        public string SelectVentasEmpleadosNEW(int usuarioID)
+        public List<EntTotales> SelectVentasEmpleadosNEW(int usuarioID)
         {
-            DatReportes obj = new DatReportes();
-            DataRow dr =  obj.SelectVentasEmpleadosNEW(usuarioID);
+  
+           DataRow dr = new DatReportes().SelectVentasEmpleadosNEW(usuarioID);
+           List<EntTotales> lista = new List<EntTotales>();
 
-            return (dr["Totales"] is DBNull ? "0" : dr["Totales"]).ToString();
+           EntTotales totales = new EntTotales();
+            totales.Nombre_Empleado = (dr["Venta_Nombre_Usuario"] is DBNull ? "Aun No hay Ventas" : dr["Venta_Nombre_Usuario"]).ToString();
+            totales.Ventas_Medico = (dr["VentasMedico"] is DBNull ? 0 : Convert.ToDouble(dr["VentasMedico"]));
+            totales.Ventas_Farmacia = (dr["VentasFarmacia"] is DBNull ? 0 : Convert.ToDouble(dr["VentasFarmacia"]));
+            totales.Ventas_Total = totales.Ventas_Medico + totales.Ventas_Farmacia;
+
+            lista.Add(totales);
+
+            return lista; 
+        }
+
+        public List<EntVentasMedico> SelectVentasMedicoNEW(int usuarioID)
+        {
+            DataTable dt = new DatReportes().SelectVentasMedicoNEW(usuarioID);
+            List<EntVentasMedico> lista = new List<EntVentasMedico>();
+            if (dt.Rows.Count == 0)
+            {
+                EntVentasMedico venta = new EntVentasMedico();
+                venta.productoMedico = "Sin Ventas";
+                venta.piezasProducto = 0;
+               
+                lista.Add(venta);
+            }
+            else
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    EntVentasMedico venta = new EntVentasMedico();
+                    venta.productoMedico = dr["Venta_Nombre_Producto"].ToString().Replace("(Servicio Medico)","");
+                    venta.piezasProducto = Convert.ToInt32(dr["Piezas"]);
+                   
+                    lista.Add(venta);
+                }
+            }
+            return lista;
         }
 
         public List<EntProductosPedido> SelectPedidoProductos(int piezas)

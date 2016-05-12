@@ -30,7 +30,32 @@ namespace Managment.Data
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            return dt.Rows[0];
+            if (dt.Rows.Count == 0)
+            {
+                DataRow dr = dt.NewRow();
+                dr["Venta_Nombre_Usuario"] = "No hay Ventas Registradas";
+                dr["VentasMedico"] = 0;
+                dr["VentasFarmacia"] = 0;
+                dt.Rows.Add(dr);
+                return dt.Rows[0];
+            }
+            else
+            {
+                return dt.Rows[0];
+            }
+
+        }
+
+        public DataTable SelectVentasMedicoNEW(int usuario)
+        {
+            SqlCommand comando = new SqlCommand("sp_Select_VentasMedicoNEW", con);
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@UsuarioId", usuario);
+            SqlDataAdapter da = new SqlDataAdapter(comando);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
         }
 
         public DataTable SelectPedidoProductos(int piezas)

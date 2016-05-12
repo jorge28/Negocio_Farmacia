@@ -39,7 +39,6 @@ namespace Managment.Data
 
             return dt.Rows[0];
         }
-
         public bool InsertVentas(List<EntProductosVentas> ListaProductos)
         {
             SqlTransaction objtrans = null;
@@ -90,7 +89,6 @@ namespace Managment.Data
             }
 
         }
-
         public bool InsertCancelaciones(List<EntProductosVentas> ListaProductos)
         {
             SqlTransaction objtrans = null;
@@ -201,7 +199,6 @@ namespace Managment.Data
             }
 
         }
-
         public bool updateProducto(int productoID, int piezasAgregar, int piezasDescontar, double costoNuevo)
         {
 
@@ -245,7 +242,6 @@ namespace Managment.Data
                 con.Dispose();
             }
         }
-
         public bool updateExtraProducto(string prod, string sust, string cat, string tipo, string cant, int productoID)
         {
 
@@ -338,6 +334,63 @@ namespace Managment.Data
                 con.Close();
                 con.Dispose();
             }
+        }
+        public bool ValidarUpdateProducto(string codigoBarras, int productoID)
+        {
+            bool existe = false;
+            int idProd;
+            SqlCommand comando = new SqlCommand(string.Format("SELECT * FROM tbl_Productos WHERE CodigoBarras ='{0}'", codigoBarras), con);
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count != 0)                 
+                {
+                    if (dt.Rows.Count > 1)
+                        existe = true;
+                    else
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            idProd = Convert.ToInt32(dr["Id_Producto"]);
+                            if (idProd != productoID)
+                                existe = true;
+                        }
+                    }
+                }
+                 
+                return existe;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException(ex.Message);
+            }
+
+        }
+
+        public bool ValidarInsertProducto(string codigoBarras)
+        {
+            bool existe = false;
+            SqlCommand comando = new SqlCommand(string.Format("SELECT 1 FROM tbl_Productos WHERE CodigoBarras ='{0}'", codigoBarras), con);
+
+            try
+            {
+                con.Open();
+                existe = Convert.ToBoolean(comando.ExecuteScalar());
+                con.Close();
+
+                return existe;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException(ex.Message);
+            }
+
         }
 
     }

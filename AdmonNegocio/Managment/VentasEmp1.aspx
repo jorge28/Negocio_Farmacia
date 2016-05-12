@@ -15,9 +15,9 @@
     <script src="tabs/tabs/js/prefixfree.min.js"></script>
     <%--<script src="js/bootstrap.min.js"></script>--%>
 </head>
-<body style="background-color: #EDEDF2;">   
-    <form id="form1" runat="server">        
-         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+<body style="background-color: #EDEDF2;">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
             <div class="row " style="margin-top: 15px;">
                 <div class="col-sm-12 col-xs-12">
@@ -25,14 +25,15 @@
                         <div class="panel-heading" style="background-color: #FAFAFA; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;">
                             <div class="row">
                                 <div class="col-md-5" style="text-align: left;">
-                                    <input type="text" id="txtCodigoBarras" class="form-control input-sm col-md-1" style="height: 30px; width: 20px; background-color: #FAFAFA; border-color: #FAFAFA;" />&nbsp;
                                     <asp:Label ID="lblEmpleado" runat="server" Style="font-size: large; color: darkblue;"></asp:Label>
                                 </div>
-                                <div class="col-md-5" style="text-align: left;">
+
+                                <div class="col-md-4" style="text-align: left;">
                                     <asp:Label ID="lblCliente" runat="server" Style="font-size: large; color: darkblue; padding-right: 0px; width: 100px;" class="col-md-4">Cliente N°</asp:Label>
                                     <asp:Label ID="lblNumCliente" runat="server" Style="font-size: large; color: darkblue; padding-left: 2px;" class="col-md-4"></asp:Label>
                                 </div>
-                                <div class="col-md-2" style="text-align: right;">
+                                <div class="col-md-3" style="text-align: right;">
+                                    <input type="text" id="txtCodigoBarras" class="form-control input-sm col-md-1" style="width: 50%; background-color: #FAFAFA; border-color: #FAFAFA;" placeholder="Código Barras" />&nbsp;
                                     <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
                                 </div>
                             </div>
@@ -123,7 +124,7 @@
                                 <div class="col-md-4">
                                 </div>
                                 <div class="col-md-5" style="text-align: right; padding-right: 0px;">
-                                    <button type="button" id="btnTotales" class="btn btn-primary">Totales</button>&nbsp&nbsp&nbsp
+                                    <button type="button" id="btnTotales" class="btn btn-primary" data-toggle="modal" data-target="#mdDesglose" data-backdrop="static" data-keyboard="false">Totales</button>&nbsp&nbsp&nbsp                                   
                                     <button type="button" id="btnCancelar" class="btn btn-primary">Cancelar</button>&nbsp&nbsp&nbsp
                                     <button type="button" id="btnGuardar" class="btn btn-success">Guardar</button>
                                 </div>
@@ -133,8 +134,84 @@
                 </div>
             </div>
         </div>
+        <!--Modal Desglose de Ventas-->
+        <div class="modal fade" id="mdDesglose" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content" style="width: 100%; height: 601px;">
+                    <div class="modal-header" style="padding: 0px;">
+                        <section class="page-header" style="margin-bottom: 0px; margin-top: 10px;">
+                            <div class="row" style="margin: 0; text-align: -webkit-center;">
+                                <div class="col-md-12">
+                                    <button type="button" class="close" data-dismiss="modal" style="color: black;">&times;</button>
+                                    <h4 style="color: black; font-size: x-large;">- Ventas del Día -</h4>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-body" style="padding-top: 0px;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <header class="panel-heading" style="padding-top: 0px; padding-bottom: 0px; border-bottom-width: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-6" style="margin: 5px auto; text-align: left;">
+                                            <%--<label id="lblEmpDesglose" style="color: black; font-size: large; margin-bottom: 0px;">Empleado:</label>--%>
+                                            <label id="lblEmpleadoDesglose" style="color: black; font-size: large; margin-bottom: 0px;"></label>
+                                        </div>
+                                        <div class="col-sm-6" style="margin: 5px auto; text-align: right;">
+                                            <label id="lblTotDesglose" style="color: #0e41cf; font-size: large; margin-bottom: 0px;">TOTAL: $</label>
+                                            <label id="lblTotalDesglose" style="color: #0e41cf; font-size: large; margin-bottom: 0px;"></label>
+                                        </div>
+                                    </div>
+                                </header>
+                                <div class="panel-body panel-body-nopadding" style="padding-top: 0px;">
+                                    <div class="well" style="padding: 5px; margin-bottom: 0px; height: 400px;">
+                                        <div id="pnlDesglose">
+                                            <div class="row">
+                                                <div class="col-sm-6" style="margin: 5px auto; text-align: right; padding-left: 0px;padding-right: 5px;">
+                                                    <label id="lblFarmacia" style="color: #0e41cf; font-size: large;">Importe Ventas Farmacia: $</label>
+                                                </div>
+                                                <div class="col-sm-6" style="margin: 5px auto; text-align: left; padding-left: 0px;padding-right: 0px;">
+                                                    <label id="lblVentasFarmacia" style="color: #0e41cf; font-size: large;"></label>
+                                                </div>
+                                                <br />
+                                                <div class="col-sm-6" style="margin: 5px auto; text-align: right; padding-left: 0px;padding-right: 5px;">
+                                                    <label id="lblMedico" style="color: #0e41cf; font-size: large;">Importe Ventas Medico: $</label>
+                                                </div>
+                                                <div class="col-sm-6" style="margin: 5px auto; text-align: left; padding-left: 0px;padding-right: 0px;">
+                                                    <label id="lblVentasMedico" style="color: #0e41cf; font-size: large;"></label>
+                                                </div>
+                                            </div>
+                                            <hr style="margin-top: 5px; margin-bottom: 10px;" />
+                                            <h5 style="text-align: center; font-size: large; color: black;">Desglose ventas Medico</h5>
+                                            <div class="row">
+                                                <div class="col-md-2"></div> 
+                                                <div class="col-md-8">
+                                                    <div id="TablaDesglose" class="table table-responsive" style="text-align: -webkit-center; height: 200px; margin-bottom: 0px;">
+                                                    </div>
+                                                </div>
+                                                 <div class="col-md-2"></div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-md-12">
+                                <button type="button" id="btnCerrarDesgloseVentas" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </form>
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" />
     <script src="js/base64.js"></script>
@@ -175,7 +252,7 @@
             //Carga Inicial Tabla Ventas
             cargarTablaVentas();
             $('#txtCodigoBarras').focus();
-            
+
             //Funcion que se carga primero para obtener todos los productos...
             (function JsonProductos() {
                 $.ajax({
@@ -518,20 +595,52 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (msg) {
-                        totales = $.parseJSON(msg.d);
-                        if (totales.totalVentaEmpleado == "0")
-                            alert("Sus Ventas del Día son : $ 0.00 ");
-                        else
-                            alert("Sus Ventas del Día son : $ " + totales.totalVentaEmpleado);
-                        $('#txtCodigoBarras').focus();
+                        list = $.parseJSON(msg.d);
+                        $(list).each(function () {
+                            $('#lblEmpleadoDesglose').text(this.Nombre_Empleado);
+                            $('#lblTotalDesglose').text(this.Ventas_Total);
+                            $('#lblVentasFarmacia').text(this.Ventas_Farmacia);
+                            $('#lblVentasMedico').text(this.Ventas_Medico);
+                        });
+                        
                     },
                     error: function (msg) {
-                        alert('Error al cargar el impoorte de Ventas del Día' + msg.responseText);
-                        $('#txtCodigoBarras').focus();
+                        alert('Error al cargar las Ventas del Día' + msg.responseText);
                     }
                 });
+                $.ajax({
+                    type: "POST",
+                    url: "VentasEmp1.aspx/SelectVentasMedicoNEW",
+                    data: '',
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        list = $.parseJSON(msg.d);
+                        var tabla = '';
+                        tabla += '<table id="tablaMedico" class="table table-responsive table-hover">';
+                        tabla += '  <tr style="background-color: #d9edf7; border: 1px solid white; font-weight: 700;">';
+                        tabla += '  <td>[Servicio Medico]</td>';
+                        tabla += '  <td>[N° Servicios]</td>';                        
+                        tabla += '  </tr>';
+                        $(list).each(function () {
+                            tabla += '<tr>';
+                            tabla += '<td>';
+                            tabla += '    <label id="lblServicioMedico">' + this.productoMedico + '</label></td>';
+                            tabla += '<td>';
+                            tabla += '    <label id="lblPiezas">' + this.piezasProducto + '</label></td>';                            
+                            tabla += '</tr>';
+                        });
+                        tabla += '</table>';
+                        $('#TablaDesglose').empty();
+                        $('#TablaDesglose').append(tabla);
+                    },
+                    error: function (msg) {
+                        alert('Error al cargar el desglose de las ventas del Medico' + msg.responseText);
+                    }
+                });//Fin del Ajax
             });
-                    
+
         })
     </script>
 </body>

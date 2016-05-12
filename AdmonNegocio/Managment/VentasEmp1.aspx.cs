@@ -73,8 +73,8 @@ public partial class VentasEmp1 : System.Web.UI.Page
         ent.ProductoId = Convert.ToInt32(idProducto);
         ent.NombreProducto = nombreProducto;
         ent.PiezasVendidas = Convert.ToInt32(piezasVendidas);
-        ent.CostoUnitario = Convert.ToDouble(costoUnitario.Replace(".", ","));
-        ent.CostoTotal = Convert.ToDouble(costoTotal.Replace(".", ","));
+        ent.CostoUnitario = Convert.ToDouble(costoUnitario);
+        ent.CostoTotal = Convert.ToDouble(costoTotal);
 
         listaProdVenta.Add(ent);
         obj.InsertVentas(listaProdVenta);
@@ -89,10 +89,26 @@ public partial class VentasEmp1 : System.Web.UI.Page
         EntUsuarios usua = new EntUsuarios();
         usua = (EntUsuarios)HttpContext.Current.Session["Login"];
 
-        string totalVentaEmpleado = new BusReportes().SelectVentasEmpleadosNEW(usua.Id_Usuario);
-        string cadena = "{\"totalVentaEmpleado\" : \"" + totalVentaEmpleado.Replace(",",".") + "\"}";
-      
-        return cadena;
+        List<EntTotales> totales = new List<EntTotales>();
+        totales = new BusReportes().SelectVentasEmpleadosNEW(usua.Id_Usuario);
+
+        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+        string sJson = oSerializer.Serialize(totales);
+        return sJson;       
+    }
+
+    [WebMethod]
+    public static string SelectVentasMedicoNEW()
+    {
+        EntUsuarios usua = new EntUsuarios();
+        usua = (EntUsuarios)HttpContext.Current.Session["Login"];
+
+        List<EntVentasMedico> ventas = new List<EntVentasMedico>();
+        ventas = new BusReportes().SelectVentasMedicoNEW(usua.Id_Usuario);
+
+        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+        string sJson = oSerializer.Serialize(ventas);
+        return sJson;
     }
        
 }

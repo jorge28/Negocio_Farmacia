@@ -20,7 +20,7 @@
     <link href="css/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
-    
+
     <div class="container-fluid" style="padding-left: 15px; padding-right: 15px;">
         <div class="row " style="margin-top: 15px;">
             <div class="col-sm-12 col-xs-12">
@@ -31,17 +31,17 @@
                                 <label style="font-size: medium; color: darkblue;">Administrador:</label>&nbsp&nbsp
                                 <asp:Label ID="lblEmpleado" runat="server" Style="font-size: medium; color: darkblue;"></asp:Label>
                             </div>
-                             <div class="col-md-2" style="text-align: right; margin-top: 15px;">
-                                <form id="form1" runat="server">        
-                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>   
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <div class="col-md-2" style="text-align: right; margin-top: 15px;">
+                                <form id="form1" runat="server">
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
-                                            <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>   
-                                            <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>                
+                                            <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>
+                                            <asp:Label ID="lblFecha" runat="server" Font-Size="Large" ForeColor="darkblue"></asp:Label>
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
-                                </form> 
-                            </div>                          
+                                </form>
+                            </div>
                             <div class="col-md-1" style="text-align: right; margin-top: 5px;">
                                 <label id="btnSalir" class="btn btn-primary btn-sm">Salir</label>
                             </div>
@@ -292,13 +292,11 @@
                                 </div>
                             </form>
                         </section>
-
+                           
                         <section id="content3">
                             <br />
-                            <br />
-                            
-                            <form class="form-horizontal" role="form" id="formExistencia" autocomplete="off">
-                                <div class="form-group">
+                            <form class="form-horizontal" role="form" id="formExistencia" autocomplete="off">                                                      
+                                <div class="form-group">                           
                                     <label for="txtCodigoBusExis" class="col-lg-1 control-label" style="font-size: smaller">Codigo de Barras:</label>
                                     <div class="col-lg-5">
                                         <div class="input-group input-group-icon">
@@ -316,7 +314,7 @@
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtProductoBusExis" name="Producto" placeholder="Ingresa Nombre del Producto" />
                                         </div>
-                                    </div>
+                                    </div>                                    
                                 </div>
                                 <hr />
                                 <div class="form-group">
@@ -326,7 +324,7 @@
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
                                                 <span class="icon"><i class="fa fa-barcode"></i></span>
                                             </span>
-                                            <input type="text" class="form-control input-sm" id="txtCodigoExis" name="txtCodigoExis" placeholder="Ingresa Codigo de Barras" />
+                                            <input type="text" class="form-control input-sm" id="txtCodigoExis" autocomplete="off" name="txtCodigoExis" placeholder="Ingresa Codigo de Barras" />
                                         </div>
                                     </div>
                                 </div>
@@ -606,6 +604,8 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (msg) {
+                            alert(msg.d);
+
                             $('#txtCodigo').val('');
                             $('#txtProducto').val('');
                             $('#txtSustancia').val('');
@@ -620,12 +620,13 @@
                         }
 
                     }); //fin de ajax
-                    alert('Producto Agregado con Exito.');
+                    //alert('Producto Agregado con Exito.');
                 }
             }
             //Boton de Guardado de Producto
             $('#btnGuardarProducto').on("click", function () {
                 AgregaProducto();
+                window.location = 'tabsAdmin.aspx';
             });
 
             //Evento Click del Boton Limpiar Campos Nuevo Producto
@@ -709,6 +710,7 @@
             // -----------------------------------------------E X I S T E N C I A S --------------------------------------------------
             var productoIDcodigo = '';
             var productoIDautocomplete = '';
+            $('#txtCodigoBusExis').focus();
             //Funcion que se carga primero para obtener todos los productos...
             (function JsonProductos() {
                 $.ajax({
@@ -746,7 +748,7 @@
                     productoIDcodigo = '';
                     productoIDautocomplete = ui.item.Id_Producto;
                     var codigo = ui.item.CodigoBarras
-                    var producto = ui.item.label;
+                    var producto = ui.item.Nombre_Producto;
                     var sustancia = ui.item.Sustancia;
                     var categoria = ui.item.IdCategoria;
                     var tipo = ui.item.IdTipo;
@@ -769,15 +771,16 @@
             $('#txtCodigoBusExis').change(function () {
                 productoIDautocomplete = '';
                 var codigo1 = '';
+                var encontrado = '';
                 $('#txtProductoBusExis').val('');
                 codigo1 = $('#txtCodigoBusExis').val();
                 $(lista).each(function () {
                     if (this.CodigoBarras == codigo1) {
-                        
+                        encontrado = 'TRUE';
 
                         productoIDcodigo = this.Id_Producto;
                         var codigo = this.CodigoBarras
-                        var producto = this.label;
+                        var producto = this.Nombre_Producto;
                         var sustancia = this.Sustancia;
                         var categoria = this.IdCategoria;
                         var tipo = this.IdTipo;
@@ -796,6 +799,11 @@
                         $('#txtCodigoBusExis').val('');
                     }
                 });
+                if (encontrado != 'TRUE') {
+                    alert('Producto No Registrado, Vaya a Alta de Nuevo Producto: Código de Barras ' + codigo1);
+                    $('#txtCodigoBusExis').val('');
+                    $('#txtCodigoBusExis').focus();
+                }
 
             });
 
@@ -811,6 +819,9 @@
                 $('#txtCostoExis').val('');
                 $('#txtAgregarPiezasExis').val('');
                 $('#txtQuitarPiezasExis').val('');
+                $('#txtCodigoBusExis').val('');
+                $('#txtProductoBusExis').val('');
+                $('#txtCodigoBusExis').focus();
                 //$('#txtCostoNuevoExis').val('');
 
             });
@@ -924,8 +935,8 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (msg) {
-
-                            alert('Se actualizo con exito el producto');
+                            alert(msg.d);
+                            //alert('Se actualizo con exito el producto');
 
                             $('#txtCodigoExis').val('');
                             $('#txtProductoExis').val('');
@@ -941,8 +952,12 @@
 
                             $('#formExistencia').hide();
                             $('#pBuscador').show();
-                            $('#txtProductoBuscador').val('');
-                            $('#txtCodigoBuscador').val('');
+                            //$('#txtProductoBuscador').val('');
+                            //$('#txtCodigoBuscador').val('');
+
+                            $('#txtCodigoBusExis').val('');
+                            $('#txtProductoBusExis').val('');
+                            $('#txtCodigoBusExis').focus();
                         },
                         error: function (msg) {
                             alert('Error' + msg.responseText);

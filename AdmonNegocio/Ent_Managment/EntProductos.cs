@@ -57,4 +57,21 @@ namespace Managment.Business.Entity
         public string Nombre_Categoria { get; set; }
         public string Nombre_Tipo { get; set; }
     }
+
+    public class EntTotales
+    {
+        public EntTotales() { }  
+        public string Nombre_Empleado { get; set; }
+        public double Ventas_Medico { get; set; }
+        public double Ventas_Farmacia { get; set; }
+        public double  Ventas_Total { get; set; }
+    }
+
+    public class EntVentasMedico
+    {
+        public EntVentasMedico() { }
+        public string productoMedico { get; set; }
+        public int piezasProducto { get; set; }
+
+    }
 }

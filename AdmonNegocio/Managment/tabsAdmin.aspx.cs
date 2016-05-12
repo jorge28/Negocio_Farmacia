@@ -55,16 +55,28 @@ public partial class tabsAdmin : System.Web.UI.Page
         return sJson;
     }
     [WebMethod]
-    public static void AgregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double costo, string codigo)
+    public static string AgregaProducto(string prod, string sust, int cat, int tipo, string cant, int exis, double costo, string codigo)
     {
+        string inserta;
+        string mensaje = "OK";
         EntUsuarios usua = new EntUsuarios();
         usua = (EntUsuarios)HttpContext.Current.Session["Login"];
 
         BusProductos bp = new BusProductos();
-        bp.InsertaProducto(prod, sust, cat, tipo, cant, exis, costo, codigo);
+        inserta = bp.InsertaProducto(prod, sust, cat, tipo, cant, exis, costo, codigo);
 
-        BusBitacora obj2 = new BusBitacora();
-        obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 4, "AltaNuevoProducto", "ALTA NUEVO PRODUCTO : " + DateTime.Now + " Producto: " + prod + " Existencia: " + exis + " Costo: " + costo + " Código de Barras: " + codigo);
+        if (inserta == "OK")
+        {
+            BusBitacora obj2 = new BusBitacora();
+            obj2.InsertBitacoraFarmacia(usua.Id_Usuario, usua.NombreUsuario + " " + usua.ApellidoPaterno + " " + usua.ApellidoMaterno, DateTime.Now, 4, "AltaNuevoProducto", "ALTA NUEVO PRODUCTO : " + DateTime.Now + " Producto: " + prod + " Existencia: " + exis + " Costo: " + costo + " Código de Barras: " + codigo);
+
+            mensaje = "Producto Agregado con Exito.";
+        }
+        else
+        {
+            mensaje = inserta;
+        }
+        return mensaje;
     }
 
     [WebMethod]
@@ -113,16 +125,29 @@ public partial class tabsAdmin : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static void ActualizarProducto(string producto, string sustancia, int categoria, int tipo, string cantidad, int existencia, double costo, string codigo, int productoID)
+    public static string ActualizarProducto(string producto, string sustancia, int categoria, int tipo, string cantidad, int existencia, double costo, string codigo, int productoID)
     {
+        string actualiza;
+        string mensaje = "OK";
         EntUsuarios usuario = new EntUsuarios();
         usuario = (EntUsuarios)HttpContext.Current.Session["Login"];  
 
         BusProductos bp = new BusProductos();
-        bp.actualizaProdBus(producto, sustancia, categoria, tipo, cantidad, existencia, costo, codigo,productoID);
+        
+        actualiza = bp.actualizaProdBus(producto, sustancia, categoria, tipo, cantidad, existencia, costo, codigo,productoID);
 
-        BusBitacora obj2 = new BusBitacora();
-        obj2.InsertBitacoraFarmacia(usuario.Id_Usuario, usuario.NombreUsuario + " " + usuario.ApellidoPaterno + " " + usuario.ApellidoMaterno, DateTime.Now, 5, "ActualizacionProducto", "ACTUALIZACION PRODUCTO : " + DateTime.Now + ", Codigo: " + codigo + ", Producto: " + producto + ", Sustancia:" + sustancia + ", Existencia: " + existencia + ", Costo: " + costo);
+        if (actualiza == "OK")
+        {
+            BusBitacora obj2 = new BusBitacora();
+            obj2.InsertBitacoraFarmacia(usuario.Id_Usuario, usuario.NombreUsuario + " " + usuario.ApellidoPaterno + " " + usuario.ApellidoMaterno, DateTime.Now, 5, "ActualizacionProducto", "ACTUALIZACION PRODUCTO : " + DateTime.Now + ", Codigo: " + codigo + ", Producto: " + producto + ", Sustancia:" + sustancia + ", Existencia: " + existencia + ", Costo: " + costo);
+
+            mensaje = "Se actualizo con exito el producto.";
+        }
+        else
+        {
+            mensaje = actualiza;
+        }
+        return mensaje;
     }
     
 }
