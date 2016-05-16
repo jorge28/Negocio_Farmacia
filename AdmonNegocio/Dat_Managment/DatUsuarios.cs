@@ -25,10 +25,10 @@ namespace Managment.Data
 
         public DataTable SelectCambioPass(string usuario, string palabra)
         {
-            SqlCommand comando = new SqlCommand("sp_SelectCambioPass", con);
+            SqlCommand comando = new SqlCommand("sp_Select_ValidaCambioPass", con);//sp_Select_ValidaCambioPass
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@Usuario", usuario);
-            comando.Parameters.AddWithValue("@Palabra", palabra);
+            comando.Parameters.AddWithValue("@usuario", usuario);
+            comando.Parameters.AddWithValue("@palabra", palabra);
             SqlDataAdapter da = new SqlDataAdapter(comando);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -68,12 +68,12 @@ namespace Managment.Data
         public int InsertaNuevoPass(string usuario, string palabra, string contraseña)
         {
 
-            SqlCommand comando = new SqlCommand("sp_InsertaNuevoPass", con);
+            SqlCommand comando = new SqlCommand("sp_Update_Contraseña", con);
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = usuario, ParameterName = "@Usuario" });
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = palabra, ParameterName = "@Palabra" });
-            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = contraseña, ParameterName = "@Contrasenia" });
-            
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = usuario, ParameterName = "@usuario" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = palabra, ParameterName = "@palabra" });
+            comando.Parameters.Add(new SqlParameter() { SqlDbType = SqlDbType.VarChar, Value = contraseña, ParameterName = "@pass" });
+
             try
             {
                 con.Open();

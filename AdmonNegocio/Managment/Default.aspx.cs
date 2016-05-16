@@ -8,6 +8,8 @@ using System.Data;
 using Managment.Business.Entity;
 using Managment.Business;
 using Managment.Data;
+using System.Web.Services;
+using System.Web.Script.Serialization;
 
 
 public partial class Index : System.Web.UI.Page
@@ -70,5 +72,21 @@ public partial class Index : System.Web.UI.Page
             mostrarMensaje(ex.Message);
         }
 
-    }     
+    }
+    [WebMethod]
+    public static string validaPalabra(string usuarioModal, string palabraModal)
+    {
+        DataTable dt = new DatUsuarios().SelectCambioPass(usuarioModal, palabraModal);
+        string valida = Convert.ToString(dt.Rows.Count);
+
+        JavaScriptSerializer oSerializer = new JavaScriptSerializer();
+        string sJson = oSerializer.Serialize(valida);
+        return sJson;
+    }
+    [WebMethod]
+    public static void CambiaPass(string usua, string palabra, string pass)
+    {
+        BusUsuarios bu = new BusUsuarios();
+        bu.InsertaNuevoPass(usua, palabra, pass);
+    } 
 }

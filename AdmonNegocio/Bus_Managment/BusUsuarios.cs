@@ -64,10 +64,10 @@ namespace Managment.Business
             }
         }
 
-        public void InsertaNuevoPass(EntUsuarios ent)
+        public void InsertaNuevoPass(string usua, string palabra, string pass)
         {
-            DatUsuarios usua = new DatUsuarios();
-            int filas = usua.InsertaNuevoPass(ent.Usuario, ent.Pregunta_Secreta, ent.Contraseña);
+            DatUsuarios datUsua = new DatUsuarios();
+            int filas = datUsua.InsertaNuevoPass(usua, palabra, pass);
             if (filas != 1)
                 throw new ApplicationException("Error en la capa de Negocios al Guardar la Nueva COntraseña. :(");
         }
