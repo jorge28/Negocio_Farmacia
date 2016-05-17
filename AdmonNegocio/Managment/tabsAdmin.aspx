@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-md-2" style="text-align: right; margin-top: 15px;">
                                 <form id="form1" runat="server">
-                                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                         <ContentTemplate>
                                             <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="Timer1_Tick"></asp:Timer>
@@ -71,7 +71,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-barcode"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-barcode"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCodigo" style="width: 70%" name="txtCodigo" autofocus="autofocus" placeholder="Ingresa Codigo de Barras" required="required" title="Ingresa Codigo de Barras" />
                                         </div>
@@ -82,7 +82,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange;">
-                                                <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtProducto" style="width: 60%" name="txtProducto" placeholder="Ingresa Nombre del Producto" required />
                                         </div>
@@ -93,7 +93,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-flask"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-tint"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtSustancia" style="width: 60%" name="txtSustancia" placeholder="Ingresa Nombre de la Sustancia" />
                                         </div>
@@ -104,7 +104,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-sitemap"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-th-list"></i></span>
                                             </span>
                                             <select id="ddlCategoria" class="form-control input-sm" style="width: 150px">
                                             </select>
@@ -117,7 +117,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-cubes"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-menu-hamburger"></i></span>
                                             </span>
                                             <select id="ddlTipo" class="form-control input-sm" style="width: 150px">
                                             </select>
@@ -129,7 +129,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-tint"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-th"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCantidad" style="width: 60%" name="txtCantidad" placeholder="Ingrese Cantidad del Producto" />
                                         </div>
@@ -140,7 +140,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-equalizer"></i></span>
                                             </span>
                                             <input type="number" class="form-control input-sm" id="txtExistencia" min="0" max="100" style="width: 80px" name="txtExistencia" />
                                         </div>
@@ -151,7 +151,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-usd"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-usd"></i></span>
                                             </span>
                                             <input type="number" class="form-control input-sm" step="any" id="txtCosto" style="width: 80px" name="txtCosto" />
                                         </div>
@@ -185,7 +185,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-child"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-text-color"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtNombre" style="width: 60%" name="txtNombre" placeholder="Ingresa Nombre de Usuario" />
                                         </div>
@@ -196,7 +196,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-pinterest"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-text-color"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtApaterno" style="width: 60%" name="txtApaterno" placeholder="Ingresa Apellido Paterno" />
                                         </div>
@@ -207,7 +207,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-maxcdn"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-text-color"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtAmaterno" style="width: 60%" name="txtAmaterno" placeholder="Ingresa Apellido Materno" />
                                         </div>
@@ -218,7 +218,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-map-marker"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-map-marker"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtDireccion" style="width: 60%" name="txtDireccion" placeholder="Ingresa Direccion del Usuario" />
                                         </div>
@@ -229,7 +229,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-phone-square"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-phone-alt"></i></span>
                                             </span>
                                             <input type="tel" class="form-control input-sm" id="txtTelefono" style="width: 60%" name="txtTelefono" placeholder="Ingresa el Telefono del Usuario" />
                                         </div>
@@ -240,7 +240,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-mobile"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-phone"></i></span>
                                             </span>
                                             <input type="tel" class="form-control input-sm" id="txtCelular" style="width: 60%" name="txtCelular" placeholder="Ingresa el No. Celular del Usuario" />
                                         </div>
@@ -251,7 +251,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-user"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-user"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtUsuario" style="width: 60%" name="txtUsuario" placeholder="Ingresa un Usuario" />
                                         </div>
@@ -262,7 +262,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-unlock"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-lock"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtContraseña" style="width: 60%" name="txtContraseña" placeholder="Ingresa una Contraseña" />
                                         </div>
@@ -273,7 +273,7 @@
                                     <div class="col-lg-10">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-puzzle-piece"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-asterisk"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtPreguntaSecreta" style="width: 60%" name="txtPreguntaSecreta" placeholder="Ingresa una Pregunta Secreta" />
                                         </div>
@@ -301,7 +301,7 @@
                                     <div class="col-lg-5">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-barcode"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-barcode"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCodigoBusExis" name="txtCodigoBusExis" placeholder="Ingresa Codigo de Barras" />
                                         </div>
@@ -310,7 +310,7 @@
                                     <div class="col-lg-5">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtProductoBusExis" name="Producto" placeholder="Ingresa Nombre del Producto" />
                                         </div>
@@ -322,7 +322,7 @@
                                     <div class="col-lg-5">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-barcode"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-barcode"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCodigoExis" autocomplete="off" name="txtCodigoExis" placeholder="Ingresa Codigo de Barras" />
                                         </div>
@@ -333,7 +333,7 @@
                                     <div class="col-lg-7">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-shopping-cart"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-shopping-cart"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtProductoExis" name="Producto" placeholder="Ingresa Nombre del Producto" />
                                         </div>
@@ -344,7 +344,7 @@
                                     <div class="col-lg-5">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-flask"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-tint"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtSustanciaExis" name="txtSustanciaExis" placeholder="Ingresa Nombre de la Sustancia" />
                                         </div>
@@ -355,7 +355,7 @@
                                     <div class="col-lg-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-sitemap"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-th-list"></i></span>
                                             </span>
                                             <select id="ddlCategoriaExis" class="form-control input-sm">
                                             </select>
@@ -368,7 +368,7 @@
                                     <div class="col-lg-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-cubes"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-menu-hamburger"></i></span>
                                             </span>
                                             <select id="ddlTipoExis" class="form-control input-sm">
                                             </select>
@@ -380,7 +380,7 @@
                                     <div class="col-lg-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-tint"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-th"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCantidadExis" name="txtCantidadExis" placeholder="Ingrese Cantidad del Producto" />
                                         </div>
@@ -391,7 +391,7 @@
                                     <div class="col-lg-3">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-equalizer"></i></span>
                                             </span>
                                             <input type="number" min="0" max="100" class="form-control input-sm" disabled="disabled" id="txtExistenciaExis" name="txtExistenciaExis" />
                                         </div>
@@ -400,7 +400,7 @@
                                     <div class="col-lg-3">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-equalizer"></i></span>
                                             </span>
                                             <input type="number" min="0" max="100" class="form-control input-sm" id="txtAgregarPiezasExis" name="txtAgregarPiezasExis" />
                                         </div>
@@ -409,7 +409,7 @@
                                     <div class="col-lg-3">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-equalizer"></i></span>
                                             </span>
                                             <input type="number" min="0" max="100" class="form-control input-sm" id="txtQuitarPiezasExis" name="txtQuitarPiezasExis" />
                                         </div>
@@ -420,7 +420,7 @@
                                     <div class="col-lg-3">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-usd"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-usd"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtCostoExis" name="txtCostoExis" placeholder="" />
                                         </div>
@@ -438,13 +438,15 @@
                                     <div class="col-lg-4"></div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-lg-3"></div>
-                                    <div class="col-lg-3"></div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3"></div>                                    
+                                    <div class="col-lg-3" style="text-align:center;">
                                         <label id="btnActualizarExis" class="btn btn-warning">Actualizar Producto</label>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3" style="text-align:center;">
                                         <label id="btnCancelarExis" class="btn btn-primary">Cancelar</label>
+                                    </div>
+                                    <div class="col-lg-3" style="text-align:center;">
+                                        <label id="btnEliminarProd" class="btn btn-danger">Eliminar Producto</label>
                                     </div>
                                 </div>
                             </form>
@@ -462,7 +464,7 @@
                                     <div class="col-lg-2">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-list"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-tasks"></i></span>
                                             </span>
                                             <input type="number" min="0" max="100" class="form-control input-sm" id="txtPiezasRepor" name="txtPiezasRepor" />
                                         </div>
@@ -487,7 +489,7 @@
                                     <div class="col-lg-4">
                                         <div class="input-group input-group-icon">
                                             <span class="input-group-addon" style="background-color: white; border-color: orange">
-                                                <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                <span class="icon"><i class="glyphicon glyphicon-calendar"></i></span>
                                             </span>
                                             <input type="text" class="form-control input-sm" id="txtFechaRepor" name="txtFechaRepor" />
                                         </div>
@@ -881,7 +883,7 @@
                     alert('Error al cargar las Categorias' + msg.responseText);
                 }
             });
-            //Funcion para Agregar Usuario
+            //Funcion para Actualizar Producto
             function ActualizaProductoPiezasCosto() {
 
                 var codigo = $('#txtCodigoExis').val() == '' ? 'S/C' : $('#txtCodigoExis').val();
@@ -966,6 +968,71 @@
                     }); //fin de ajax
                 }
             }
+
+            //Funcion para Eliminar Producto
+            function EliminarProducto() {
+                if (confirm("¿Seguro de Eliminar el Producto?")) {
+                    var codigo = $('#txtCodigoExis').val() == '' ? 'S/C' : $('#txtCodigoExis').val();
+                    var producto = $('#txtProductoExis').val();
+                    var sustancia = $('#txtSustanciaExis').val();
+                    var categoria = $('#ddlCategoriaExis').val();
+                    var tipo = $('#ddlTipoExis').val();
+                    var cantidad = $('#txtCantidadExis').val();
+                    var existencia = $('#txtExistenciaExis').val();
+                    var costo = $('#txtCostoExis').val();
+                    var productoID;
+
+                    if (producto == '' || sustancia == '')
+                        alert("Debe ingresar un producto para poder Eliminarlo.");
+                    else {
+
+                        if (productoIDautocomplete != '') {
+                            productoID = productoIDautocomplete
+                        }
+                        else if (productoIDcodigo != '') {
+                            productoID = productoIDcodigo
+                        }
+
+                        var misDatos = '{}';
+                        misDatos = '{"producto":"' + producto + '","sustancia":"' + sustancia + '","categoria":"' + categoria + '","tipo":"' + tipo + '","cantidad":"' + cantidad + '","existencia":"' + existencia + '","costo":"' + costo + '","codigo":"' + codigo + '","productoID":"' + productoID + '"}';
+                        $.ajax({
+                            type: "POST",
+                            url: "tabsAdmin.aspx/EliminarProducto",
+                            data: misDatos,
+                            async: false,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (msg) {
+                                alert(msg.d);
+                                //alert('Se Elimino el Producto' + producto + ' con Exito.');
+
+                                $('#txtCodigoExis').val('');
+                                $('#txtProductoExis').val('');
+                                $('#txtSustanciaExis').val('');
+                                $('#ddlCategoriaExis').val('');
+                                $('#ddlTipoExis').val('');
+                                $('#txtCantidadExis').val('');
+                                $('#txtExistenciaExis').val('');
+                                $('#txtCostoExis').val('');
+                                $('#txtAgregarPiezasExis').val('');
+                                $('#txtQuitarPiezasExis').val('');
+                                $('#txtCostoNuevoExis').val('');
+
+                                $('#formExistencia').hide();
+                                $('#pBuscador').show();
+
+                                $('#txtCodigoBusExis').val('');
+                                $('#txtProductoBusExis').val('');
+                                $('#txtCodigoBusExis').focus();
+                            },
+                            error: function (msg) {
+                                alert('Error' + msg.responseText);
+                            }
+
+                        }); //fin de ajax
+                    }
+                }
+            }
             $('#btnActualizarExis').on("click", function () {
                 ActualizaProductoPiezasCosto();
                 window.location = 'tabsAdmin.aspx';
@@ -993,6 +1060,10 @@
                 else {
                     $('#txtAgregarPiezasExis').attr("disabled", true);
                 }
+            });
+            $('#btnEliminarProd').on("click", function () {
+                EliminarProducto();
+                window.location = 'tabsAdmin.aspx';
             });
             // --------------------------------------------T E R M I N A   E X I S T E N C I A S -------------------------------------------------
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

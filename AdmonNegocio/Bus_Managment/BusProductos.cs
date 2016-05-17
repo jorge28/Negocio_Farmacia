@@ -161,6 +161,17 @@ namespace Managment.Business
             }
             return mensaje;
         }
+        public string eliminaProducto(int productoID)
+        {
+            DatProductos obj = new DatProductos();
+            string mensaje = "OK";
+
+            bool Elimino = obj.eliminaProducto(productoID);
+            if (Elimino == false)
+                mensaje = ("Error en la Capa de Negocios al Eliminar el Producto.");
+
+            return mensaje;
+        }
 
     }
 }

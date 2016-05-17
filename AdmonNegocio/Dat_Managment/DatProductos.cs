@@ -371,7 +371,6 @@ namespace Managment.Data
             }
 
         }
-
         public bool ValidarInsertProducto(string codigoBarras)
         {
             bool existe = false;
@@ -382,6 +381,30 @@ namespace Managment.Data
                 con.Open();
                 existe = Convert.ToBoolean(comando.ExecuteScalar());
                 con.Close();
+
+                return existe;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException(ex.Message);
+            }
+
+        }
+        public bool eliminaProducto(int productoID)
+        {
+            
+            bool existe = false;
+            SqlCommand comando = new SqlCommand(string.Format("DELETE FROM tbl_Productos WHERE Id_Producto ='{0}'", productoID), con);
+
+            try
+            {
+                con.Open();
+                int filas = comando.ExecuteNonQuery();
+                con.Close();
+
+                if (filas == 1)
+                    existe = true;
 
                 return existe;
             }

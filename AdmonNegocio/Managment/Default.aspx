@@ -36,7 +36,7 @@
                                     <br />
                                     <div class="input-group input-group-icon">
                                         <span class="input-group-addon">
-                                            <span class="icon"><i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i></span>
+                                            <span class="icon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
                                         </span>
                                         <asp:TextBox runat="server" ID="txtPass" class="form-control" Title="Ingresa tu Contraseña" MaxLength="20" type="password" placeholder="Contraseña" required="required" />
                                     </div>
@@ -87,7 +87,7 @@
       <div class="modal-footer">
           <div class="form-group">
               <div class="col-md-6">
-                  <button type="button" id="btnGuardarNuevaContraseña" class="btn btn-primary">Guardar</button>
+                  <button type="button" id="btnGuardarNuevaContraseña" data-dismiss="modal" class="btn btn-primary">Guardar</button>
               </div>
               <div class="col-md-6">
                   <button type="button" id="btnCancelarModal" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

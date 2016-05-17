@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Estrella de la Mañana</title>
+    <title>Ventas</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="Control de inventarios e interfaces para ventas." />
     <meta name="author" content="Jorge Romero Olguin" />

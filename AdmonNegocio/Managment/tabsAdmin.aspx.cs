@@ -149,5 +149,32 @@ public partial class tabsAdmin : System.Web.UI.Page
         }
         return mensaje;
     }
+
+    [WebMethod]
+    public static string EliminarProducto(string producto, string sustancia, int categoria, int tipo, string cantidad, int existencia, double costo, string codigo, int productoID)
+    {
+        EntUsuarios usuario = new EntUsuarios();
+        usuario = (EntUsuarios)HttpContext.Current.Session["Login"];
+
+        string elimina;
+        string mensaje = "OK";
+      
+        BusProductos bp = new BusProductos();
+
+        elimina = bp.eliminaProducto(productoID);
+
+        if (elimina == "OK")
+        {
+            BusBitacora obj2 = new BusBitacora();
+            obj2.InsertBitacoraFarmacia(usuario.Id_Usuario, usuario.NombreUsuario + " " + usuario.ApellidoPaterno + " " + usuario.ApellidoMaterno, DateTime.Now, 9, "EliminaProducto", "ELIMINACION DE PRODUCTO : " + DateTime.Now + ", Codigo: " + codigo + ", Producto: " + producto + ", Sustancia:" + sustancia + ", Existencia: " + existencia + ", Costo: " + costo);
+
+            mensaje = "Se Elimino el producto" + producto + " con Exito.";
+        }
+        else
+        {
+            mensaje = elimina;
+        }
+        return mensaje;
+    }
     
 }
