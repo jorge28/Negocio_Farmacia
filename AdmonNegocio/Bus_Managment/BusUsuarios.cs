@@ -69,7 +69,7 @@ namespace Managment.Business
             DatUsuarios datUsua = new DatUsuarios();
             int filas = datUsua.InsertaNuevoPass(usua, palabra, pass);
             if (filas != 1)
-                throw new ApplicationException("Error en la capa de Negocios al Guardar la Nueva COntraseña. :(");
+                throw new ApplicationException("Error en la capa de Negocios al Guardar la Nueva Contraseña. :(");
         }
 
     }

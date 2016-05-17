@@ -58,11 +58,18 @@ public partial class Index : System.Web.UI.Page
 
             if (Nivel == 2)
             {
+                BusBitacora obj2 = new BusBitacora();
+                obj2.InsertBitacoraFarmacia(log.Id_Usuario, log.NombreUsuario + " " + log.ApellidoPaterno + " " + log.ApellidoMaterno, DateTime.Now, 10, "InicioSession", "INICIO DE SESSION: En el modulo de Administrador " + DateTime.Now);
+
                 Session["Login"] = log;
                 Response.Redirect("tabsAdmin.aspx");
+
             }
             else if (Nivel == 3)
             {
+                BusBitacora obj2 = new BusBitacora();
+                obj2.InsertBitacoraFarmacia(log.Id_Usuario, log.NombreUsuario + " " + log.ApellidoPaterno + " " + log.ApellidoMaterno, DateTime.Now, 10, "InicioSession", "INICIO DE SESSION: En el modulo de Ventas " + DateTime.Now);
+
                 Session["Login"] = log;
                 Response.Redirect("VentasEmp1.aspx");
             }           
@@ -88,5 +95,8 @@ public partial class Index : System.Web.UI.Page
     {
         BusUsuarios bu = new BusUsuarios();
         bu.InsertaNuevoPass(usua, palabra, pass);
+
+        BusBitacora obj2 = new BusBitacora();
+        obj2.InsertBitacoraFarmacia(0, usua, DateTime.Now, 8, "CambioPassword", "CAMBIO DE PASSWORD : " + DateTime.Now + " Usuario: " + usua + " Palabra Secreta: " + palabra + " Nuevo Password:" + pass + ".");
     } 
 }
