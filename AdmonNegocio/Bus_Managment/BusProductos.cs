@@ -95,8 +95,14 @@ namespace Managment.Business
             DatProductos dprod = new DatProductos();
             string mensaje = "OK";
             bool existe = dprod.ValidarInsertProducto(codigo);
-            if (existe)
+            if (existe && codigo != "0000000000")
                 mensaje = (string.Format("Ya existe el código {0}, favor de verificar.", codigo));
+            else if(existe && codigo == "0000000000")
+            {
+                int lintFilas = dprod.agregaProducto(prod, sust, cat, tipo, cant, exis, precio, codigo);
+                if (lintFilas != 1)
+                    mensaje = ("Error en la capa de negocio al guardar el nuevo producto");
+            }
             else
             {
                 int lintFilas = dprod.agregaProducto(prod, sust, cat, tipo, cant, exis, precio, codigo);

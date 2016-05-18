@@ -349,8 +349,10 @@ namespace Managment.Data
 
                 if (dt.Rows.Count != 0)                 
                 {
-                    if (dt.Rows.Count > 1)
+                    if (dt.Rows.Count > 1 && codigoBarras != "0000000000")
                         existe = true;
+                    else if (dt.Rows.Count > 1 && codigoBarras == "0000000000")
+                        existe = false;
                     else
                     {
                         foreach (DataRow dr in dt.Rows)

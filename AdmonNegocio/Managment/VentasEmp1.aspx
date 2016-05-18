@@ -353,7 +353,7 @@
                             }
                             else {
                                 $('#txtCodigoBarras').focus();
-                                alert('No hay existencias suficientes de -' + this.label + '- VERIFIQUE.');
+                                alert('No hay existencias suficientes de -' + producto + '- VERIFIQUE.');
                             }
                         }
                         else {
@@ -458,49 +458,53 @@
                 var encontrado = '';
                 var numPiezas = 0;
                 var costoNumPiezas = 0;
+                var primerCodigo = '';
                 codigo = $('#txtCodigoBarras').val();
                 $('#txtCodigoBarras').val('');
                 $('#txtCodigoBarras').focus();
                 $(lista).each(function () {
-                    if (this.CodigoBarras == codigo) {
-                        encontrado = 'TRUE';
-                        if (this.Costo != 0) {
-                            if (this.Existencia != 0) {
-                                if (window.sessionStorage) {
-                                    if (sessionStorage.getItem("ProductoAgregar" + this.Id_Producto) != null) {
-                                        list2 = $.parseJSON(sessionStorage.getItem("ProductoAgregar" + this.Id_Producto));
-                                        $.each(list2, function (key, value) {
-                                            if (key == "PiezasVenta") {
-                                                numPiezas = parseInt(value) + 1;
-                                            }
-                                        })
-                                        costoNumPiezas = (numPiezas * this.Costo);
+                    if (primerCodigo != this.CodigoBarras) {
+                        if (this.CodigoBarras == codigo) {
+                            encontrado = 'TRUE';
+                            primerCodigo = this.CodigoBarras;
+                            if (this.Costo != 0) {
+                                if (this.Existencia != 0) {
+                                    if (window.sessionStorage) {
+                                        if (sessionStorage.getItem("ProductoAgregar" + this.Id_Producto) != null) {
+                                            list2 = $.parseJSON(sessionStorage.getItem("ProductoAgregar" + this.Id_Producto));
+                                            $.each(list2, function (key, value) {
+                                                if (key == "PiezasVenta") {
+                                                    numPiezas = parseInt(value) + 1;
+                                                }
+                                            })
+                                            costoNumPiezas = (numPiezas * this.Costo);
+                                        }
+                                        else {
+                                            numPiezas = 1;
+                                            costoNumPiezas = this.Costo;
+                                        }
+                                        if (numPiezas <= this.Existencia) {
+                                            var datosProductoLectora = { "Id_Producto": this.Id_Producto, "Producto": this.Nombre_Producto, "Sustancia": this.Sustancia, "Existencia": this.Existencia, "Costo": this.Costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + this.Id_Producto }
+                                            var jsonDatosProductoLectora = JSON.stringify(datosProductoLectora);
+                                            sessionStorage.setItem("ProductoAgregar" + this.Id_Producto, jsonDatosProductoLectora);
+                                            cargarTablaVentas();
+                                        }
+                                        else {
+                                            $('#txtCodigoBarras').focus();
+                                            alert('No hay existencias suficientes de -' + this.Nombre_Producto + '- VERIFIQUE.');
+                                        }
                                     }
                                     else {
-                                        numPiezas = 1;
-                                        costoNumPiezas = this.Costo;
-                                    }
-                                    if (numPiezas <= this.Existencia) {
-                                        var datosProductoLectora = { "Id_Producto": this.Id_Producto, "Producto": this.Nombre_Producto, "Sustancia": this.Sustancia, "Existencia": this.Existencia, "Costo": this.Costo, "PiezasVenta": numPiezas, "CostoTotalProd": costoNumPiezas, "EliminarProd": "EliminarProd" + this.Id_Producto }
-                                        var jsonDatosProductoLectora = JSON.stringify(datosProductoLectora);
-                                        sessionStorage.setItem("ProductoAgregar" + this.Id_Producto, jsonDatosProductoLectora);
-                                        cargarTablaVentas();
-                                    }
-                                    else {
-                                        $('#txtCodigoBarras').focus();
-                                        alert('No hay existencias suficientes de -' + this.label + '- VERIFIQUE.');
+                                        throw new Error('Tu Navegador no soporta SessionStorage!');
                                     }
                                 }
                                 else {
-                                    throw new Error('Tu Navegador no soporta SessionStorage!');
+                                    alert('No hay Existencias de: ' + this.Nombre_Producto);
                                 }
                             }
                             else {
-                                alert('No hay Existencias de: ' + this.label);
+                                alert('Producto ' + this.Nombre_Producto + ' SIN costo registrado. Avise al Encargado.');
                             }
-                        }
-                        else {
-                            alert('Producto ' + this.label + ' SIN costo registrado. Avise al Encargado.');
                         }
                     }
                 })
